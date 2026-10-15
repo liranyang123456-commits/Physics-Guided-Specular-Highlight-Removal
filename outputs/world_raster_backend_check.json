@@ -1,0 +1,192 @@
+{
+  "70": {
+    "logged": {
+      "photo": 0.0164072145242244,
+      "diffuse": 0.014557073439937085
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.010229475686274882,
+        "diffuse": 0.009729999673759772,
+        "material_grad_norm": 0.012616435065865517
+      },
+      "torch": {
+        "photo": 0.02005715212888188,
+        "diffuse": 0.019662229758169916,
+        "material_grad_norm": 0.016517817974090576
+      }
+    },
+    "training_backend": "gsplat"
+  },
+  "71": {
+    "logged": {
+      "photo": 0.011415848508477211,
+      "diffuse": 0.010352917574346065
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.007999834915002188,
+        "diffuse": 0.006144960980034537,
+        "material_grad_norm": 0.029354849830269814
+      },
+      "torch": {
+        "photo": 0.012068369115392366,
+        "diffuse": 0.010396688659158018,
+        "material_grad_norm": 0.0014360292116180062
+      }
+    },
+    "training_backend": "torch"
+  },
+  "72": {
+    "logged": {
+      "photo": 0.0129939628764987,
+      "diffuse": 0.009908662177622318
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.011341778871913752,
+        "diffuse": 0.008922411025398307,
+        "material_grad_norm": 0.03223070129752159
+      },
+      "torch": {
+        "photo": 0.01563151925802231,
+        "diffuse": 0.013177722485529052,
+        "material_grad_norm": 0.0013962966622784734
+      }
+    },
+    "training_backend": "torch"
+  },
+  "73": {
+    "logged": {
+      "photo": 0.006725962180644274,
+      "diffuse": 0.005926348455250263
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.006482103270375066,
+        "diffuse": 0.006087187418921126,
+        "material_grad_norm": 0.024433966726064682
+      },
+      "torch": {
+        "photo": 0.006523084723287159,
+        "diffuse": 0.0059632302986250985,
+        "material_grad_norm": 0.0005758302286267281
+      }
+    },
+    "training_backend": "torch"
+  },
+  "74": {
+    "logged": {
+      "photo": 0.009290981106460094,
+      "diffuse": 0.008616814203560353
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.007303511102994283,
+        "diffuse": 0.005490479111257527,
+        "material_grad_norm": 0.02996622957289219
+      },
+      "torch": {
+        "photo": 0.009735359603332149,
+        "diffuse": 0.008263248536321852,
+        "material_grad_norm": 0.0015430186176672578
+      }
+    },
+    "training_backend": "torch"
+  },
+  "75": {
+    "logged": {
+      "photo": 0.011110117193311453,
+      "diffuse": 0.006755673512816429
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.00869849334574408,
+        "diffuse": 0.0063639286284645396,
+        "material_grad_norm": 0.029848335310816765
+      },
+      "torch": {
+        "photo": 0.00896835865245925,
+        "diffuse": 0.0066720531322062016,
+        "material_grad_norm": 0.0013976746704429388
+      }
+    },
+    "training_backend": "torch"
+  },
+  "76": {
+    "logged": {
+      "photo": 0.009172317199409008,
+      "diffuse": 0.008159342594444752
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.009044103376153443,
+        "diffuse": 0.00748577993363142,
+        "material_grad_norm": 0.02944278158247471
+      },
+      "torch": {
+        "photo": 0.010022609339406094,
+        "diffuse": 0.008477725761218203,
+        "material_grad_norm": 0.001469648675993085
+      }
+    },
+    "training_backend": "torch"
+  },
+  "77": {
+    "logged": {
+      "photo": 0.010669136978685856,
+      "diffuse": 0.006335089448839426
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.007254907136989964,
+        "diffuse": 0.006050223329414924,
+        "material_grad_norm": 0.032200995832681656
+      },
+      "torch": {
+        "photo": 0.007515942833075921,
+        "diffuse": 0.006085972198181682,
+        "material_grad_norm": 0.001400404260493815
+      }
+    },
+    "training_backend": "torch"
+  },
+  "78": {
+    "logged": {
+      "photo": 0.01229126900434494,
+      "diffuse": 0.009320077300071717
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.010253389262490802,
+        "diffuse": 0.007904539350420237,
+        "material_grad_norm": 0.03451252356171608
+      },
+      "torch": {
+        "photo": 0.011569580994546413,
+        "diffuse": 0.009163296988440884,
+        "material_grad_norm": 0.001116585684940219
+      }
+    },
+    "training_backend": "torch"
+  },
+  "79": {
+    "logged": {
+      "photo": 0.010723736695945263,
+      "diffuse": 0.009852394089102745
+    },
+    "measured": {
+      "gsplat": {
+        "photo": 0.007217891617781586,
+        "diffuse": 0.005773985654943519,
+        "material_grad_norm": 0.030378561466932297
+      },
+      "torch": {
+        "photo": 0.011375675805740885,
+        "diffuse": 0.01014069291866488,
+        "material_grad_norm": 0.0013667220482602715
+      }
+    },
+    "training_backend": "torch"
+  }
+}

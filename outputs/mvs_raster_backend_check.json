@@ -1,0 +1,16 @@
+{
+  "dtu_scan1": {
+    "archived_holdout_full_psnr": 7.432734212588109,
+    "gsplat": {
+      "grad_norm": 0.001818736083805561,
+      "holdout_full_psnr": 7.432734251022339
+    }
+  },
+  "blendedmvs_57f8d9bb": {
+    "archived_holdout_full_psnr": 9.480568190272422,
+    "gsplat": {
+      "grad_norm": 0.39811840653419495,
+      "holdout_full_psnr": 9.48056844033693
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "dataset": "SHIQ",
+  "split": "test",
+  "n": 500,
+  "checkpoint": "outputs/shiq_leakage_fixed_s0/best.pt",
+  "ours_psnr": 31.56492876815796,
+  "ours_ssim": 0.949476784825325,
+  "input_psnr": 26.261915380477905,
+  "input_ssim": 0.9213813741207123
+}

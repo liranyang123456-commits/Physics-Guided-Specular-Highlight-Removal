@@ -1,0 +1,26 @@
+{
+  "bumpy": {
+    "ours_phys": 28.859557469685875,
+    "ours_pro": 32.49390888214111,
+    "fusion_full": 33.14224592844646,
+    "n_scenes": 2
+  },
+  "ellipsoid": {
+    "ours_phys": 33.52682622273763,
+    "ours_pro": 35.98089154561361,
+    "fusion_full": 38.249756495157875,
+    "n_scenes": 3
+  },
+  "sphere": {
+    "ours_phys": 35.15854051378037,
+    "ours_pro": 34.012394163343636,
+    "fusion_full": 35.79670058356391,
+    "n_scenes": 3
+  },
+  "torus": {
+    "ours_phys": 37.05044619242351,
+    "ours_pro": 46.85795211791992,
+    "fusion_full": 47.14855893452962,
+    "n_scenes": 2
+  }
+}

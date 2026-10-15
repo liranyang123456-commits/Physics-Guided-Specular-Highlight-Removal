@@ -1,0 +1,10 @@
+torch>=2.4
+numpy
+pillow
+pyyaml
+torchmetrics
+matplotlib
+tqdm
+ninja
+gsplat>=1.5
+pytest

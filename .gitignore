@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pt
+*.pth
+data/raw/
+data/world_benchmark_v2/scenes/
+data/world_benchmark_v2/flat/
+data/world_benchmark_v2/flat_hard/
+data/world_benchmark_v2/predictions/*/*.png
+data/world_benchmark_material/scenes/
+baselines_ext/
+paper_figures/figures/
+outputs/**/*.png
+outputs/**/*.log
+.pytest_cache/

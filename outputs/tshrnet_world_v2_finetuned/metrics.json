@@ -1,0 +1,103 @@
+{
+  "method": "tshrnet_world_v2_finetuned",
+  "protocol": "same splits/steps/batch/optimizer/schedule/augmentation/selection as train_flat_benchmark.py; native TSHRNet loss (four MSE terms); 256x256 working resolution as in the zero-shot protocol",
+  "steps": 3000,
+  "batch_size": 8,
+  "zero_shot_in_script": {
+    "test": {
+      "n": 240,
+      "psnr": 19.137829085060538,
+      "ssim": 0.8260384246706962
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 18.495949720413744,
+      "ssim": 0.8044370402974532
+    }
+  },
+  "validation_best": {
+    "n": 120,
+    "psnr": 35.468131715492426,
+    "ssim": 0.9786899849772454,
+    "step": 2999
+  },
+  "test": {
+    "n": 240,
+    "psnr": 35.784406602221985,
+    "ssim": 0.9799665552046565
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 30.444498252081743,
+    "ssim": 0.9677329377037763
+  },
+  "history": [
+    {
+      "step": 0,
+      "n": 120,
+      "psnr": 19.712444341507243,
+      "ssim": 0.8324088947640526
+    },
+    {
+      "step": 300,
+      "n": 120,
+      "psnr": 33.245902047157344,
+      "ssim": 0.9670311138033867
+    },
+    {
+      "step": 600,
+      "n": 120,
+      "psnr": 34.00856551396016,
+      "ssim": 0.9679376405146388
+    },
+    {
+      "step": 900,
+      "n": 120,
+      "psnr": 34.49792197206485,
+      "ssim": 0.9727020771967041
+    },
+    {
+      "step": 1200,
+      "n": 120,
+      "psnr": 34.893767878470605,
+      "ssim": 0.9763879605465464
+    },
+    {
+      "step": 1500,
+      "n": 120,
+      "psnr": 34.13138926803127,
+      "ssim": 0.9662215295765134
+    },
+    {
+      "step": 1800,
+      "n": 120,
+      "psnr": 35.31442802150898,
+      "ssim": 0.9775550029344029
+    },
+    {
+      "step": 2100,
+      "n": 120,
+      "psnr": 35.387085576792835,
+      "ssim": 0.9781564253899785
+    },
+    {
+      "step": 2400,
+      "n": 120,
+      "psnr": 35.39578605819505,
+      "ssim": 0.9781120384732882
+    },
+    {
+      "step": 2700,
+      "n": 120,
+      "psnr": 35.375598170328125,
+      "ssim": 0.9779356107115745
+    },
+    {
+      "step": 2999,
+      "n": 120,
+      "psnr": 35.468131715492426,
+      "ssim": 0.9786899849772454
+    }
+  ],
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\tshrnet_world_v2_finetuned"
+}

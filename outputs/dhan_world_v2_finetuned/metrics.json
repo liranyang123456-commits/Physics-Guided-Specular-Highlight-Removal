@@ -1,0 +1,91 @@
+{
+  "method": "dhan_shr_world_v2_finetuned",
+  "protocol": "same splits/steps/batch/optimizer/schedule/augmentation/selection as train_flat_benchmark.py; native DHAN loss",
+  "steps": 3000,
+  "batch_size": 8,
+  "validation_best": {
+    "n": 120,
+    "psnr": 36.74974723747876,
+    "ssim": 0.9844699631134668,
+    "step": 2700
+  },
+  "test": {
+    "n": 240,
+    "psnr": 37.14432641850409,
+    "ssim": 0.9852755651705796
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 31.161554234117986,
+    "ssim": 0.9740319353818238
+  },
+  "history": [
+    {
+      "step": 0,
+      "n": 120,
+      "psnr": 27.867449286908233,
+      "ssim": 0.9502409496241148
+    },
+    {
+      "step": 300,
+      "n": 120,
+      "psnr": 33.60668076103181,
+      "ssim": 0.9766778079999817
+    },
+    {
+      "step": 600,
+      "n": 120,
+      "psnr": 35.50036410699463,
+      "ssim": 0.9814383243521054
+    },
+    {
+      "step": 900,
+      "n": 120,
+      "psnr": 35.96500067095291,
+      "ssim": 0.9826648392611079
+    },
+    {
+      "step": 1200,
+      "n": 120,
+      "psnr": 36.44284409508347,
+      "ssim": 0.9837914756602711
+    },
+    {
+      "step": 1500,
+      "n": 120,
+      "psnr": 36.620262130987534,
+      "ssim": 0.9838325692547693
+    },
+    {
+      "step": 1800,
+      "n": 120,
+      "psnr": 36.69972659977704,
+      "ssim": 0.9842704312668907
+    },
+    {
+      "step": 2100,
+      "n": 120,
+      "psnr": 36.69082600610595,
+      "ssim": 0.9843103678690064
+    },
+    {
+      "step": 2400,
+      "n": 120,
+      "psnr": 36.694059881001934,
+      "ssim": 0.9843139828907119
+    },
+    {
+      "step": 2700,
+      "n": 120,
+      "psnr": 36.74974723747876,
+      "ssim": 0.9844699631134668
+    },
+    {
+      "step": 2999,
+      "n": 120,
+      "psnr": 36.74896566990498,
+      "ssim": 0.9844601791765956
+    }
+  ],
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\dhan_shr_world_v2_finetuned"
+}

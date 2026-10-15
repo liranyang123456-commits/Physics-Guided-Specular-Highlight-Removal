@@ -1,0 +1,14 @@
+{
+  "method": "dhan_shr_world_v2_finetuned",
+  "test": {
+    "n": 240,
+    "psnr": 37.14432641850409,
+    "ssim": 0.9852755651705796
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 31.161554234117986,
+    "ssim": 0.9740319353818238
+  },
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\dhan_shr_world_v2_finetuned"
+}

@@ -1,0 +1,15 @@
+{
+  "method": "dhan_shr",
+  "checkpoint": "baselines_ext/DHAN-SHR/weights/model.pth",
+  "test": {
+    "n": 240,
+    "psnr": 25.171380639453044,
+    "ssim": 0.9282036900520325
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 22.658751976071393,
+    "ssim": 0.9099145981562696
+  },
+  "prediction_dir": "data\\world_benchmark_v2\\predictions\\dhan_shr"
+}

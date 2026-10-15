@@ -1,0 +1,15 @@
+{
+  "method": "mvbrdf_shr_world_v2_finetuned",
+  "checkpoint": "outputs/world_benchmark_single/best.pt",
+  "test": {
+    "n": 240,
+    "psnr": 36.411166289616496,
+    "ssim": 0.9827606486777465
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 30.463247403388774,
+    "ssim": 0.9702224990881507
+  },
+  "prediction_dir": "data\\world_benchmark_v2\\predictions\\mvbrdf_shr_world_v2_finetuned"
+}

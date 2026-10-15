@@ -1,0 +1,10 @@
+{
+  "dataset": "PSD",
+  "split": "ft_test",
+  "n": 32,
+  "checkpoint": "outputs/psd_finetuned_strict/best.pt",
+  "ours_psnr": 31.975291192531586,
+  "ours_ssim": 0.9633114654570818,
+  "input_psnr": 27.647660732269287,
+  "input_ssim": 0.9459880404174328
+}

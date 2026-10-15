@@ -1,0 +1,10 @@
+{
+  "dataset": "NSH",
+  "split": "test",
+  "n": 360,
+  "checkpoint": "outputs/nsh_finetuned_strict/best.pt",
+  "ours_psnr": 33.71316641171773,
+  "ours_ssim": 0.9708734643128183,
+  "input_psnr": 33.2206640402476,
+  "input_ssim": 0.9715802053610484
+}

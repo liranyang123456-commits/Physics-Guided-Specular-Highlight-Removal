@@ -1,0 +1,14 @@
+{
+  "method": "tshrnet_world_v2_finetuned",
+  "test": {
+    "n": 240,
+    "psnr": 35.784406602221985,
+    "ssim": 0.9799665552046565
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 30.444498252081743,
+    "ssim": 0.9677329377037763
+  },
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\tshrnet_world_v2_finetuned"
+}

@@ -1,0 +1,15 @@
+{
+  "method": "tshrnet",
+  "checkpoint": "baselines_ext/TSHRNet/checkpoints_mix_SSHR_SHIQ_PSD",
+  "test": {
+    "n": 240,
+    "psnr": 19.005591982342203,
+    "ssim": 0.8283119917743735
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 18.379173864037078,
+    "ssim": 0.8051634407897297
+  },
+  "prediction_dir": "data\\world_benchmark_v2\\predictions\\tshrnet"
+}

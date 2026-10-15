@@ -1,0 +1,15 @@
+{
+  "method": "mvbrdf_shr_shiq_pretrained",
+  "checkpoint": "outputs/shiq_mask/best.pt",
+  "test": {
+    "n": 240,
+    "psnr": 15.971206054820476,
+    "ssim": 0.77918885147406
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 15.28251525242735,
+    "ssim": 0.7517029269503497
+  },
+  "prediction_dir": "data\\world_benchmark_v2\\predictions\\mvbrdf_shr_shiq_pretrained"
+}

@@ -1,0 +1,321 @@
+{
+  "protocol": "strict holdout; local checkpoints only; fusion gate from --fusion-checkpoint",
+  "world_checkpoint": "outputs/world_benchmark_v2_scene_0076_strict/last.pt",
+  "fusion_checkpoint": "outputs/world_benchmark_v2_scene_0070_hybrid/fusion.pt",
+  "raster_backend": "torch",
+  "dhan_checkpoint": "outputs/dhan_world_v2_finetuned/best.pt",
+  "tshrnet_checkpoint": "outputs/tshrnet_world_v2_finetuned/best.pt",
+  "holdout_ids": [
+    0,
+    4,
+    8
+  ],
+  "variants": {
+    "ours_phys": {
+      "psnr": 31.4510981241862,
+      "ssim": 0.9729740619659424,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 27.680641174316406,
+          "ssim": 0.9612830877304077
+        },
+        {
+          "frame": 4,
+          "psnr": 33.3187255859375,
+          "ssim": 0.9765429496765137
+        },
+        {
+          "frame": 8,
+          "psnr": 33.35392761230469,
+          "ssim": 0.9810961484909058
+        }
+      ]
+    },
+    "ours_refined": {
+      "psnr": 26.58282725016276,
+      "ssim": 0.9496593475341797,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 21.77123260498047,
+          "ssim": 0.9146772623062134
+        },
+        {
+          "frame": 4,
+          "psnr": 31.590415954589844,
+          "ssim": 0.9703983068466187
+        },
+        {
+          "frame": 8,
+          "psnr": 26.38683319091797,
+          "ssim": 0.963902473449707
+        }
+      ]
+    },
+    "ours_pro": {
+      "psnr": 34.23323758443197,
+      "ssim": 0.9756579200426737,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 25.0430908203125,
+          "ssim": 0.9467872381210327
+        },
+        {
+          "frame": 4,
+          "psnr": 30.8638973236084,
+          "ssim": 0.9811550974845886
+        },
+        {
+          "frame": 8,
+          "psnr": 46.792724609375,
+          "ssim": 0.9990314245223999
+        }
+      ]
+    },
+    "fusion_full": {
+      "psnr": 34.56777699788412,
+      "ssim": 0.9764180978139242,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 25.250682830810547,
+          "ssim": 0.9481069445610046
+        },
+        {
+          "frame": 4,
+          "psnr": 31.186847686767578,
+          "ssim": 0.9822086095809937
+        },
+        {
+          "frame": 8,
+          "psnr": 47.26580047607422,
+          "ssim": 0.9989387392997742
+        }
+      ]
+    },
+    "fusion_analytic": {
+      "psnr": 31.817019780476887,
+      "ssim": 0.9725164572397867,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 25.58363914489746,
+          "ssim": 0.9446990489959717
+        },
+        {
+          "frame": 4,
+          "psnr": 31.56678009033203,
+          "ssim": 0.9790955781936646
+        },
+        {
+          "frame": 8,
+          "psnr": 38.30064010620117,
+          "ssim": 0.9937547445297241
+        }
+      ]
+    },
+    "fusion_no_correction": {
+      "psnr": 34.63281059265137,
+      "ssim": 0.9763777256011963,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 25.25395393371582,
+          "ssim": 0.9480799436569214
+        },
+        {
+          "frame": 4,
+          "psnr": 31.196327209472656,
+          "ssim": 0.9821118116378784
+        },
+        {
+          "frame": 8,
+          "psnr": 47.448150634765625,
+          "ssim": 0.9989414215087891
+        }
+      ]
+    },
+    "fixed_blend": {
+      "psnr": 34.335780461629234,
+      "ssim": 0.9831743041674296,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 28.923730850219727,
+          "ssim": 0.9679737091064453
+        },
+        {
+          "frame": 4,
+          "psnr": 34.779991149902344,
+          "ssim": 0.9874823093414307
+        },
+        {
+          "frame": 8,
+          "psnr": 39.303619384765625,
+          "ssim": 0.9940668940544128
+        }
+      ]
+    },
+    "input": {
+      "psnr": 32.067222595214844,
+      "ssim": 0.9738729993502299,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 24.04155731201172,
+          "ssim": 0.9432834386825562
+        },
+        {
+          "frame": 4,
+          "psnr": 29.990745544433594,
+          "ssim": 0.9795324206352234
+        },
+        {
+          "frame": 8,
+          "psnr": 42.16936492919922,
+          "ssim": 0.9988031387329102
+        }
+      ]
+    },
+    "dhan_ft": {
+      "psnr": 34.256690979003906,
+      "ssim": 0.9748886426289877,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 24.411151885986328,
+          "ssim": 0.9441477060317993
+        },
+        {
+          "frame": 4,
+          "psnr": 30.985610961914062,
+          "ssim": 0.9812206029891968
+        },
+        {
+          "frame": 8,
+          "psnr": 47.37331008911133,
+          "ssim": 0.9992976188659668
+        }
+      ]
+    },
+    "dhan_fixed_blend": {
+      "psnr": 34.136295318603516,
+      "ssim": 0.9826816320419312,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 28.759201049804688,
+          "ssim": 0.9666067361831665
+        },
+        {
+          "frame": 4,
+          "psnr": 34.86810302734375,
+          "ssim": 0.9874820709228516
+        },
+        {
+          "frame": 8,
+          "psnr": 38.78158187866211,
+          "ssim": 0.9939560890197754
+        }
+      ]
+    },
+    "dhan_analytic": {
+      "psnr": 31.54273223876953,
+      "ssim": 0.9717248678207397,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 25.067813873291016,
+          "ssim": 0.9426455497741699
+        },
+        {
+          "frame": 4,
+          "psnr": 31.593658447265625,
+          "ssim": 0.9790439605712891
+        },
+        {
+          "frame": 8,
+          "psnr": 37.96672439575195,
+          "ssim": 0.9934850931167603
+        }
+      ]
+    },
+    "dhan_gate": {
+      "psnr": 33.93454806009928,
+      "ssim": 0.975601315498352,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 24.636558532714844,
+          "ssim": 0.9456495046615601
+        },
+        {
+          "frame": 4,
+          "psnr": 31.29798698425293,
+          "ssim": 0.9821949005126953
+        },
+        {
+          "frame": 8,
+          "psnr": 45.86909866333008,
+          "ssim": 0.9989595413208008
+        }
+      ]
+    },
+    "tshrnet_ft": {
+      "psnr": 32.74140485127767,
+      "ssim": 0.9703524311383566,
+      "per_view": [
+        {
+          "frame": 0,
+          "psnr": 24.463497161865234,
+          "ssim": 0.940570056438446
+        },
+        {
+          "frame": 4,
+          "psnr": 30.782411575317383,
+          "ssim": 0.9758478999137878
+        },
+        {
+          "frame": 8,
+          "psnr": 42.97830581665039,
+          "ssim": 0.9946393370628357
+        }
+      ]
+    },
+    "inverse": {
+      "psnr": 12.889043892902455,
+      "ssim": 0.5537468294302622,
+      "source": "outputs\\world_benchmark_v2_scene_0070_inverse\\world_metrics_holdout.json"
+    },
+    "inverse_pro": {
+      "psnr": 13.593430273246655,
+      "ssim": 0.5878850652111902,
+      "source": "outputs\\world_benchmark_v2_scene_0070_inverse_pro\\world_metrics_holdout.json"
+    }
+  },
+  "confidence_correlation": [
+    {
+      "frame": 0,
+      "covered_pixels": 14142,
+      "pearson_e_vs_diffuse_error": 0.7269780039787292,
+      "diffuse_l1_low_conf_half": 0.03489036485552788,
+      "diffuse_l1_high_conf_half": 0.009918317198753357
+    },
+    {
+      "frame": 4,
+      "covered_pixels": 12992,
+      "pearson_e_vs_diffuse_error": 0.5882925391197205,
+      "diffuse_l1_low_conf_half": 0.01873008906841278,
+      "diffuse_l1_high_conf_half": 0.005877648014575243
+    },
+    {
+      "frame": 8,
+      "covered_pixels": 13605,
+      "pearson_e_vs_diffuse_error": 0.983553409576416,
+      "diffuse_l1_low_conf_half": 0.020972425118088722,
+      "diffuse_l1_high_conf_half": 0.006438353564590216
+    }
+  ]
+}

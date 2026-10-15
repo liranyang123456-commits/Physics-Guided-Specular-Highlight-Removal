@@ -1,0 +1,11 @@
+{
+  "method": "dhan_shr",
+  "dataset": "shiq",
+  "split": "test",
+  "size": 200,
+  "checkpoint": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\baselines_ext\\DHAN-SHR\\weights\\model.pth",
+  "n": 8,
+  "psnr": 32.10735559463501,
+  "ssim": 0.9485893547534943,
+  "protocol": "local adapter GT; same PSNR/SSIM as Ours eval"
+}

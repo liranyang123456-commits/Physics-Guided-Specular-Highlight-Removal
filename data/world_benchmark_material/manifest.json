@@ -1,0 +1,106 @@
+{
+  "families": {
+    "lowrough_lowmetal": {
+      "roughness": [
+        0.1,
+        0.16
+      ],
+      "metalness": [
+        0.15,
+        0.35
+      ]
+    },
+    "lowrough_highmetal": {
+      "roughness": [
+        0.1,
+        0.16
+      ],
+      "metalness": [
+        0.7,
+        0.8999999999999999
+      ]
+    },
+    "highrough_lowmetal": {
+      "roughness": [
+        0.2,
+        0.28
+      ],
+      "metalness": [
+        0.15,
+        0.35
+      ]
+    },
+    "highrough_highmetal": {
+      "roughness": [
+        0.2,
+        0.28
+      ],
+      "metalness": [
+        0.7,
+        0.8999999999999999
+      ]
+    }
+  },
+  "bases": {
+    "sphere": 11116,
+    "torus": 11419
+  },
+  "scenes": [
+    {
+      "name": "sphere_lowrough_lowmetal",
+      "shape": "sphere",
+      "family": "lowrough_lowmetal",
+      "seed": 11116,
+      "input_psnr_mean": 38.958909034729004
+    },
+    {
+      "name": "sphere_lowrough_highmetal",
+      "shape": "sphere",
+      "family": "lowrough_highmetal",
+      "seed": 11116,
+      "input_psnr_mean": 35.00545310974121
+    },
+    {
+      "name": "sphere_highrough_lowmetal",
+      "shape": "sphere",
+      "family": "highrough_lowmetal",
+      "seed": 11116,
+      "input_psnr_mean": 25.874572277069092
+    },
+    {
+      "name": "sphere_highrough_highmetal",
+      "shape": "sphere",
+      "family": "highrough_highmetal",
+      "seed": 11116,
+      "input_psnr_mean": 23.63973633448283
+    },
+    {
+      "name": "torus_lowrough_lowmetal",
+      "shape": "torus",
+      "family": "lowrough_lowmetal",
+      "seed": 11419,
+      "input_psnr_mean": 41.46999422709147
+    },
+    {
+      "name": "torus_lowrough_highmetal",
+      "shape": "torus",
+      "family": "lowrough_highmetal",
+      "seed": 11419,
+      "input_psnr_mean": 37.65773336092631
+    },
+    {
+      "name": "torus_highrough_lowmetal",
+      "shape": "torus",
+      "family": "highrough_lowmetal",
+      "seed": 11419,
+      "input_psnr_mean": 28.82827337582906
+    },
+    {
+      "name": "torus_highrough_highmetal",
+      "shape": "torus",
+      "family": "highrough_highmetal",
+      "seed": 11419,
+      "input_psnr_mean": 25.873104413350422
+    }
+  ]
+}
