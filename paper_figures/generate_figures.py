@@ -754,8 +754,8 @@ def make_graphical_abstract():
     # ===== Bottom headline band =====
     draw.rounded_rectangle([28, 640, 1372, 690], radius=8, fill=GREY_FILL, outline=(203, 213, 225), width=1)
     metrics = [
-        ("Physical branch (oracle priors)", "36.82 dB; fails if priors perturbed"),
-        ("Fusion, 10 scenes", "> single-image in 10/10; 38.27 dB"),
+        ("Physical branch (oracle priors)", "36.8–39.4 dB (4 runs); fails if perturbed"),
+        ("Fusion, 18 held-out scenes", "> single-image in 18/18; 38.27 dB (10 bench.)"),
         ("Same gate + DHAN-SHR (FT)", "37.45 → 38.59 dB"),
         ("Cross-dataset FT", "+1.26 / +0.49 / +3.33 dB"),
     ]
