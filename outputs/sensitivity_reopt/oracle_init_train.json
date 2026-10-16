@@ -1,0 +1,86 @@
+{
+  "note": "oracle initialization, 0 optimization steps, training views",
+  "train_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "n": 9,
+  "summary": {
+    "full_psnr": 38.967873330618765,
+    "full_ssim": 0.9931991056159689,
+    "diffuse_psnr": 54.680993058716766,
+    "diffuse_ssim": 0.9996128016048007
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "full_psnr": 34.02337639858623,
+      "full_ssim": 0.9870762626330057,
+      "diffuse_psnr": 54.840117859349476,
+      "diffuse_ssim": 0.9997053941090902
+    },
+    {
+      "frame": 2,
+      "full_psnr": 37.347480344252276,
+      "full_ssim": 0.9907171328862509,
+      "diffuse_psnr": 54.48047225887688,
+      "diffuse_ssim": 0.9996311664581299
+    },
+    {
+      "frame": 3,
+      "full_psnr": 35.15491934385482,
+      "full_ssim": 0.9917262395222982,
+      "diffuse_psnr": 53.84421953719539,
+      "diffuse_ssim": 0.9995115200678507
+    },
+    {
+      "frame": 5,
+      "full_psnr": 36.43177552932449,
+      "full_ssim": 0.9862465659777323,
+      "diffuse_psnr": 55.04677902871586,
+      "diffuse_ssim": 0.9996233582496643
+    },
+    {
+      "frame": 6,
+      "full_psnr": 42.896893145196685,
+      "full_ssim": 0.9978737036387125,
+      "diffuse_psnr": 55.172094301818746,
+      "diffuse_ssim": 0.9996123512585958
+    },
+    {
+      "frame": 7,
+      "full_psnr": 41.687619657984136,
+      "full_ssim": 0.9965089162190756,
+      "diffuse_psnr": 55.11533042423995,
+      "diffuse_ssim": 0.9996198018391927
+    },
+    {
+      "frame": 9,
+      "full_psnr": 40.090602625239775,
+      "full_ssim": 0.9964045683542887,
+      "diffuse_psnr": 53.88029055315102,
+      "diffuse_ssim": 0.9995003541310629
+    },
+    {
+      "frame": 10,
+      "full_psnr": 43.46693254378809,
+      "full_ssim": 0.9981076717376709,
+      "diffuse_psnr": 54.330269344975086,
+      "diffuse_ssim": 0.9995968341827393
+    },
+    {
+      "frame": 11,
+      "full_psnr": 39.61126038734238,
+      "full_ssim": 0.9941308895746866,
+      "diffuse_psnr": 55.41936422012845,
+      "diffuse_ssim": 0.9997144341468811
+    }
+  ]
+}

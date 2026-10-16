@@ -76,7 +76,7 @@ Table numbers refer to the revised manuscript.
 | Tables 4, 5, 14, scene_0070 strict holdout | `python -m mvbrdf_shr.world.train --config configs/world/benchmark_scene_0070.yaml`; `python -m mvbrdf_shr.world.train_fusion --world-checkpoint outputs/world_benchmark_v2_scene_0070_strict/last.pt --single-checkpoint outputs/world_benchmark_single/best.pt --output outputs/world_benchmark_v2_scene_0070_hybrid`; `python scripts/eval_world_ablation.py --raster-backend gsplat`; `python scripts/eval_holdout_zero_shot.py` | `outputs/world_ablation_scene_0070/ablation_metrics.json`, `outputs/world_holdout_zero_shot.json` |
 | Tables 6, 7, ten held-out scenes | `python scripts/run_multiscene_eval.py`; `python scripts/aggregate_world_holdout.py --output outputs/world_holdout_multiscene.json`; `python scripts/summarize_multiscene.py` | `outputs/world_holdout_multiscene.json`, `outputs/world_confidence_correlation.json` |
 | Table 8, material-controlled scenes | `python scripts/run_material_study.py --launch`, then `--eval --summary` | `outputs/material_study/summary.json` |
-| Table 9, prior sensitivity | `python scripts/run_sensitivity_reopt.py --axis <axis>`; `python scripts/eval_oracle_init.py` | `outputs/sensitivity_reopt/` |
+| Table 9, prior sensitivity | `python scripts/run_sensitivity_reopt.py --axis <axis>`; `python scripts/eval_oracle_init.py`; `python scripts/eval_oracle_init_train.py` (training views before optimization) | `outputs/sensitivity_reopt/` |
 | Table 10, SHIQ | `python scripts/train_shiq_pro.py`; baselines: `python scripts/eval_baseline_paired.py` | `outputs/shiq_mse/`, `outputs/shiq_leakage_fixed_s0/`, `outputs/baselines/` |
 | Tables 11, 12, SSHR / NSH / PSD | `python scripts/train_paired_pro.py`; `python scripts/eval_paired_dataset.py` | `outputs/*_shiq_zero_shot/`, `outputs/*_finetuned_strict/` |
 | Table 13, DTU / BlendedMVS diagnostic | `python -m mvbrdf_shr.world.train --config configs/world/dtu_scan1.yaml` (and `blendedmvs_57f8d9bb.yaml`) | `outputs/dtu_scan1/`, `outputs/blendedmvs_57f8d9bb/` |
@@ -88,8 +88,9 @@ Table numbers refer to the revised manuscript.
   optimized with.  `scripts/check_raster_backend.py` identifies it from the
   gradient norm at the final parameters; scene_0070, DTU, and BlendedMVS used
   gsplat, and scenes 0071-0079 the PyTorch compositor
-  (`outputs/world_raster_backend_check.json`).  Re-optimizing scenes 0071-0079
-  with a working gsplat build gives slightly different numbers.
+  (`outputs/world_raster_backend_check.json`).  Scenes 0071-0079 were not
+  re-optimized with gsplat, so their numbers are specific to the PyTorch
+  compositor.
 - **Metrics.** PSNR is computed per image over all pixels and RGB channels with
   peak 1 and then averaged.  SSIM uses an 11x11 uniform window with reflective
   padding and C1 = 0.01^2, C2 = 0.03^2 (`mvbrdf_shr/metrics.py`); literature
