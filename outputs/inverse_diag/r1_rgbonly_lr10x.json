@@ -1,0 +1,148 @@
+{
+ "name": "r1_rgbonly_lr10x",
+ "args": {
+  "name": "r1_rgbonly_lr10x",
+  "config": "configs/world/benchmark_scene_0070_inverse.yaml",
+  "set": [
+   "scene_lr=0.03"
+  ],
+  "loss": [
+   "diffuse_gt=0",
+   "specular_gt=0"
+  ],
+  "seed": 0,
+  "eval_every": 250
+ },
+ "config": {
+  "data_type": "blender",
+  "data_root": "data/world_benchmark_v2/scenes/test/scene_0070",
+  "transforms": "transforms.json",
+  "image_scale": 1.0,
+  "n_gaussians": 384,
+  "gaussian_init": "geometry",
+  "gaussian_prior": "gaussian_brdf_gt.npz",
+  "freeze_geometry": true,
+  "point_color_weight": 0.0,
+  "initial_albedo": 0.25,
+  "lighting_mode": "sh",
+  "freeze_lighting": true,
+  "use_refiner": false,
+  "chunk_size": 32,
+  "raster_backend": "gsplat",
+  "holdout_stride": 4,
+  "holdout_offset": 0,
+  "steps": 1500,
+  "views_per_step": 9,
+  "refine_start": 1500,
+  "scene_lr": 0.03,
+  "light_lr": 0.0,
+  "log_every": 100,
+  "output_dir": "outputs/world_benchmark_v2_scene_0070_inverse",
+  "loss": {
+   "photo_l1": 1.0,
+   "photo_ssim": 0.2,
+   "diffuse_gt": 2.0,
+   "refine_gt": 0.0,
+   "specular_gt": 1.0,
+   "energy": 0.1,
+   "material_smooth": 0.01,
+   "normal_axis": 0.0,
+   "scale": 0.0,
+   "opacity_sparse": 0.0,
+   "texture_consistency": 0.01
+  }
+ },
+ "loss": {
+  "photo_l1": 1.0,
+  "photo_ssim": 0.2,
+  "diffuse_gt": 0.0,
+  "refine_gt": 0.0,
+  "specular_gt": 0.0,
+  "energy": 0.1,
+  "material_smooth": 0.01,
+  "normal_axis": 0.0,
+  "scale": 0.0,
+  "opacity_sparse": 0.0,
+  "texture_consistency": 0.01
+ },
+ "minutes": 10.777913804848989,
+ "curve": [
+  {
+   "step": 0,
+   "train": {
+    "diffuse_psnr": 10.015130882093636,
+    "full_psnr": 10.072559103909596
+   },
+   "holdout": {
+    "diffuse_psnr": 10.559252650850143,
+    "full_psnr": 10.647063473380475
+   }
+  },
+  {
+   "step": 250,
+   "train": {
+    "diffuse_psnr": 9.93797426449206,
+    "full_psnr": 9.95121923569705
+   },
+   "holdout": {
+    "diffuse_psnr": 9.93501541717513,
+    "full_psnr": 9.893073475328526
+   }
+  },
+  {
+   "step": 500,
+   "train": {
+    "diffuse_psnr": 9.885425127885306,
+    "full_psnr": 9.920864453883704
+   },
+   "holdout": {
+    "diffuse_psnr": 9.854351012773574,
+    "full_psnr": 9.791325301680208
+   }
+  },
+  {
+   "step": 750,
+   "train": {
+    "diffuse_psnr": 9.972118981038657,
+    "full_psnr": 10.01212907000214
+   },
+   "holdout": {
+    "diffuse_psnr": 10.068871803950607,
+    "full_psnr": 10.004623896115387
+   }
+  },
+  {
+   "step": 1000,
+   "train": {
+    "diffuse_psnr": 9.962116767424304,
+    "full_psnr": 10.004069794469148
+   },
+   "holdout": {
+    "diffuse_psnr": 10.078045385902412,
+    "full_psnr": 10.006518720410538
+   }
+  },
+  {
+   "step": 1250,
+   "train": {
+    "diffuse_psnr": 9.98612429750231,
+    "full_psnr": 10.022222847713484
+   },
+   "holdout": {
+    "diffuse_psnr": 10.11728193682606,
+    "full_psnr": 10.048424987866657
+   }
+  },
+  {
+   "step": 1500,
+   "train": {
+    "diffuse_psnr": 9.986313830680059,
+    "full_psnr": 10.022213506831198
+   },
+   "holdout": {
+    "diffuse_psnr": 10.118811616463331,
+    "full_psnr": 10.049847505101262
+   }
+  }
+ ]
+}

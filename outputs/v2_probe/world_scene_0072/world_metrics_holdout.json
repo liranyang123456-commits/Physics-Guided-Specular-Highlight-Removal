@@ -1,0 +1,57 @@
+{
+  "split": "holdout",
+  "train_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "holdout_ids": [
+    0,
+    4,
+    8
+  ],
+  "n": 3,
+  "summary": {
+    "full_psnr": 30.515188690385823,
+    "full_ssim": 0.9789225061734518,
+    "diffuse_psnr": 49.199850583128125,
+    "diffuse_ssim": 0.9985340237617493,
+    "refined_psnr": 49.199850583128125,
+    "refined_ssim": 0.9985340237617493
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "full_psnr": 34.05356600560521,
+      "full_ssim": 0.987366239229838,
+      "diffuse_psnr": 53.43490191297417,
+      "diffuse_ssim": 0.9994591673215231,
+      "refined_psnr": 53.43490191297417,
+      "refined_ssim": 0.9994591673215231
+    },
+    {
+      "frame": 4,
+      "full_psnr": 31.21072825484609,
+      "full_ssim": 0.9866243203481039,
+      "diffuse_psnr": 55.16880865119954,
+      "diffuse_ssim": 0.9994169871012369,
+      "refined_psnr": 55.16880865119954,
+      "refined_ssim": 0.9994169871012369
+    },
+    {
+      "frame": 8,
+      "full_psnr": 26.28127181070617,
+      "full_ssim": 0.9627769589424133,
+      "diffuse_psnr": 38.99584118521065,
+      "diffuse_ssim": 0.9967259168624878,
+      "refined_psnr": 38.99584118521065,
+      "refined_ssim": 0.9967259168624878
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+ "name": "r3_photo_only_lr3e-3",
+ "args": {
+  "name": "r3_photo_only_lr3e-3",
+  "config": "configs/world/benchmark_scene_0070_inverse.yaml",
+  "set": [
+   "steps=600",
+   "views_per_step=3",
+   "scene_lr=0.003"
+  ],
+  "loss": [
+   "photo_ssim=0",
+   "diffuse_gt=0",
+   "specular_gt=0",
+   "energy=0",
+   "material_smooth=0",
+   "texture_consistency=0",
+   "photo_l1=1"
+  ],
+  "seed": 0,
+  "eval_every": 100
+ },
+ "config": {
+  "data_type": "blender",
+  "data_root": "data/world_benchmark_v2/scenes/test/scene_0070",
+  "transforms": "transforms.json",
+  "image_scale": 1.0,
+  "n_gaussians": 384,
+  "gaussian_init": "geometry",
+  "gaussian_prior": "gaussian_brdf_gt.npz",
+  "freeze_geometry": true,
+  "point_color_weight": 0.0,
+  "initial_albedo": 0.25,
+  "lighting_mode": "sh",
+  "freeze_lighting": true,
+  "use_refiner": false,
+  "chunk_size": 32,
+  "raster_backend": "gsplat",
+  "holdout_stride": 4,
+  "holdout_offset": 0,
+  "steps": 600,
+  "views_per_step": 3,
+  "refine_start": 1500,
+  "scene_lr": 0.003,
+  "light_lr": 0.0,
+  "log_every": 100,
+  "output_dir": "outputs/world_benchmark_v2_scene_0070_inverse",
+  "loss": {
+   "photo_l1": 1.0,
+   "photo_ssim": 0.2,
+   "diffuse_gt": 2.0,
+   "refine_gt": 0.0,
+   "specular_gt": 1.0,
+   "energy": 0.1,
+   "material_smooth": 0.01,
+   "normal_axis": 0.0,
+   "scale": 0.0,
+   "opacity_sparse": 0.0,
+   "texture_consistency": 0.01
+  }
+ },
+ "loss": {
+  "photo_l1": 1.0,
+  "photo_ssim": 0.0,
+  "diffuse_gt": 0.0,
+  "refine_gt": 0.0,
+  "specular_gt": 0.0,
+  "energy": 0.0,
+  "material_smooth": 0.0,
+  "normal_axis": 0.0,
+  "scale": 0.0,
+  "opacity_sparse": 0.0,
+  "texture_consistency": 0.0
+ },
+ "minutes": 2.082775549093882,
+ "curve": [
+  {
+   "step": 0,
+   "train": {
+    "diffuse_psnr": 10.015130882093636,
+    "full_psnr": 10.072559103909596
+   },
+   "holdout": {
+    "diffuse_psnr": 10.559252650850143,
+    "full_psnr": 10.647063473380475
+   }
+  },
+  {
+   "step": 100,
+   "train": {
+    "diffuse_psnr": 13.298715362451524,
+    "full_psnr": 13.26192443916651
+   },
+   "holdout": {
+    "diffuse_psnr": 14.410572485146368,
+    "full_psnr": 14.326530861604267
+   }
+  },
+  {
+   "step": 200,
+   "train": {
+    "diffuse_psnr": 18.015803914006554,
+    "full_psnr": 17.955235552083444
+   },
+   "holdout": {
+    "diffuse_psnr": 18.180565534366732,
+    "full_psnr": 17.596459813284806
+   }
+  },
+  {
+   "step": 300,
+   "train": {
+    "diffuse_psnr": 21.245041745719433,
+    "full_psnr": 21.20793665232763
+   },
+   "holdout": {
+    "diffuse_psnr": 20.401724651974675,
+    "full_psnr": 19.17361428012487
+   }
+  },
+  {
+   "step": 400,
+   "train": {
+    "diffuse_psnr": 23.05156695146749,
+    "full_psnr": 23.03167915747742
+   },
+   "holdout": {
+    "diffuse_psnr": 21.599252277814163,
+    "full_psnr": 19.894424313840968
+   }
+  },
+  {
+   "step": 500,
+   "train": {
+    "diffuse_psnr": 23.775525206984202,
+    "full_psnr": 23.764286173268644
+   },
+   "holdout": {
+    "diffuse_psnr": 22.095599739058326,
+    "full_psnr": 20.182566208807454
+   }
+  },
+  {
+   "step": 600,
+   "train": {
+    "diffuse_psnr": 23.887768533535652,
+    "full_psnr": 23.877944671065883
+   },
+   "holdout": {
+    "diffuse_psnr": 22.17023308124989,
+    "full_psnr": 20.22470223133777
+   }
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+  "scene_0070": {
+    "albedo_mae": 0.0011573152150958776,
+    "specular_weight_mae": 0.27811118960380554,
+    "absorption_mae": 0.0454866960644722,
+    "roughness_mae": 0.0894843190908432,
+    "metalness_mae": 0.4736829400062561,
+    "diffuse_weight_mean": 0.6024377346038818,
+    "gt_diffuse_weight_mean": 0.3642560839653015
+  },
+  "scene_0071": {
+    "albedo_mae": 0.00634773587808013,
+    "specular_weight_mae": 0.27807530760765076,
+    "absorption_mae": 0.04355259984731674,
+    "roughness_mae": 0.09544184058904648,
+    "metalness_mae": 0.4510200023651123,
+    "diffuse_weight_mean": 0.6093876361846924,
+    "gt_diffuse_weight_mean": 0.36853814125061035
+  },
+  "scene_0072": {
+    "albedo_mae": 0.0010742704616859555,
+    "specular_weight_mae": 0.2829153835773468,
+    "absorption_mae": 0.04519721865653992,
+    "roughness_mae": 0.09322603046894073,
+    "metalness_mae": 0.48565492033958435,
+    "diffuse_weight_mean": 0.6140790581703186,
+    "gt_diffuse_weight_mean": 0.3708035349845886
+  },
+  "scene_0073": {
+    "albedo_mae": 0.014028261415660381,
+    "specular_weight_mae": 0.28924474120140076,
+    "absorption_mae": 0.04206684231758118,
+    "roughness_mae": 0.11988918483257294,
+    "metalness_mae": 0.4642805755138397,
+    "diffuse_weight_mean": 0.6101791262626648,
+    "gt_diffuse_weight_mean": 0.3591923713684082
+  },
+  "scene_0074": {
+    "albedo_mae": 0.0024160738103091717,
+    "specular_weight_mae": 0.2782244086265564,
+    "absorption_mae": 0.047177668660879135,
+    "roughness_mae": 0.09489099681377411,
+    "metalness_mae": 0.4503784775733948,
+    "diffuse_weight_mean": 0.6026418209075928,
+    "gt_diffuse_weight_mean": 0.3661423921585083
+  },
+  "scene_0075": {
+    "albedo_mae": 0.002744180615991354,
+    "specular_weight_mae": 0.26799172163009644,
+    "absorption_mae": 0.0488131120800972,
+    "roughness_mae": 0.08505843579769135,
+    "metalness_mae": 0.4636469781398773,
+    "diffuse_weight_mean": 0.5811079740524292,
+    "gt_diffuse_weight_mean": 0.3567746877670288
+  },
+  "scene_0076": {
+    "albedo_mae": 0.001213356852531433,
+    "specular_weight_mae": 0.26838621497154236,
+    "absorption_mae": 0.04872407764196396,
+    "roughness_mae": 0.09086104482412338,
+    "metalness_mae": 0.487345814704895,
+    "diffuse_weight_mean": 0.5855649709701538,
+    "gt_diffuse_weight_mean": 0.3593413829803467
+  },
+  "scene_0077": {
+    "albedo_mae": 0.016142401844263077,
+    "specular_weight_mae": 0.2953883409500122,
+    "absorption_mae": 0.042476437985897064,
+    "roughness_mae": 0.1262359619140625,
+    "metalness_mae": 0.4613456726074219,
+    "diffuse_weight_mean": 0.6095685958862305,
+    "gt_diffuse_weight_mean": 0.35003337264060974
+  },
+  "scene_0078": {
+    "albedo_mae": 0.0010294377570971847,
+    "specular_weight_mae": 0.27404725551605225,
+    "absorption_mae": 0.04775024577975273,
+    "roughness_mae": 0.09741188585758209,
+    "metalness_mae": 0.4512934684753418,
+    "diffuse_weight_mean": 0.5952077507972717,
+    "gt_diffuse_weight_mean": 0.36205893754959106
+  },
+  "scene_0079": {
+    "albedo_mae": 0.008589308708906174,
+    "specular_weight_mae": 0.28842565417289734,
+    "absorption_mae": 0.045803509652614594,
+    "roughness_mae": 0.1108909472823143,
+    "metalness_mae": 0.46516522765159607,
+    "diffuse_weight_mean": 0.626722514629364,
+    "gt_diffuse_weight_mean": 0.3740224242210388
+  },
+  "mean": {
+    "albedo_mae": 0.005474234255962074,
+    "specular_weight_mae": 0.2800810217857361,
+    "absorption_mae": 0.045704840868711474,
+    "roughness_mae": 0.10033906474709511,
+    "metalness_mae": 0.46538140773773196,
+    "diffuse_weight_mean": 0.60368971824646,
+    "gt_diffuse_weight_mean": 0.36311633288860323
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "sens/albedo15_seed0": {
+    "full_psnr": 58.522956424289276,
+    "diffuse_psnr": 57.30839538574219,
+    "n_views": 9
+  },
+  "sens/albedo30_seed0": {
+    "full_psnr": 58.508040534125435,
+    "diffuse_psnr": 56.904732598198784,
+    "n_views": 9
+  },
+  "sens/clean_seed0": {
+    "full_psnr": 58.51105753580729,
+    "diffuse_psnr": 57.319095611572266,
+    "n_views": 9
+  },
+  "sens/clean_seed1": {
+    "full_psnr": 58.48356416490343,
+    "diffuse_psnr": 57.37127897474501,
+    "n_views": 9
+  },
+  "sens/clean_seed2": {
+    "full_psnr": 58.47394816080729,
+    "diffuse_psnr": 57.3547494676378,
+    "n_views": 9
+  },
+  "sens/drop25_seed0": {
+    "full_psnr": 22.705326080322266,
+    "diffuse_psnr": 21.95591926574707,
+    "n_views": 9
+  },
+  "sens/drop50_seed0": {
+    "full_psnr": 16.104808807373047,
+    "diffuse_psnr": 15.888269636366102,
+    "n_views": 9
+  },
+  "sens/geo_mild_seed0": {
+    "full_psnr": 22.486807081434463,
+    "diffuse_psnr": 21.9010066986084,
+    "n_views": 9
+  },
+  "sens/geo_severe_seed0": {
+    "full_psnr": 17.03795623779297,
+    "diffuse_psnr": 16.896855778164333,
+    "n_views": 9
+  },
+  "sens/light_seed0": {
+    "full_psnr": 22.680925581190323,
+    "diffuse_psnr": 21.92582130432129,
+    "n_views": 9
+  },
+  "sens/sparse3_seed0": {
+    "full_psnr": 59.163814544677734,
+    "diffuse_psnr": 38.49982833862305,
+    "n_views": 3
+  },
+  "sens/sparse6_seed0": {
+    "full_psnr": 58.8257745107015,
+    "diffuse_psnr": 51.449841817220054,
+    "n_views": 6
+  },
+  "ten/scene_0070": {
+    "full_psnr": 58.23919253879123,
+    "diffuse_psnr": 57.034932454427086,
+    "n_views": 9
+  },
+  "ten/scene_0071": {
+    "full_psnr": 58.3253059387207,
+    "diffuse_psnr": 55.71927388509115,
+    "n_views": 9
+  },
+  "ten/scene_0072": {
+    "full_psnr": 58.829156663682724,
+    "diffuse_psnr": 55.61093309190538,
+    "n_views": 9
+  },
+  "ten/scene_0073": {
+    "full_psnr": 58.54943084716797,
+    "diffuse_psnr": 56.37545182969835,
+    "n_views": 9
+  },
+  "ten/scene_0074": {
+    "full_psnr": 58.32463709513346,
+    "diffuse_psnr": 53.340856340196396,
+    "n_views": 9
+  },
+  "ten/scene_0075": {
+    "full_psnr": 58.488016764322914,
+    "diffuse_psnr": 52.036078135172524,
+    "n_views": 9
+  },
+  "ten/scene_0076": {
+    "full_psnr": 58.20384767320421,
+    "diffuse_psnr": 56.30946773952908,
+    "n_views": 9
+  },
+  "ten/scene_0077": {
+    "full_psnr": 58.23046451144748,
+    "diffuse_psnr": 55.234536488850914,
+    "n_views": 9
+  },
+  "ten/scene_0078": {
+    "full_psnr": 58.46807734171549,
+    "diffuse_psnr": 56.217105865478516,
+    "n_views": 9
+  },
+  "ten/scene_0079": {
+    "full_psnr": 58.11097166273329,
+    "diffuse_psnr": 56.37101830376519,
+    "n_views": 9
+  },
+  "material/sphere_highrough_highmetal": {
+    "full_psnr": 56.99196455213759,
+    "diffuse_psnr": 52.42547395494249,
+    "n_views": 9
+  },
+  "material/sphere_highrough_lowmetal": {
+    "full_psnr": 58.86118655734592,
+    "diffuse_psnr": 57.308402167426216,
+    "n_views": 9
+  },
+  "material/sphere_lowrough_highmetal": {
+    "full_psnr": 57.32234530978732,
+    "diffuse_psnr": 55.193416595458984,
+    "n_views": 9
+  },
+  "material/sphere_lowrough_lowmetal": {
+    "full_psnr": 58.52493455674913,
+    "diffuse_psnr": 57.206978691948784,
+    "n_views": 9
+  },
+  "material/torus_highrough_highmetal": {
+    "full_psnr": 57.71050516764323,
+    "diffuse_psnr": 50.75930489434136,
+    "n_views": 9
+  },
+  "material/torus_highrough_lowmetal": {
+    "full_psnr": 58.76025051540799,
+    "diffuse_psnr": 56.45216327243381,
+    "n_views": 9
+  },
+  "material/torus_lowrough_highmetal": {
+    "full_psnr": 57.646519131130646,
+    "diffuse_psnr": 53.83976321750217,
+    "n_views": 9
+  },
+  "material/torus_lowrough_lowmetal": {
+    "full_psnr": 58.65670733981662,
+    "diffuse_psnr": 56.621533711751304,
+    "n_views": 9
+  },
+  "fold0/clean": {
+    "full_psnr": 58.60299746195475,
+    "diffuse_psnr": 57.028509775797524,
+    "n_views": 6
+  },
+  "fold0/geo": {
+    "full_psnr": 16.91208569208781,
+    "diffuse_psnr": 17.15607484181722,
+    "n_views": 6
+  },
+  "fold0/light": {
+    "full_psnr": 18.264241218566895,
+    "diffuse_psnr": 18.41576353708903,
+    "n_views": 6
+  },
+  "fold1/clean": {
+    "full_psnr": 58.745849609375,
+    "diffuse_psnr": 50.95371309916178,
+    "n_views": 6
+  },
+  "fold1/geo": {
+    "full_psnr": 14.787952899932861,
+    "diffuse_psnr": 14.957579771677652,
+    "n_views": 6
+  },
+  "fold1/light": {
+    "full_psnr": 17.396339734395344,
+    "diffuse_psnr": 17.758519728978474,
+    "n_views": 6
+  },
+  "fold2/clean": {
+    "full_psnr": 58.491631189982094,
+    "diffuse_psnr": 56.40410614013672,
+    "n_views": 6
+  },
+  "fold2/geo": {
+    "full_psnr": 15.889906724294027,
+    "diffuse_psnr": 15.940602620442709,
+    "n_views": 6
+  },
+  "fold2/light": {
+    "full_psnr": 17.582419395446777,
+    "diffuse_psnr": 18.159446875254314,
+    "n_views": 6
+  }
+}

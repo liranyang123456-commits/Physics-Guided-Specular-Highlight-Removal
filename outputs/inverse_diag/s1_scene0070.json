@@ -1,0 +1,123 @@
+{
+ "name": "s1_scene0070",
+ "args": {
+  "name": "s1_scene0070",
+  "config": "configs/world/benchmark_scene_0070_inverse.yaml",
+  "set": [
+   "steps=600",
+   "views_per_step=3",
+   "scene_lr=0.03"
+  ],
+  "loss": [
+   "photo_ssim=0",
+   "diffuse_gt=0",
+   "specular_gt=0",
+   "energy=0",
+   "material_smooth=0",
+   "texture_consistency=0",
+   "photo_l1=1"
+  ],
+  "seed": 1,
+  "perturb": "",
+  "eval_every": 200
+ },
+ "config": {
+  "data_type": "blender",
+  "data_root": "data/world_benchmark_v2/scenes/test/scene_0070",
+  "transforms": "transforms.json",
+  "image_scale": 1.0,
+  "n_gaussians": 384,
+  "gaussian_init": "geometry",
+  "gaussian_prior": "gaussian_brdf_gt.npz",
+  "freeze_geometry": true,
+  "point_color_weight": 0.0,
+  "initial_albedo": 0.25,
+  "lighting_mode": "sh",
+  "freeze_lighting": true,
+  "use_refiner": false,
+  "chunk_size": 32,
+  "raster_backend": "gsplat",
+  "holdout_stride": 4,
+  "holdout_offset": 0,
+  "steps": 600,
+  "views_per_step": 3,
+  "refine_start": 1500,
+  "scene_lr": 0.03,
+  "light_lr": 0.0,
+  "log_every": 100,
+  "output_dir": "outputs/world_benchmark_v2_scene_0070_inverse",
+  "loss": {
+   "photo_l1": 1.0,
+   "photo_ssim": 0.2,
+   "diffuse_gt": 2.0,
+   "refine_gt": 0.0,
+   "specular_gt": 1.0,
+   "energy": 0.1,
+   "material_smooth": 0.01,
+   "normal_axis": 0.0,
+   "scale": 0.0,
+   "opacity_sparse": 0.0,
+   "texture_consistency": 0.01
+  }
+ },
+ "loss": {
+  "photo_l1": 1.0,
+  "photo_ssim": 0.0,
+  "diffuse_gt": 0.0,
+  "refine_gt": 0.0,
+  "specular_gt": 0.0,
+  "energy": 0.0,
+  "material_smooth": 0.0,
+  "normal_axis": 0.0,
+  "scale": 0.0,
+  "opacity_sparse": 0.0,
+  "texture_consistency": 0.0
+ },
+ "minutes": 1.3222484429677328,
+ "curve": [
+  {
+   "step": 0,
+   "train": {
+    "diffuse_psnr": 10.015130882093636,
+    "full_psnr": 10.072559103909596
+   },
+   "holdout": {
+    "diffuse_psnr": 10.559252650850143,
+    "full_psnr": 10.647063473380475
+   }
+  },
+  {
+   "step": 200,
+   "train": {
+    "diffuse_psnr": 47.49986573392812,
+    "full_psnr": 48.00140495897386
+   },
+   "holdout": {
+    "diffuse_psnr": 46.03445603114531,
+    "full_psnr": 26.9484250811223
+   }
+  },
+  {
+   "step": 400,
+   "train": {
+    "diffuse_psnr": 52.44305034809315,
+    "full_psnr": 53.018750373354585
+   },
+   "holdout": {
+    "diffuse_psnr": 51.80736093805018,
+    "full_psnr": 27.174071348242165
+   }
+  },
+  {
+   "step": 600,
+   "train": {
+    "diffuse_psnr": 55.564799021282504,
+    "full_psnr": 57.11547086438587
+   },
+   "holdout": {
+    "diffuse_psnr": 54.838569681285264,
+    "full_psnr": 27.330834544844418
+   }
+  }
+ ]
+}

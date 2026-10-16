@@ -1,0 +1,146 @@
+{
+ "name": "p0_nossim",
+ "args": {
+  "name": "p0_nossim",
+  "config": "configs/world/benchmark_scene_0070_inverse.yaml",
+  "set": [],
+  "loss": [
+   "photo_ssim=0"
+  ],
+  "seed": 0,
+  "perturb": "",
+  "eval_every": 250
+ },
+ "config": {
+  "data_type": "blender",
+  "data_root": "data/world_benchmark_v2/scenes/test/scene_0070",
+  "transforms": "transforms.json",
+  "image_scale": 1.0,
+  "n_gaussians": 384,
+  "gaussian_init": "geometry",
+  "gaussian_prior": "gaussian_brdf_gt.npz",
+  "freeze_geometry": true,
+  "point_color_weight": 0.0,
+  "initial_albedo": 0.25,
+  "lighting_mode": "sh",
+  "freeze_lighting": true,
+  "use_refiner": false,
+  "chunk_size": 32,
+  "raster_backend": "gsplat",
+  "holdout_stride": 4,
+  "holdout_offset": 0,
+  "steps": 1500,
+  "views_per_step": 9,
+  "refine_start": 1500,
+  "scene_lr": 0.003,
+  "light_lr": 0.0,
+  "log_every": 100,
+  "output_dir": "outputs/world_benchmark_v2_scene_0070_inverse",
+  "loss": {
+   "photo_l1": 1.0,
+   "photo_ssim": 0.2,
+   "diffuse_gt": 2.0,
+   "refine_gt": 0.0,
+   "specular_gt": 1.0,
+   "energy": 0.1,
+   "material_smooth": 0.01,
+   "normal_axis": 0.0,
+   "scale": 0.0,
+   "opacity_sparse": 0.0,
+   "texture_consistency": 0.01
+  }
+ },
+ "loss": {
+  "photo_l1": 1.0,
+  "photo_ssim": 0.0,
+  "diffuse_gt": 2.0,
+  "refine_gt": 0.0,
+  "specular_gt": 1.0,
+  "energy": 0.1,
+  "material_smooth": 0.01,
+  "normal_axis": 0.0,
+  "scale": 0.0,
+  "opacity_sparse": 0.0,
+  "texture_consistency": 0.01
+ },
+ "minutes": 6.563213809331258,
+ "curve": [
+  {
+   "step": 0,
+   "train": {
+    "diffuse_psnr": 10.015130882093636,
+    "full_psnr": 10.072559103909596
+   },
+   "holdout": {
+    "diffuse_psnr": 10.559252650850143,
+    "full_psnr": 10.647063473380475
+   }
+  },
+  {
+   "step": 250,
+   "train": {
+    "diffuse_psnr": 25.1873097495464,
+    "full_psnr": 25.107760440248427
+   },
+   "holdout": {
+    "diffuse_psnr": 22.865832621723815,
+    "full_psnr": 20.61040104511109
+   }
+  },
+  {
+   "step": 500,
+   "train": {
+    "diffuse_psnr": 39.7355107140435,
+    "full_psnr": 38.50706865948579
+   },
+   "holdout": {
+    "diffuse_psnr": 35.250738644718375,
+    "full_psnr": 25.449173275382638
+   }
+  },
+  {
+   "step": 750,
+   "train": {
+    "diffuse_psnr": 53.10977371790186,
+    "full_psnr": 47.06985582481381
+   },
+   "holdout": {
+    "diffuse_psnr": 46.558616885750496,
+    "full_psnr": 26.516620766700342
+   }
+  },
+  {
+   "step": 1000,
+   "train": {
+    "diffuse_psnr": 56.43158729451496,
+    "full_psnr": 48.72577945050296
+   },
+   "holdout": {
+    "diffuse_psnr": 51.6103965892373,
+    "full_psnr": 26.753580052528832
+   }
+  },
+  {
+   "step": 1250,
+   "train": {
+    "diffuse_psnr": 57.03152247123333,
+    "full_psnr": 48.997805904611496
+   },
+   "holdout": {
+    "diffuse_psnr": 53.373362972550844,
+    "full_psnr": 26.857208844935656
+   }
+  },
+  {
+   "step": 1500,
+   "train": {
+    "diffuse_psnr": 57.10088346425524,
+    "full_psnr": 49.02466275419888
+   },
+   "holdout": {
+    "diffuse_psnr": 53.60637778659012,
+    "full_psnr": 26.877288619204478
+   }
+  }
+ ]
+}
