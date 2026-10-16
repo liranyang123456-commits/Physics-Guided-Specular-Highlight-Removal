@@ -1,0 +1,8 @@
+{
+  "state": "oracle initialization, nine training views of scene_0070",
+  "saturated_pixel_fraction": 0.4076131184895833,
+  "specular_l1_all": 0.006747223039080079,
+  "specular_l1_saturated": 0.01562785232794006,
+  "specular_l1_non_saturated": 0.0006365863731354494,
+  "share_of_error_from_saturated": 0.9441095374779325
+}

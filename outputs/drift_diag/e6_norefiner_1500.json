@@ -1,0 +1,89 @@
+{
+  "name": "e6_norefiner_1500",
+  "args": {
+    "name": "e6_norefiner_1500",
+    "init": "geometry_albedo",
+    "scene_lr": 0.002,
+    "views_per_step": 1,
+    "steps": 1500,
+    "no_refiner": true,
+    "seed": 0,
+    "eval_every": 250
+  },
+  "minutes": 0.9469199021657307,
+  "curve": [
+    {
+      "step": 0,
+      "train_diffuse_psnr": 54.680993058716766,
+      "holdout_diffuse_psnr": 53.87464033642893
+    },
+    {
+      "step": 250,
+      "train_diffuse_psnr": 53.546255164942195,
+      "holdout_diffuse_psnr": 53.89645482114796,
+      "loss": 0.027291327714920044
+    },
+    {
+      "step": 500,
+      "train_diffuse_psnr": 51.60829930322383,
+      "holdout_diffuse_psnr": 52.80496748985983,
+      "loss": 0.024447722360491753
+    },
+    {
+      "step": 750,
+      "train_diffuse_psnr": 49.58300073497802,
+      "holdout_diffuse_psnr": 49.156418367608076,
+      "loss": 0.022112498059868813
+    },
+    {
+      "step": 1000,
+      "train_diffuse_psnr": 49.191937953572726,
+      "holdout_diffuse_psnr": 48.238144675383914,
+      "loss": 0.027778055518865585
+    },
+    {
+      "step": 1250,
+      "train_diffuse_psnr": 48.796233138687725,
+      "holdout_diffuse_psnr": 47.64278915105346,
+      "loss": 0.020903944969177246
+    },
+    {
+      "step": 1500,
+      "train_diffuse_psnr": 48.69713115302425,
+      "holdout_diffuse_psnr": 47.54046718746065,
+      "loss": 0.020408350974321365
+    }
+  ],
+  "before": {
+    "terms_train": {
+      "photo_l1": 0.003718813726057609,
+      "diffuse_l1": 0.0013357915449887514,
+      "specular_l1": 0.006976676302858525
+    },
+    "materials": {
+      "albedo_mae": 8.171708643089914e-09,
+      "specular_weight_mae": 0.3956165313720703,
+      "absorption_mae": 0.01687130331993103,
+      "roughness_mae": 0.17154447734355927,
+      "metalness_mae": 0.4728299081325531,
+      "diffuse_weight_mean": 0.7500001192092896,
+      "gt_diffuse_weight_mean": 0.3642560839653015
+    }
+  },
+  "after": {
+    "terms_train": {
+      "photo_l1": 0.0029218375760441027,
+      "diffuse_l1": 0.001864780587816818,
+      "specular_l1": 0.003971300915711456
+    },
+    "materials": {
+      "albedo_mae": 0.0014419578947126865,
+      "specular_weight_mae": 0.39767855405807495,
+      "absorption_mae": 0.016991596668958664,
+      "roughness_mae": 0.11118968576192856,
+      "metalness_mae": 0.4821237027645111,
+      "diffuse_weight_mean": 0.7517820596694946,
+      "gt_diffuse_weight_mean": 0.3642560839653015
+    }
+  }
+}
