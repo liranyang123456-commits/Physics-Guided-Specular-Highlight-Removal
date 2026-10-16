@@ -589,12 +589,12 @@ def make_mvs_figure():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     configs = [
         (
-            ROOT / "outputs" / "dtu_scan1" / "last.pt",
+            ROOT / "outputs" / "dtu_scan1_nossim" / "last.pt",
             "fig_dtu_nvs.png",
             "DTU scan1",
         ),
         (
-            ROOT / "outputs" / "blendedmvs_57f8d9bb" / "last.pt",
+            ROOT / "outputs" / "blendedmvs_57f8d9bb_nossim" / "last.pt",
             "fig_blendedmvs_nvs.png",
             "BlendedMVS",
         ),
@@ -754,9 +754,9 @@ def make_graphical_abstract():
     # ===== Bottom headline band =====
     draw.rounded_rectangle([28, 640, 1372, 690], radius=8, fill=GREY_FILL, outline=(203, 213, 225), width=1)
     metrics = [
-        ("Physical branch (oracle priors)", "36.8–39.4 dB (4 runs); fails if perturbed"),
-        ("Fusion, 18 held-out scenes", "> single-image in 18/18; 38.27 dB (10 bench.)"),
-        ("Same gate + DHAN-SHR (FT)", "37.45 → 38.59 dB"),
+        ("Physical branch (given geometry, lighting)", "53.9 dB over 10 scenes; fails if priors wrong"),
+        ("Fusion, cross-fitted gate + fit check", "54.99 dB; falls back when the field fails"),
+        ("Same gate + DHAN-SHR (FT)", "37.45 \u2192 53.53 dB"),
         ("Cross-dataset FT", "+1.26 / +0.49 / +3.33 dB"),
     ]
     for i, (k, v) in enumerate(metrics):

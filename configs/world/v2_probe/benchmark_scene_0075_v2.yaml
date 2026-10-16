@@ -1,0 +1,36 @@
+data_type: blender
+data_root: data/world_benchmark_v2/scenes/test/scene_0075
+transforms: transforms.json
+image_scale: 1.0
+n_gaussians: 384
+gaussian_init: geometry
+gaussian_prior: gaussian_brdf_gt.npz
+freeze_geometry: true
+point_color_weight: 0.0
+initial_albedo: 0.25
+lighting_mode: sh
+freeze_lighting: true
+use_refiner: false
+chunk_size: 32
+raster_backend: gsplat
+holdout_stride: 4
+holdout_offset: 0
+steps: 1500
+views_per_step: 3
+refine_start: 1500
+scene_lr: 0.03
+light_lr: 0.0
+log_every: 100
+output_dir: outputs/v2_probe/world_scene_0075
+loss:
+  photo_l1: 1.0
+  photo_ssim: 0.0
+  diffuse_gt: 0.0
+  refine_gt: 0.0
+  specular_gt: 0.0
+  energy: 0.1
+  material_smooth: 0.01
+  normal_axis: 0.0
+  scale: 0.0
+  opacity_sparse: 0.0
+  texture_consistency: 0.01

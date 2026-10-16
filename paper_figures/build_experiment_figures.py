@@ -353,7 +353,7 @@ def fig_world_v2(n_rows: int = 6):
 @torch.inference_mode()
 def fig_holdout_compare():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    ckpt = OUT / "world_benchmark_v2_scene_0070_strict" / "last.pt"
+    ckpt = OUT / "v2" / "world_scene_0070" / "last.pt"
     state = torch.load(ckpt, map_location=device, weights_only=False)
     cfg = state["config"]
     dataset = load_dataset(cfg)
@@ -388,7 +388,7 @@ def fig_holdout_compare():
     # backbone inside the hybrid must be loaded separately.
     fusion = HybridMVBRDFSHR(resolution=128).to(device)
     fusion.load_single_checkpoint(single_ckpt)
-    fstate = torch.load(OUT / "world_benchmark_v2_scene_0070_hybrid" / "fusion.pt", map_location=device, weights_only=False)
+    fstate = torch.load(OUT / "v2" / "fusion_scene_0070" / "fusion.pt", map_location=device, weights_only=False)
     fusion.gate.load_state_dict(fstate["gate"])
     fusion.correction.load_state_dict(fstate["correction"])
     fusion.eval()

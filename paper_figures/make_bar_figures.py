@@ -61,7 +61,9 @@ def collect() -> dict:
                      for k in ("tshrnet", "dhan_shr", "mvbrdf_shr_shiq_pretrained", "mvbrdf_shr_world_v2_finetuned")},
         "dhan_ft": load("dhan_world_v2_finetuned/metrics.json")["test"]["psnr"],
         "tshrnet_ft": load("tshrnet_world_v2_finetuned/metrics.json")["test"]["psnr"],
-        "ablation": load("world_ablation_scene_0070/ablation_metrics.json")["variants"],
+        "ablation": load("v2/ablation_scene_0070/ablation_metrics.json")["variants"],
+        "strict": load("v2/ablation_strict_nossim_eval/ablation_metrics.json")["variants"],
+        "bootstrap": load("v2/ablation_bootstrap_eval/ablation_metrics.json")["variants"],
         # scripts/eval_holdout_zero_shot.py
         "holdout_tshrnet": load("world_holdout_zero_shot.json")["tshrnet"]["psnr"],
         "holdout_dhan": load("world_holdout_zero_shot.json")["dhan_shr"]["psnr"],
@@ -113,12 +115,12 @@ def fig_core(m: dict) -> None:
 
     ab = m["ablation"]
     labels = ["Input", "TSHRNet\n(ZS)", "DHAN-SHR\n(ZS)", "TSHRNet\n(FT)", "DHAN-SHR\n(FT)", "Ours\n(single)",
-              "Ours-\nPhys", "Fixed\nblend", "Ours-\nFuse", "Fuse w/\nDHAN-SHR", "World\nrefiner"]
+              "Ours-\nPhys", "Fixed\nblend", "Ours-\nFuse", "Fuse w/\nDHAN-SHR", "Refiner\n(strict)"]
     values = [ab["input"]["psnr"], m["holdout_tshrnet"], m["holdout_dhan"], ab["tshrnet_ft"]["psnr"],
               ab["dhan_ft"]["psnr"], ab["ours_pro"]["psnr"], ab["ours_phys"]["psnr"], ab["fixed_blend"]["psnr"],
-              ab["fusion_full"]["psnr"], ab["dhan_gate"]["psnr"], ab["ours_refined"]["psnr"]]
+              ab["fusion_full"]["psnr"], ab["dhan_gate"]["psnr"], m["strict"]["ours_refined"]["psnr"]]
     colors = [C_INPUT, C_BASE, C_BASE, C_BASE, C_BASE, C_OURS_SOFT, C_OURS, C_BASE, C_OURS, C_OURS, C_FAIL]
-    style(axes[2], 15, 42, "(c) scene_0070 strict holdout (3 views)")
+    style(axes[2], 15, 66, "(c) scene_0070 strict holdout (3 views)")
     bars(axes[2], labels, values, colors)
 
     fig.suptitle("Core SHR results across benchmarks", fontsize=13, fontweight="bold", y=1.0)
@@ -137,10 +139,10 @@ def fig_generalization(m: dict) -> None:
         "psd_ft": load("psd_finetuned_strict/ft_test/metrics.json"),
     }
     mvs = {
-        "DTU\ntrain": load("dtu_scan1/world_metrics_train.json")["summary"]["full_psnr"],
-        "DTU\nholdout": load("dtu_scan1/world_metrics_holdout.json")["summary"]["full_psnr"],
-        "BlendedMVS\ntrain": load("blendedmvs_57f8d9bb/world_metrics_train.json")["summary"]["full_psnr"],
-        "BlendedMVS\nholdout": load("blendedmvs_57f8d9bb/world_metrics_holdout.json")["summary"]["full_psnr"],
+        "DTU\ntrain": load("dtu_scan1_nossim/world_metrics_train.json")["summary"]["full_psnr"],
+        "DTU\nholdout": load("dtu_scan1_nossim/world_metrics_holdout.json")["summary"]["full_psnr"],
+        "BlendedMVS\ntrain": load("blendedmvs_57f8d9bb_nossim/world_metrics_train.json")["summary"]["full_psnr"],
+        "BlendedMVS\nholdout": load("blendedmvs_57f8d9bb_nossim/world_metrics_holdout.json")["summary"]["full_psnr"],
     }
     fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.2), gridspec_kw={"width_ratios": [1.5, 1.0]})
 
@@ -166,7 +168,7 @@ def fig_generalization(m: dict) -> None:
     ax.legend(frameon=False, fontsize=8.5, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.0))
 
     ax = axes[1]
-    style(ax, 0, 12, "(b) Real MVS NVS diagnostic")
+    style(ax, 0, 20, "(b) Real MVS NVS diagnostic")
     bars(ax, list(mvs), list(mvs.values()), [C_BASE, C_FAIL, C_BASE, C_FAIL])
     ax.set_xlabel("full-radiance NVS, not an SHR score", fontsize=8, color=C_MUTED, style="italic")
 
@@ -177,15 +179,14 @@ def fig_generalization(m: dict) -> None:
 
 
 def fig_ablation(m: dict) -> None:
-    ab = m["ablation"]
-    labels = ["Inverse", "Inverse +\nbootstrap", "World\nrefiner", "Single-\nimage", "Analytic\ngate",
-              "Fusion\n(full)", "Physical", "Fixed\nblend"]
-    keys = ["inverse", "inverse_pro", "ours_refined", "ours_pro", "fusion_analytic", "fusion_full", "ours_phys",
-            "fixed_blend"]
-    values = [ab[k]["psnr"] for k in keys]
-    colors = [C_FAIL, C_FAIL, C_FAIL, C_OURS_SOFT, C_OURS_SOFT, C_OURS, C_OURS, C_BASE]
+    ab, st, bo = m["ablation"], m["strict"], m["bootstrap"]
+    labels = ["Single-\nimage", "Analytic\ngate", "Fixed\nblend", "Bootstrap\ninit.", "Refiner\n(strict)", "Fusion\n(full)",
+              "Physical", "Strict\nprotocol"]
+    values = [ab["ours_pro"]["psnr"], ab["fusion_analytic"]["psnr"], ab["fixed_blend"]["psnr"], bo["ours_phys"]["psnr"],
+              st["ours_refined"]["psnr"], ab["fusion_full"]["psnr"], ab["ours_phys"]["psnr"], st["ours_phys"]["psnr"]]
+    colors = [C_OURS_SOFT, C_OURS_SOFT, C_BASE, C_FAIL, C_FAIL, C_OURS, C_OURS, C_OURS_SOFT]
     fig, ax = plt.subplots(figsize=(7.6, 3.4))
-    style(ax, 0, 42, "scene_0070 strict-holdout ablation")
+    style(ax, 0, 66, "scene_0070 strict-holdout ablation")
     bars(ax, labels, values, colors, fontsize=8, label_size=8.5)
     fig.tight_layout()
     fig.savefig(FIG / "fig_inverse_ablation.png", bbox_inches="tight", pad_inches=0.08)
