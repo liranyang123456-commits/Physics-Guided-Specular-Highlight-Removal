@@ -58,7 +58,9 @@ measurement (see `gt_provenance` in `data/world_benchmark_v2/manifest.json`).
 their official sources and extract them to `data/raw/SHIQ_extracted`,
 `data/raw/SSHR_extracted`, `data/raw/NSH_extracted`, `data/raw/PSD_extracted`,
 `data/raw/DTU_extracted`, and `data/raw/BlendedMVS_extracted`
-(`scripts/prepare_data.py` unpacks the archives).
+(`scripts/prepare_data.py` unpacks the archives).  The public sample of ICTPolarReal
+(link on its [project page](https://jingyangcarl.github.io/ICTPolarReal/)) goes to
+`data/raw/ICTPolarReal_sample/<object>/camXX/` (used for Table 13 only).
 
 **Baselines.** Clone [DHAN-SHR](https://github.com/CXH-Research/DHAN-SHR) and
 [TSHRNet](https://github.com/fu123456/TSHRNet) into `baselines_ext/DHAN-SHR`
@@ -73,14 +75,15 @@ Table numbers refer to the revised manuscript.
 |---|---|---|
 | Table 3, single-image branch on world_benchmark_v2 | `python scripts/train_flat_benchmark.py` | `outputs/world_benchmark_single/metrics.json` |
 | Table 3, matched DHAN-SHR / TSHRNet fine-tuning | `python scripts/finetune_dhan_world_v2.py`, `python scripts/finetune_tshrnet_world_v2.py` | `outputs/{dhan,tshrnet}_world_v2_finetuned/metrics.json` |
-| Tables 4, 5, 14, scene_0070 strict holdout | `python -m mvbrdf_shr.world.train --config configs/world/benchmark_scene_0070.yaml`; `python -m mvbrdf_shr.world.train_fusion --world-checkpoint outputs/world_benchmark_v2_scene_0070_strict/last.pt --single-checkpoint outputs/world_benchmark_single/best.pt --output outputs/world_benchmark_v2_scene_0070_hybrid`; `python scripts/eval_world_ablation.py --raster-backend gsplat`; `python scripts/eval_holdout_zero_shot.py` | `outputs/world_ablation_scene_0070/ablation_metrics.json`, `outputs/world_holdout_zero_shot.json` |
+| Tables 4, 5, 15, scene_0070 strict holdout | `python -m mvbrdf_shr.world.train --config configs/world/benchmark_scene_0070.yaml`; `python -m mvbrdf_shr.world.train_fusion --world-checkpoint outputs/world_benchmark_v2_scene_0070_strict/last.pt --single-checkpoint outputs/world_benchmark_single/best.pt --output outputs/world_benchmark_v2_scene_0070_hybrid`; `python scripts/eval_world_ablation.py --raster-backend gsplat`; `python scripts/eval_holdout_zero_shot.py` | `outputs/world_ablation_scene_0070/ablation_metrics.json`, `outputs/world_holdout_zero_shot.json` |
 | Tables 6, 7, ten held-out scenes | `python scripts/run_multiscene_eval.py`; `python scripts/aggregate_world_holdout.py --output outputs/world_holdout_multiscene.json`; `python scripts/summarize_multiscene.py` | `outputs/world_holdout_multiscene.json`, `outputs/world_confidence_correlation.json` |
 | Table 8, material-controlled scenes | `python scripts/run_material_study.py --launch`, then `--eval --summary` | `outputs/material_study/summary.json` |
 | Table 9, prior sensitivity | `python scripts/run_sensitivity_reopt.py --axis <axis>`; `python scripts/eval_oracle_init.py`; `python scripts/eval_oracle_init_train.py` (training views before optimization) | `outputs/sensitivity_reopt/` |
 | Section 4.4, why optimization lowers the accuracy of the exact state | `python scripts/diag_drift.py --name <run> [--init oracle] [--no-refiner] [--scene-lr ...] [--loss key=value]`; `python scripts/summarize_drift.py`; `python scripts/check_specular_target_saturation.py` | `outputs/drift_diag/` (the settings of every run are stored in its JSON) |
 | Table 10, SHIQ | `python scripts/train_shiq_pro.py`; baselines: `python scripts/eval_baseline_paired.py` | `outputs/shiq_mse/`, `outputs/shiq_leakage_fixed_s0/`, `outputs/baselines/` |
 | Tables 11, 12, SSHR / NSH / PSD | `python scripts/train_paired_pro.py`; `python scripts/eval_paired_dataset.py` | `outputs/*_shiq_zero_shot/`, `outputs/*_finetuned_strict/` |
-| Table 13, DTU / BlendedMVS diagnostic | `python -m mvbrdf_shr.world.train --config configs/world/dtu_scan1.yaml` (and `blendedmvs_57f8d9bb.yaml`) | `outputs/dtu_scan1/`, `outputs/blendedmvs_57f8d9bb/` |
+| Table 13, ICTPolarReal sample (real light-stage captures) | `python scripts/eval_ictpolarreal.py` (needs the public sample under `data/raw/ICTPolarReal_sample/<object>/camXX/`; it is not redistributed here) | `outputs/ictpolarreal_sample/metrics.json` |
+| Table 14, DTU / BlendedMVS diagnostic | `python -m mvbrdf_shr.world.train --config configs/world/dtu_scan1.yaml` (and `blendedmvs_57f8d9bb.yaml`) | `outputs/dtu_scan1/`, `outputs/blendedmvs_57f8d9bb/` |
 | Bar charts | `python paper_figures/make_bar_figures.py` | `paper_figures/figures/` |
 
 ## Notes on evaluation
