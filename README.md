@@ -98,7 +98,7 @@ Table numbers refer to the revised manuscript.
 - **SHIQ checkpoint selection.** The SHIQ checkpoint used in the paper
   (`outputs/shiq_mse`, 32.61 dB) was selected on the SHIQ test set in earlier
   training runs.  The run in `outputs/shiq_leakage_fixed_s0` is selected on a
-  500-image validation half (31.57 dB on the other 500 test images, 31.74 dB on
+  500-image validation half (31.56 dB on the other 500 test images, 31.74 dB on
   all 1,000).  All other experiments select checkpoints on validation data
   disjoint from their test data.
 
