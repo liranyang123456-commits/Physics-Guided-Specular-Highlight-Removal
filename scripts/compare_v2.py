@@ -31,8 +31,8 @@ LABEL = {
     "dhan_analytic": "DHAN-SHR analytic gate", "dhan_gate": "DHAN-SHR + learned gate",
     "tshrnet_ft": "TSHRNet (FT)",
 }
-V1_GLOB = "outputs/world_ablation_scene_00[0-9][0-9]/ablation_metrics.json"
-V2_GLOB = "outputs/v2/ablation_scene_00[0-9][0-9]/ablation_metrics.json"
+V1_GLOB = "outputs/world_ablation_scene_00[7][0-9]/ablation_metrics.json"
+V2_GLOB = "outputs/v2/ablation_scene_00[7][0-9]/ablation_metrics.json"   # scenes 0070-0079; 0080-0089: eval_unused_scenes.py
 lines: list[str] = []
 report: dict = {}
 
