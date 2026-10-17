@@ -1,0 +1,40 @@
+{
+  "method": "jshdr_zero_shot",
+  "protocol": "released CVPR 2021 checkpoint (jshdr_d.pth, jshdr_r.pth), CPU, Python 3.6 / PyTorch 1.5.1 in WSL; no fine-tuning (no training code in the release); same inputs, ground truth and metric functions as the other rows",
+  "shiq": {
+    "all_1000": {
+      "n": 1000,
+      "psnr": 37.368844442586024,
+      "ssim": 0.9692556010286014,
+      "input_psnr": 26.201471523131215
+    },
+    "val_500": {
+      "n": 500,
+      "psnr": 37.21704123674442,
+      "ssim": 0.9686643897294999,
+      "input_psnr": 26.141028445889948
+    },
+    "test_500": {
+      "n": 500,
+      "psnr": 37.52064764842762,
+      "ssim": 0.9698468123277028,
+      "input_psnr": 26.261914600372485
+    },
+    "missing": 0
+  },
+  "world_benchmark_v2": {
+    "test": {
+      "n": 240,
+      "psnr": 18.905005400991566,
+      "ssim": 0.712941572484043,
+      "input_psnr": 35.73124392763073
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 18.08426135118018,
+      "ssim": 0.7211045244344338,
+      "input_psnr": 25.985641460766292
+    }
+  },
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\jshdr_zero_shot"
+}

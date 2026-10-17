@@ -24,6 +24,21 @@ The directories directly under `outputs/` that belong to the physical branch of 
 `outputs/v2/` (and `outputs/dtu_scan1_nossim`, `outputs/blendedmvs_57f8d9bb_nossim`).  Single-image results (SHIQ, SSHR, NSH, PSD,
 the matched fine-tuning of the baselines, ICTPolarReal) do not use the world field and are unaffected.
 
+## Baselines with partial releases (revision)
+
+DHAN-SHR and TSHRNet are fine-tuned under the matched protocol (`scripts/finetune_dhan_world_v2.py`,
+`scripts/finetune_tshrnet_world_v2.py`).  The other three methods that report SHIQ numbers could not be, and we checked their
+public releases in October 2026:
+
+| Method | Public release | What was run | Files |
+|---|---|---|---|
+| Neural DRM (ICCV 2025) | no code or weights that we could find | nothing | - |
+| JSHDR (CVPR 2021) | compiled CPython-3.6 modules for Linux and a checkpoint, no training code | zero-shot, CPU, Python 3.6 / PyTorch 1.5.1 in WSL, on the 240 benchmark test frames and the 1,000 SHIQ test images | `scripts/wsl_setup_jshdr.sh`, `scripts/export_jshdr_inputs.py`, `scripts/jshdr_batch.sh`, `scripts/jshdr_cpu_shim.py`, `scripts/eval_jshdr_zero_shot.py`, `outputs/jshdr_zero_shot/metrics.json` |
+| HighlightRNet (ACM MM 2024) | no weights, no `options` package, the authors' data paths | an attempt to train the released architecture from scratch with the matched protocol did not converge (test 9.71 dB); not reported as a baseline | `scripts/train_hrnet_world_v2.py`, `outputs/hrnet_world_v2_trained/metrics.json` |
+
+The JSHDR value on SHIQ (37.37 dB) is not used for comparison: the JSHDR paper trains on a random 12K of its 16K images, so the
+checkpoint may have seen the official test images.
+
 ## Contents
 
 | Path | Purpose |

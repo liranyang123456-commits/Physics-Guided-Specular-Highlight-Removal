@@ -1,0 +1,105 @@
+{
+  "method": "hrnet_world_v2_trained",
+  "protocol": "released HighlightRNet architecture trained from its default initialization (no public weights); same splits, batch size, optimizer, schedule, augmentation, gradient clipping and validation-based selection as finetune_dhan_world_v2.py; native objective of the repository without the adversarial term; 256x256 working resolution; bf16 autocast",
+  "steps": 3000,
+  "batch_size": 8,
+  "parameters": 48367782,
+  "bf16_autocast": true,
+  "work_size": 256,
+  "validation_best": {
+    "n": 120,
+    "psnr": 9.730057772247134,
+    "ssim": 0.6154398988196489,
+    "step": 900
+  },
+  "test": {
+    "n": 240,
+    "psnr": 9.714110513800401,
+    "ssim": 0.6118078112543621
+  },
+  "hard_test": {
+    "n": 121,
+    "psnr": 8.901487118772783,
+    "ssim": 0.5895850803904632
+  },
+  "history": [
+    {
+      "step": 0,
+      "loss": 0.8241240978240967,
+      "n": 120,
+      "psnr": 5.387382464261947,
+      "ssim": 0.12580372304770815
+    },
+    {
+      "step": 300,
+      "loss": 0.32456284761428833,
+      "n": 120,
+      "psnr": 9.675465408513185,
+      "ssim": 0.6050594539370043
+    },
+    {
+      "step": 600,
+      "loss": 0.3102991580963135,
+      "n": 120,
+      "psnr": 9.47273028146467,
+      "ssim": 0.5958957862200905
+    },
+    {
+      "step": 900,
+      "loss": 0.3065469563007355,
+      "n": 120,
+      "psnr": 9.730057772247134,
+      "ssim": 0.6154398988196489
+    },
+    {
+      "step": 1200,
+      "loss": 0.2714376449584961,
+      "n": 120,
+      "psnr": 9.647838909749924,
+      "ssim": 0.6074989684431986
+    },
+    {
+      "step": 1500,
+      "loss": 0.29826465249061584,
+      "n": 120,
+      "psnr": 9.708273101629585,
+      "ssim": 0.6050316544134654
+    },
+    {
+      "step": 1800,
+      "loss": 0.2744144797325134,
+      "n": 120,
+      "psnr": 9.70094014784227,
+      "ssim": 0.6156268800804253
+    },
+    {
+      "step": 2100,
+      "loss": 0.25217336416244507,
+      "n": 120,
+      "psnr": 9.729760591461828,
+      "ssim": 0.6176475651654173
+    },
+    {
+      "step": 2400,
+      "loss": 0.2298392355442047,
+      "n": 120,
+      "psnr": 9.71744204223587,
+      "ssim": 0.6120030609361897
+    },
+    {
+      "step": 2700,
+      "loss": 0.23506996035575867,
+      "n": 120,
+      "psnr": 9.70095177659349,
+      "ssim": 0.60965644755389
+    },
+    {
+      "step": 2999,
+      "loss": 0.2948462665081024,
+      "n": 120,
+      "psnr": 9.712886606478907,
+      "ssim": 0.6135765708660983
+    }
+  ],
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\hrnet_world_v2_trained"
+}
