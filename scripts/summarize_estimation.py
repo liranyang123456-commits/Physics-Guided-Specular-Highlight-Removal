@@ -2,7 +2,8 @@
 
 Writes outputs/v2/estimation_summary.json with
   scene_0070   the perturbations of Table 10 with the perturbed quantity taken as given (frozen) and estimated
-  lighting_ten the lighting perturbation on the ten benchmark scenes: given (frozen), estimated, and the exact-prior controls
+  lighting_ten the lighting perturbation on the ten benchmark scenes: given (frozen), estimated, and the exact-prior controls,
+               with the albedo-free initialization of the main results (lighting_ten_exact_albedo: exact albedo at the start)
   geometry     mild geometry noise on scenes 0071-0073: given and estimated, and the exact-geometry control
   held_out     fields whose training views are reproduced well but whose held-out views are not
   view_check   rank correlation of the held-out median residual with the accuracy of the physical render (scripts/analyze_view_check.py)
@@ -75,14 +76,15 @@ def scene70_rows() -> list[dict]:
     return rows
 
 
-def lighting_ten() -> dict:
+def lighting_ten(suffix: str = "_af") -> dict:
+    """suffix "_af": albedo initialized to 0.25 as in the main results (--init geometry); "": exact albedo at initialization."""
     per = []
     for n in range(70, 80):
         s = f"s00{n}_" if n != 70 else ""
         row = {"scene": n,
-               "frozen": load(UNF, f"{s}light_none_seed0"),
-               "estimated": load(UNF, f"{s}light_lighting_seed0"),
-               "exact_estimated": load(UNF, f"{s}clean_lighting_seed0")}
+               "frozen": load(UNF, f"{s}light_none_seed0{suffix}"),
+               "estimated": load(UNF, f"{s}light_lighting_seed0{suffix}"),
+               "exact_estimated": load(UNF, f"{s}clean_lighting_seed0{suffix}")}
         # exact priors, frozen: the field of the ten-scene study
         ten = V2 / f"world_scene_00{n}" / "split_metrics.json"
         if ten.exists():
@@ -135,7 +137,8 @@ def held_out() -> list[dict]:
 
 
 def main() -> None:
-    summary = {"scene_0070": scene70_rows(), "lighting_ten": lighting_ten(), "geometry": geometry_scenes(), "held_out": held_out(),
+    summary = {"scene_0070": scene70_rows(), "lighting_ten": lighting_ten("_af"), "lighting_ten_exact_albedo": lighting_ten(""),
+               "geometry": geometry_scenes(), "held_out": held_out(),
                "seed1": {"light_given": load(UNF, "light_none_seed1"), "light_estimated": load(UNF, "light_lighting_seed1"),
                          "geo_mild_given": load(UNF, "geo_mild_none_seed1"),
                          "geo_mild_estimated": load(UNF, "geo_mild_geometry_seed1_means_normal")}}

@@ -197,8 +197,9 @@ def main() -> None:
     parser.add_argument("--geo-start", type=int, default=0, help="geometry stays frozen for this many initial steps")
     parser.add_argument("--geo-params", default=",".join(GEOMETRY_LR), help="comma list of the geometry parameters that are optimized")
     parser.add_argument("--blur", type=float, default=0.0, help="initial sigma (px) of a blur on render and target, annealed to 0 at 70%% of the steps")
-    parser.add_argument("--init", choices=("geometry_albedo", "point_cloud"), default="geometry_albedo",
-                        help="point_cloud: positions from the depth-derived point cloud of the scene, everything else estimated")
+    parser.add_argument("--init", choices=("geometry_albedo", "geometry", "point_cloud"), default="geometry_albedo",
+                        help="geometry_albedo: exact geometry and albedo (sensitivity study); geometry: exact geometry, albedo 0.25 "
+                             "(the albedo-free recipe of the main results); point_cloud: positions from the point cloud of the scene")
     parser.add_argument("--steps", type=int, default=0, help="override the number of steps (0 = recipe)")
     parser.add_argument("--scene", default="0070", help="benchmark scene (reference field, data, and exact lighting)")
     parser.add_argument("--tag", default="")

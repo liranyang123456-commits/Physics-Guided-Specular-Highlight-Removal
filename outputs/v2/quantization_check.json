@@ -1,0 +1,37 @@
+{
+  "scene": "scene_0070",
+  "views": "held-out",
+  "per_view": [
+    {
+      "frame": 0,
+      "as_rendered": 53.899444580078125,
+      "floor_quantized": 67.89459228515625,
+      "round_quantized": 52.10284423828125,
+      "minus_half_step": 58.68376922607422,
+      "share_identical_after_floor": 0.98944091796875
+    },
+    {
+      "frame": 4,
+      "as_rendered": 53.84296417236328,
+      "floor_quantized": 68.36241149902344,
+      "round_quantized": 52.03219985961914,
+      "minus_half_step": 58.8246955871582,
+      "share_identical_after_floor": 0.9905192255973816
+    },
+    {
+      "frame": 8,
+      "as_rendered": 53.88151168823242,
+      "floor_quantized": 66.81151580810547,
+      "round_quantized": 52.04414749145508,
+      "minus_half_step": 58.76856994628906,
+      "share_identical_after_floor": 0.9864501953125
+    }
+  ],
+  "mean": {
+    "as_rendered": 53.874640146891274,
+    "floor_quantized": 67.68950653076172,
+    "round_quantized": 52.059730529785156,
+    "minus_half_step": 58.759011586507164,
+    "share_identical_after_floor": 0.9888034462928772
+  }
+}
