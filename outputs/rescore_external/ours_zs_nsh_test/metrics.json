@@ -1,0 +1,10 @@
+{
+  "dataset": "NSH",
+  "split": "test",
+  "n": 360,
+  "checkpoint": "outputs/shiq_mask/best.pt",
+  "ours_psnr": 31.091932876904806,
+  "ours_ssim": 0.9534496401747068,
+  "input_psnr": 33.22066406144036,
+  "input_ssim": 0.9715802046987746
+}

@@ -1,0 +1,14 @@
+{
+  "original": {
+    "diffuse_full": 17.79119110107422,
+    "diffuse_interior": 20.37793731689453,
+    "input_full": 17.323101043701172,
+    "input_interior": 18.974040985107422
+  },
+  "smooth": {
+    "diffuse_full": 18.58446502685547,
+    "diffuse_interior": 23.807857513427734,
+    "input_full": 17.987674713134766,
+    "input_interior": 20.978620529174805
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "n": 119,
+  "n_fusion_worse": 40,
+  "theta": 0.003558389958925545,
+  "accurate_fields": 18,
+  "accurate_med_err_max": 0.00237225997261703,
+  "rules": {
+    "always_fuse": {
+      "false_accepts": 40,
+      "false_rejects": 0,
+      "mean_output_psnr": 44.553856414239284,
+      "max_accepted_loss": 13.025115966796875
+    },
+    "training_view_check": {
+      "false_accepts": 6,
+      "false_rejects": 2,
+      "mean_output_psnr": 46.20706153249874,
+      "max_accepted_loss": 7.0647404988606795
+    },
+    "combined_check": {
+      "false_accepts": 0,
+      "false_rejects": 23,
+      "mean_output_psnr": 44.668020312525634,
+      "max_accepted_loss": 0.0
+    },
+    "oracle": {
+      "false_accepts": 0,
+      "false_rejects": 0,
+      "mean_output_psnr": 46.374918368684135,
+      "max_accepted_loss": 0.0
+    }
+  },
+  "combined_rejects_accurate": 0,
+  "sweep": {
+    "0.0030": {
+      "false_accepts": 0,
+      "false_rejects": 27,
+      "mean_output_psnr": 44.276570386913306,
+      "max_accepted_loss": 0.0
+    },
+    "0.0040": {
+      "false_accepts": 0,
+      "false_rejects": 21,
+      "mean_output_psnr": 44.88699777319986,
+      "max_accepted_loss": 0.0
+    },
+    "0.0060": {
+      "false_accepts": 0,
+      "false_rejects": 20,
+      "mean_output_psnr": 45.032982102295264,
+      "max_accepted_loss": 0.0
+    },
+    "0.0080": {
+      "false_accepts": 0,
+      "false_rejects": 13,
+      "mean_output_psnr": 45.645756713482506,
+      "max_accepted_loss": 0.0
+    },
+    "0.0120": {
+      "false_accepts": 2,
+      "false_rejects": 11,
+      "mean_output_psnr": 45.697633219700236,
+      "max_accepted_loss": 3.373540242513023
+    },
+    "0.0200": {
+      "false_accepts": 5,
+      "false_rejects": 5,
+      "mean_output_psnr": 46.017965028265955,
+      "max_accepted_loss": 7.0647404988606795
+    },
+    "0.0337": {
+      "false_accepts": 6,
+      "false_rejects": 2,
+      "mean_output_psnr": 46.20706153249874,
+      "max_accepted_loss": 7.0647404988606795
+    }
+  },
+  "false_rejects_combined": [
+    {
+      "name": "unfrozen/arc3_none_seed0",
+      "fuse_xc0": 47.61005783081055,
+      "single": 35.589856465657554,
+      "med_err": 0.02559600134069721
+    },
+    {
+      "name": "unfrozen/clean_both_seed0",
+      "fuse_xc0": 43.63479995727539,
+      "single": 35.589856465657554,
+      "med_err": 0.003959828134005268
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0",
+      "fuse_xc0": 40.938124338785805,
+      "single": 35.589856465657554,
+      "med_err": 0.009804852617283663
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_b4",
+      "fuse_xc0": 39.67378489176432,
+      "single": 35.589856465657554,
+      "med_err": 0.012438254741330942
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_g0.1",
+      "fuse_xc0": 37.509073893229164,
+      "single": 35.589856465657554,
+      "med_err": 0.01971358774850766
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_g0.3",
+      "fuse_xc0": 39.43856430053711,
+      "single": 35.589856465657554,
+      "med_err": 0.012765369067589441
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_g0.3_b4",
+      "fuse_xc0": 38.3324089050293,
+      "single": 35.589856465657554,
+      "med_err": 0.017330377362668514
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_means_normal",
+      "fuse_xc0": 46.33322779337565,
+      "single": 35.589856465657554,
+      "med_err": 0.00744366009409229
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed0_s3000",
+      "fuse_xc0": 42.34298451741537,
+      "single": 35.589856465657554,
+      "med_err": 0.008994546408454577
+    },
+    {
+      "name": "unfrozen/geo_nrm_geometry_seed0_all",
+      "fuse_xc0": 41.60950597127279,
+      "single": 35.589856465657554,
+      "med_err": 0.007623073334495227
+    },
+    {
+      "name": "unfrozen/geo_nrm_geometry_seed0_normal",
+      "fuse_xc0": 53.603230794270836,
+      "single": 35.589856465657554,
+      "med_err": 0.0035658455453813076
+    },
+    {
+      "name": "unfrozen/geo_pos_geometry_seed0_all",
+      "fuse_xc0": 41.85981369018555,
+      "single": 35.589856465657554,
+      "med_err": 0.007024781700844566
+    },
+    {
+      "name": "unfrozen/geo_mild_geometry_seed1_means_normal",
+      "fuse_xc0": 43.45478185017904,
+      "single": 35.589856465657554,
+      "med_err": 0.0067315069027245045
+    },
+    {
+      "name": "unfrozen/geo_severe_geometry_seed0_means_normal",
+      "fuse_xc0": 35.941123962402344,
+      "single": 35.589856465657554,
+      "med_err": 0.02759806253015995
+    },
+    {
+      "name": "unfrozen/geolight_both_seed0_means_normal",
+      "fuse_xc0": 40.60325622558594,
+      "single": 35.589856465657554,
+      "med_err": 0.015374311556418737
+    },
+    {
+      "name": "unfrozen/s0071_arc3_none_seed0",
+      "fuse_xc0": 47.57083002726237,
+      "single": 28.33133316040039,
+      "med_err": 0.016374444006942213
+    },
+    {
+      "name": "unfrozen/s0071_geo_mild_geometry_seed0",
+      "fuse_xc0": 43.05637232462565,
+      "single": 28.33133316040039,
+      "med_err": 0.006936242959151666
+    },
+    {
+      "name": "unfrozen/s0071_geo_mild_geometry_seed0_means_normal",
+      "fuse_xc0": 45.703468322753906,
+      "single": 28.33133316040039,
+      "med_err": 0.0043806816296031075
+    },
+    {
+      "name": "unfrozen/s0072_arc3_none_seed0",
+      "fuse_xc0": 45.55327479044596,
+      "single": 30.75458017985026,
+      "med_err": 0.01801043508263926
+    },
+    {
+      "name": "unfrozen/s0072_clean_geometry_seed0",
+      "fuse_xc0": 43.11606216430664,
+      "single": 30.75458017985026,
+      "med_err": 0.007558147112528483
+    },
+    {
+      "name": "unfrozen/s0072_clean_geometry_seed0_means_normal",
+      "fuse_xc0": 45.69033432006836,
+      "single": 30.75458017985026,
+      "med_err": 0.0065819150768220425
+    },
+    {
+      "name": "unfrozen/s0072_geo_mild_geometry_seed0",
+      "fuse_xc0": 35.60114034016927,
+      "single": 30.75458017985026,
+      "med_err": 0.03172655093173186
+    },
+    {
+      "name": "unfrozen/s0072_geo_mild_geometry_seed0_means_normal",
+      "fuse_xc0": 36.55939483642578,
+      "single": 30.75458017985026,
+      "med_err": 0.029904977418482304
+    }
+  ]
+}

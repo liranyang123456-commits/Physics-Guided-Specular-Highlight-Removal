@@ -1,0 +1,10 @@
+{
+  "dataset": "SSHR",
+  "split": "test",
+  "n": 2000,
+  "checkpoint": "outputs/sshr_finetuned_strict/best.pt",
+  "ours_psnr": 30.707228071689606,
+  "ours_ssim": 0.9345576430857182,
+  "input_psnr": 29.55534709787369,
+  "input_ssim": 0.9329596734642982
+}

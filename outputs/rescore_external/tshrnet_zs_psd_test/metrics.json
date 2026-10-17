@@ -1,0 +1,11 @@
+{
+  "method": "tshrnet",
+  "dataset": "psd",
+  "split": "test",
+  "size": 256,
+  "checkpoint": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\baselines_ext\\TSHRNet\\checkpoints_mix_SSHR_SHIQ_PSD",
+  "n": 2060,
+  "psnr": 28.28417335528772,
+  "ssim": 0.9543444313470599,
+  "protocol": "local adapter GT; same PSNR/SSIM as Ours eval"
+}

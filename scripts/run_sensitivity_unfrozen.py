@@ -83,9 +83,17 @@ def gaussian_blur(x: torch.Tensor, sigma: float) -> torch.Tensor:
     return y[0]
 
 
+def object_mask(image: torch.Tensor, erode: int) -> torch.Tensor:
+    """Object pixels of an input image (any channel above 0.01), shrunk by ``erode`` pixels; shape (1, H, W)."""
+    m = (image.amax(0, keepdim=True) > 0.01).float()
+    if erode > 0:
+        m = 1 - torch.nn.functional.max_pool2d(1 - m.unsqueeze(0), 2 * erode + 1, stride=1, padding=erode)[0]
+    return m
+
+
 def train_world(pipeline, dataset, cfg, train_ids, device, unfreeze: str, geo_scale: float = 1.0,
                 light_lr: float = LIGHT_LR, geo_start: int = 0, blur0: float = 0.0,
-                geo_params: tuple[str, ...] = tuple(GEOMETRY_LR)) -> list[float]:
+                geo_params: tuple[str, ...] = tuple(GEOMETRY_LR), mask_erode: int = -1) -> list[float]:
     steps = int(cfg["steps"])
     scene = pipeline.scene
     groups = [{"params": scene.material_parameters(), "lr": float(cfg.get("scene_lr", 2e-3))}]
@@ -119,6 +127,11 @@ def train_world(pipeline, dataset, cfg, train_ids, device, unfreeze: str, geo_sc
             frame = dataset[frame_id]
             image = frame.image.to(device)
             output = pipeline(frame.camera.to(device), frame_id, image=image, refine=False)
+            if mask_erode >= 0:
+                m = object_mask(image, mask_erode)
+                output = dict(output)
+                output["render"] = dataclasses.replace(output["render"], full=output["render"].full * m)
+                image = image * m
             if sigma > 0.3:
                 output = dict(output)
                 output["render"] = dataclasses.replace(output["render"], full=gaussian_blur(output["render"].full, sigma))
@@ -202,6 +215,12 @@ def main() -> None:
                              "(the albedo-free recipe of the main results); point_cloud: positions from the point cloud of the scene")
     parser.add_argument("--steps", type=int, default=0, help="override the number of steps (0 = recipe)")
     parser.add_argument("--scene", default="0070", help="benchmark scene (reference field, data, and exact lighting)")
+    parser.add_argument("--no-specular", action="store_true",
+                        help="Lambertian field: every primitive is purely diffuse (energy budget fixed to w_d = 1), all else unchanged")
+    parser.add_argument("--data-root", default="", help="another rendering of the scene (same cameras and lights), e.g. the mismatch scenes")
+    parser.add_argument("--mask-erode", type=int, default=-1,
+                        help="photometric loss only on the object pixels of each input image (value above 0.01), shrunk by this many "
+                             "pixels; -1 (default) uses the whole image")
     parser.add_argument("--tag", default="")
     parser.add_argument("--out", default="outputs/v2/sensitivity_unfrozen")
     args = parser.parse_args()
@@ -220,6 +239,9 @@ def main() -> None:
         cfg.pop("gaussian_prior", None)
     if args.steps:
         cfg["steps"] = args.steps
+    if args.data_root:
+        cfg["data_root"] = args.data_root
+        cfg["n_gaussians"] = int(len(np.load(ROOT / args.data_root / cfg.get("gaussian_prior", "gaussian_brdf_gt.npz"))["position"]))
     dataset = load_dataset(cfg)
     holdout = list(reference["holdout_ids"])
     all_train = ARC_IDS.get(args.axis) or SPARSE_IDS.get(args.axis, list(reference["train_ids"]))
@@ -230,13 +252,18 @@ def main() -> None:
         val_ids, train_ids = [], list(all_train)
 
     pipeline = build_pipeline(dataset, cfg, device, train_ids)
+    if args.no_specular:
+        with torch.no_grad():
+            pipeline.scene.material_budget_logits[:, 0] = 12.0
+            pipeline.scene.material_budget_logits[:, 1:] = -30.0
+        pipeline.scene.material_budget_logits.requires_grad_(False)
     generator = torch.Generator().manual_seed(1000 + args.seed)
     apply_perturbation(pipeline, args.axis, generator)
     perturbed_light = (pipeline.frame_lighting.direction_raw.detach().clone(), pipeline.frame_lighting.log_intensity.detach().clone())
 
     start = time.time()
     history = train_world(pipeline, dataset, cfg, train_ids, device, args.unfreeze, args.geo_scale, args.light_lr,
-                          args.geo_start, args.blur, tuple(args.geo_params.split(",")))
+                          args.geo_start, args.blur, tuple(args.geo_params.split(",")), args.mask_erode)
     unseen = val_ids + holdout           # views whose lighting is not part of the optimization
     if args.unfreeze in ("lighting", "both"):
         fit_lighting_of_views(pipeline, dataset, unseen, device)
@@ -259,7 +286,8 @@ def main() -> None:
         }
         ref = pipeline.scene
         clean_means = clean["scene.means"].to(device)
-        summary["position_error_mean"] = float((ref.means - clean_means).norm(dim=-1).mean())
+        summary["position_error_mean"] = (float((ref.means - clean_means).norm(dim=-1).mean())
+                                          if clean_means.shape == ref.means.shape else None)
     summary.update({
         "axis": args.axis, "unfreeze": args.unfreeze, "seed": args.seed, "train_ids": train_ids, "val_ids": val_ids,
         "holdout_ids": holdout, "steps": int(cfg["steps"]), "geo_scale": args.geo_scale, "light_lr": args.light_lr,
@@ -277,7 +305,7 @@ def main() -> None:
         print(f"{key}: {summary[key]['psnr']:.2f} / {summary[key]['ssim']:.4f}", flush=True)
     print("fit_train", {k: round(v, 3) for k, v in summary["fit_train"].items()}, flush=True)
     print("fit_holdout", {k: round(v, 3) for k, v in summary["fit_holdout"].items()}, flush=True)
-    print("light err", summary["light_angle_error_deg"], "pos err", round(summary["position_error_mean"], 4), flush=True)
+    print("light err", summary["light_angle_error_deg"], "pos err", summary["position_error_mean"] and round(summary["position_error_mean"], 4), flush=True)
 
 
 if __name__ == "__main__":

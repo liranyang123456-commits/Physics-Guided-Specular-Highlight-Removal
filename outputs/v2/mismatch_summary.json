@@ -1,0 +1,551 @@
+{
+  "per_scene": {
+    "scene_0070": {
+      "ours": {
+        "full": 47.376885732014976,
+        "interior": 48.26321029663086,
+        "single_full": 30.279930114746094,
+        "single_interior": 27.6554692586263,
+        "fit_full": 62.44797897338867,
+        "fit_interior": 60.8704965379503
+      },
+      "mitsuba": {
+        "full": 17.52363459269206,
+        "interior": 16.343029340108234,
+        "single_full": 32.995187759399414,
+        "single_interior": 30.19508107503255,
+        "fit_full": 22.451171875,
+        "fit_interior": 29.226729075113933
+      },
+      "mitsuba_light": {
+        "full": 17.231884638468426,
+        "interior": 16.617422103881836,
+        "single_full": 32.995187759399414,
+        "single_interior": 30.19508107503255,
+        "fit_full": 22.668739530775284,
+        "fit_interior": 29.360408571031357
+      },
+      "mitsuba_broad": {
+        "full": 17.47291851043701,
+        "interior": 16.309062957763672,
+        "single_full": 26.98783302307129,
+        "single_interior": 24.20536168416341,
+        "fit_full": 22.532506306966145,
+        "fit_interior": 30.514596515231663
+      },
+      "smooth_ours": {
+        "full": 51.45550409952799,
+        "interior": 50.99789810180664,
+        "single_full": 32.946106592814125,
+        "single_interior": 30.32208315531413,
+        "fit_full": 62.52643754747179,
+        "fit_interior": 61.06279500325521
+      },
+      "smooth_mitsuba": {
+        "full": 18.872822443644207,
+        "interior": 18.339829126993816,
+        "single_full": 34.24530919392904,
+        "single_interior": 31.445863087972004,
+        "fit_full": 22.786671744452583,
+        "fit_interior": 34.57057571411133
+      },
+      "smooth_mitsuba_masked": {
+        "full": 20.731552124023438,
+        "interior": 23.094471613566082,
+        "single_full": 34.24530919392904,
+        "single_interior": 31.445863087972004,
+        "fit_full": 20.093102984958225,
+        "fit_interior": 34.11154153611925
+      }
+    },
+    "scene_0071": {
+      "ours": {
+        "full": 47.943450927734375,
+        "interior": 50.27384567260742,
+        "single_full": 30.774551391601562,
+        "single_interior": 28.424182891845703,
+        "fit_full": 61.37862904866537,
+        "fit_interior": 59.82629055447049
+      },
+      "mitsuba": {
+        "full": 16.69142214457194,
+        "interior": 15.926265080769857,
+        "single_full": 32.34308878580729,
+        "single_interior": 29.845221837361652,
+        "fit_full": 21.96152178446452,
+        "fit_interior": 27.52659755282932
+      },
+      "mitsuba_light": {
+        "full": 16.509501775105793,
+        "interior": 15.965936660766602,
+        "single_full": 32.34308878580729,
+        "single_interior": 29.845221837361652,
+        "fit_full": 22.032028198242188,
+        "fit_interior": 27.463843239678276
+      },
+      "mitsuba_broad": {
+        "full": 16.634241739908855,
+        "interior": 15.869132359822592,
+        "single_full": 27.55808703104655,
+        "single_interior": 25.08053461710612,
+        "fit_full": 22.108455657958984,
+        "fit_interior": 28.63142352634006
+      },
+      "smooth_ours": {
+        "full": 50.929978688557945,
+        "interior": 50.73469543457031,
+        "single_full": 34.29967498779297,
+        "single_interior": 31.949846903483074,
+        "fit_full": 61.63094626532661,
+        "fit_interior": 60.13586764865451
+      },
+      "smooth_mitsuba": {
+        "full": 18.02041753133138,
+        "interior": 17.76028315226237,
+        "single_full": 35.231728871663414,
+        "single_interior": 32.734310150146484,
+        "fit_full": 22.39105436537001,
+        "fit_interior": 32.47998597886827
+      },
+      "smooth_mitsuba_masked": {
+        "full": 19.766634623209637,
+        "interior": 21.436411539713543,
+        "single_full": 35.231728871663414,
+        "single_interior": 32.734310150146484,
+        "fit_full": 20.494709226820206,
+        "fit_interior": 31.94897397359212
+      }
+    },
+    "scene_0072": {
+      "ours": {
+        "full": 34.302407582600914,
+        "interior": 33.47673670450846,
+        "single_full": 29.860695521036785,
+        "single_interior": 28.475514729817707,
+        "fit_full": 60.88143115573459,
+        "fit_interior": 60.82927915785048
+      },
+      "mitsuba": {
+        "full": 10.95427385965983,
+        "interior": 10.440199216206869,
+        "single_full": 33.14582316080729,
+        "single_interior": 31.27894910176595,
+        "fit_full": 20.031100591023762,
+        "fit_interior": 25.951163397894966
+      },
+      "mitsuba_light": {
+        "full": 11.069421450297037,
+        "interior": 10.847880045572916,
+        "single_full": 33.14582316080729,
+        "single_interior": 31.27894910176595,
+        "fit_full": 20.739172405666775,
+        "fit_interior": 25.906047609117294
+      },
+      "mitsuba_broad": {
+        "full": 10.977152188618978,
+        "interior": 10.510069529215494,
+        "single_full": 26.127281188964844,
+        "single_interior": 24.284184137980144,
+        "fit_full": 19.987648010253906,
+        "fit_interior": 26.2079832288954
+      },
+      "smooth_ours": {
+        "full": 34.64577992757162,
+        "interior": 33.96796099344889,
+        "single_full": 31.04197120666504,
+        "single_interior": 29.657153447469074,
+        "fit_full": 61.04221513536241,
+        "fit_interior": 61.28642442491319
+      },
+      "smooth_mitsuba": {
+        "full": 11.402504285176596,
+        "interior": 11.175469080607096,
+        "single_full": 33.15265909830729,
+        "single_interior": 31.28625551859538,
+        "fit_full": 20.27073245578342,
+        "fit_interior": 28.26437102423774
+      }
+    },
+    "scene_0073": {
+      "ours": {
+        "full": 49.35653940836588,
+        "interior": 45.824972788492836,
+        "single_full": 31.43924077351888,
+        "single_interior": 26.293812433878582,
+        "fit_full": 62.82800165812174,
+        "fit_interior": 59.79593404134115
+      },
+      "mitsuba": {
+        "full": 17.777207374572754,
+        "interior": 13.80534807840983,
+        "single_full": 38.02548599243164,
+        "single_interior": 32.60334269205729,
+        "fit_full": 23.961247126261394,
+        "fit_interior": 25.884297688802082
+      },
+      "mitsuba_light": {
+        "full": 18.903301239013672,
+        "interior": 14.768869400024414,
+        "single_full": 38.02548599243164,
+        "single_interior": 32.60334269205729,
+        "fit_full": 24.90122519599067,
+        "fit_interior": 25.854465908474392
+      },
+      "mitsuba_broad": {
+        "full": 17.716283798217773,
+        "interior": 13.775906562805176,
+        "single_full": 28.2604923248291,
+        "single_interior": 22.818986256917317,
+        "fit_full": 23.97455808851454,
+        "fit_interior": 26.60492197672526
+      },
+      "smooth_ours": {
+        "full": 49.874802907307945,
+        "interior": 46.10883458455404,
+        "single_full": 33.27402687072754,
+        "single_interior": 28.13642120361328,
+        "fit_full": 62.614651150173614,
+        "fit_interior": 59.622810787624786
+      },
+      "smooth_mitsuba": {
+        "full": 17.952510833740234,
+        "interior": 14.076842625935873,
+        "single_full": 37.30752182006836,
+        "single_interior": 31.900409698486328,
+        "fit_full": 24.102202521430122,
+        "fit_interior": 26.459259245130752
+      }
+    },
+    "scene_0074": {
+      "ours": {
+        "full": 43.91340001424154,
+        "interior": 47.83821360270182,
+        "single_full": 34.366555531819664,
+        "single_interior": 32.94485092163086,
+        "fit_full": 60.644951290554474,
+        "fit_interior": 60.13029352823893
+      },
+      "mitsuba": {
+        "full": 16.093678792317707,
+        "interior": 16.09410794576009,
+        "single_full": 35.99224853515625,
+        "single_interior": 34.39873377482096,
+        "fit_full": 21.113725874159073,
+        "fit_interior": 29.27132013108995
+      },
+      "mitsuba_light": {
+        "full": 15.734540939331055,
+        "interior": 16.031487147013348,
+        "single_full": 35.99224853515625,
+        "single_interior": 34.39873377482096,
+        "fit_full": 21.32792303297255,
+        "fit_interior": 29.120356877644856
+      },
+      "smooth_ours": {
+        "full": 44.80700174967448,
+        "interior": 46.6629638671875,
+        "single_full": 33.02083396911621,
+        "single_interior": 31.596831639607746,
+        "fit_full": 61.481455908881294,
+        "fit_interior": 61.04237620035807
+      },
+      "smooth_mitsuba": {
+        "full": 17.873305638631184,
+        "interior": 18.807356516520183,
+        "single_full": 32.95644887288412,
+        "single_interior": 31.358082453409832,
+        "fit_full": 21.390871471828884,
+        "fit_interior": 37.210426330566406
+      }
+    },
+    "scene_0075": {
+      "ours": {
+        "full": 40.87915293375651,
+        "interior": 41.05713399251302,
+        "single_full": 33.040650049845375,
+        "single_interior": 30.62084897359212,
+        "fit_full": 62.10460450914171,
+        "fit_interior": 60.830645667182075
+      },
+      "mitsuba": {
+        "full": 18.493953704833984,
+        "interior": 17.983170827229817,
+        "single_full": 35.31985600789388,
+        "single_interior": 32.72808519999186,
+        "fit_full": 23.179917017618816,
+        "fit_interior": 29.201929728190105
+      },
+      "mitsuba_light": {
+        "full": 18.377749760945637,
+        "interior": 18.326961517333984,
+        "single_full": 35.31985600789388,
+        "single_interior": 32.72808519999186,
+        "fit_full": 24.00442780388726,
+        "fit_interior": 29.340201483832466
+      },
+      "smooth_ours": {
+        "full": 41.17681439717611,
+        "interior": 41.334784189860024,
+        "single_full": 32.23500061035156,
+        "single_interior": 29.813645044962566,
+        "fit_full": 62.33704969618056,
+        "fit_interior": 60.9240854051378
+      },
+      "smooth_mitsuba": {
+        "full": 19.500802993774414,
+        "interior": 19.340295155843098,
+        "single_full": 34.676657358805336,
+        "single_interior": 32.081129709879555,
+        "fit_full": 23.478226131863064,
+        "fit_interior": 32.83339097764757
+      }
+    },
+    "scene_0076": {
+      "ours": {
+        "full": 41.051456451416016,
+        "interior": 40.04604721069336,
+        "single_full": 30.61627705891927,
+        "single_interior": 28.383429209391277,
+        "fit_full": 61.218458811442055,
+        "fit_interior": 60.20041275024414
+      },
+      "mitsuba": {
+        "full": 14.954519589742025,
+        "interior": 13.557379404703775,
+        "single_full": 32.155504862467446,
+        "single_interior": 29.325628916422527,
+        "fit_full": 20.365750630696613,
+        "fit_interior": 25.790877236260307
+      },
+      "mitsuba_light": {
+        "full": 15.181071599324545,
+        "interior": 13.828508377075195,
+        "single_full": 32.155504862467446,
+        "single_interior": 29.325628916422527,
+        "fit_full": 21.712874518500435,
+        "fit_interior": 25.671435885959202
+      },
+      "smooth_ours": {
+        "full": 42.944007873535156,
+        "interior": 41.49866231282552,
+        "single_full": 32.078470865885414,
+        "single_interior": 29.84547487894694,
+        "fit_full": 61.22909927368164,
+        "fit_interior": 60.211704678005646
+      },
+      "smooth_mitsuba": {
+        "full": 15.524282455444336,
+        "interior": 14.540947278340658,
+        "single_full": 33.05897521972656,
+        "single_interior": 30.2300968170166,
+        "fit_full": 20.456426832411026,
+        "fit_interior": 28.192599402533638
+      }
+    },
+    "scene_0077": {
+      "ours": {
+        "full": 42.40340932210287,
+        "interior": 38.53477668762207,
+        "single_full": 30.490749994913738,
+        "single_interior": 26.193958282470703,
+        "fit_full": 63.27736706203885,
+        "fit_interior": 59.76957533094618
+      },
+      "mitsuba": {
+        "full": 18.811792373657227,
+        "interior": 16.80478795369466,
+        "single_full": 36.1739616394043,
+        "single_interior": 31.610148747762043,
+        "fit_full": 23.258377499050564,
+        "fit_interior": 26.50705083211263
+      },
+      "mitsuba_light": {
+        "full": 19.230197270711262,
+        "interior": 17.201345443725586,
+        "single_full": 36.1739616394043,
+        "single_interior": 31.610148747762043,
+        "fit_full": 24.351406309339737,
+        "fit_interior": 27.25454330444336
+      },
+      "smooth_ours": {
+        "full": 43.84365590413412,
+        "interior": 39.919317881266274,
+        "single_full": 33.53930981953939,
+        "single_interior": 29.246503194173176,
+        "fit_full": 63.41586176554362,
+        "fit_interior": 59.9972652859158
+      },
+      "smooth_mitsuba": {
+        "full": 19.151255925496418,
+        "interior": 17.484765370686848,
+        "single_full": 38.345497131347656,
+        "single_interior": 33.7845770517985,
+        "fit_full": 23.31821123758952,
+        "fit_interior": 27.430815802680122
+      }
+    },
+    "scene_0078": {
+      "ours": {
+        "full": 49.89408620198568,
+        "interior": 51.954219818115234,
+        "single_full": 31.407129923502605,
+        "single_interior": 28.73552958170573,
+        "fit_full": 62.39114507039388,
+        "fit_interior": 60.625330183241104
+      },
+      "mitsuba": {
+        "full": 16.98795286814372,
+        "interior": 15.736348470052084,
+        "single_full": 36.550191243489586,
+        "single_interior": 33.695051193237305,
+        "fit_full": 22.327157550387913,
+        "fit_interior": 27.572374131944443
+      },
+      "mitsuba_light": {
+        "full": 16.86179796854655,
+        "interior": 15.999597549438477,
+        "single_full": 36.550191243489586,
+        "single_interior": 33.695051193237305,
+        "fit_full": 22.59003363715278,
+        "fit_interior": 27.60993003845215
+      },
+      "smooth_ours": {
+        "full": 52.570788065592446,
+        "interior": 52.66012954711914,
+        "single_full": 31.84893862406413,
+        "single_interior": 29.177078247070312,
+        "fit_full": 62.6788444519043,
+        "fit_interior": 60.924806382921005
+      },
+      "smooth_mitsuba": {
+        "full": 18.09532101949056,
+        "interior": 17.38268280029297,
+        "single_full": 36.17658487955729,
+        "single_interior": 33.3198610941569,
+        "fit_full": 22.594808366563583,
+        "fit_interior": 30.68618329366048
+      }
+    },
+    "scene_0079": {
+      "ours": {
+        "full": 44.90408706665039,
+        "interior": 49.53109868367513,
+        "single_full": 33.92562484741211,
+        "single_interior": 31.615784962972004,
+        "fit_full": 61.06030951605903,
+        "fit_interior": 59.46925523546007
+      },
+      "mitsuba": {
+        "full": 17.322101593017578,
+        "interior": 16.558698654174805,
+        "single_full": 35.356075286865234,
+        "single_interior": 32.908756256103516,
+        "fit_full": 22.594941669040256,
+        "fit_interior": 29.28928099738227
+      },
+      "mitsuba_light": {
+        "full": 17.061175028483074,
+        "interior": 16.665335655212402,
+        "single_full": 35.356075286865234,
+        "single_interior": 32.908756256103516,
+        "fit_full": 22.539324654473198,
+        "fit_interior": 29.49408107333713
+      },
+      "smooth_ours": {
+        "full": 45.48159535725912,
+        "interior": 47.31636174519857,
+        "single_full": 33.50812021891276,
+        "single_interior": 31.197398503621418,
+        "fit_full": 61.48185348510742,
+        "fit_interior": 60.026686350504555
+      },
+      "smooth_mitsuba": {
+        "full": 19.060256958007812,
+        "interior": 19.19918441772461,
+        "single_full": 36.88986078898112,
+        "single_interior": 34.44268226623535,
+        "fit_full": 23.001153310139973,
+        "fit_interior": 35.98391448126899
+      }
+    }
+  },
+  "summary": {
+    "ours": {
+      "full": 44.202487564086915,
+      "interior": 44.68002554575602,
+      "single_full": 31.62014052073161,
+      "single_interior": 28.934338124593097,
+      "fit_full": 61.82328770955404,
+      "fit_interior": 60.234751298692494,
+      "n": 10,
+      "interior_min": 33.47673670450846,
+      "interior_max": 51.954219818115234
+    },
+    "mitsuba": {
+      "full": 16.56105368932088,
+      "interior": 15.324933497111001,
+      "single_full": 34.80574232737223,
+      "single_interior": 31.858899879455567,
+      "fit_full": 22.12449116177029,
+      "fit_interior": 27.622162077162,
+      "n": 10,
+      "interior_min": 10.440199216206869,
+      "interior_max": 17.983170827229817
+    },
+    "mitsuba_light": {
+      "full": 16.616064167022703,
+      "interior": 15.625334390004477,
+      "single_full": 34.80574232737223,
+      "single_interior": 31.858899879455567,
+      "fit_full": 22.686715528700084,
+      "fit_interior": 27.70753139919705,
+      "n": 10,
+      "interior_min": 10.847880045572916,
+      "interior_max": 18.326961517333984
+    },
+    "mitsuba_broad": {
+      "full": 15.700149059295656,
+      "interior": 14.116042852401733,
+      "single_full": 27.233423391977947,
+      "single_interior": 24.097266674041748,
+      "fit_full": 22.150792015923393,
+      "fit_interior": 27.9897313117981,
+      "n": 4,
+      "interior_min": 10.510069529215494,
+      "interior_max": 16.309062957763672
+    },
+    "smooth_ours": {
+      "full": 45.77299289703369,
+      "interior": 45.12016086578369,
+      "single_full": 32.779245376586914,
+      "single_interior": 30.094243621826166,
+      "fit_full": 62.04384146796333,
+      "fit_interior": 60.52348221672905,
+      "n": 10,
+      "interior_min": 33.96796099344889,
+      "interior_max": 52.66012954711914
+    },
+    "smooth_mitsuba": {
+      "full": 17.545348008473717,
+      "interior": 16.810765552520753,
+      "single_full": 35.20412432352702,
+      "single_interior": 32.25832678476969,
+      "fit_full": 22.37903584374322,
+      "fit_interior": 31.411152225070527,
+      "n": 10,
+      "interior_min": 11.175469080607096,
+      "interior_max": 19.340295155843098
+    },
+    "smooth_mitsuba_masked": {
+      "full": 20.24909337361654,
+      "interior": 22.265441576639812,
+      "single_full": 34.738519032796226,
+      "single_interior": 32.09008661905924,
+      "fit_full": 20.293906105889214,
+      "fit_interior": 33.03025775485568,
+      "n": 2,
+      "interior_min": 21.436411539713543,
+      "interior_max": 23.094471613566082
+    }
+  }
+}

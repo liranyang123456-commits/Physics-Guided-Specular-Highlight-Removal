@@ -1,0 +1,10 @@
+{
+  "dataset": "PSD",
+  "split": "ft_test",
+  "n": 420,
+  "checkpoint": "outputs/shiq_mask/best.pt",
+  "ours_psnr": 25.7022362777165,
+  "ours_ssim": 0.9348899971871149,
+  "input_psnr": 27.755022453126454,
+  "input_ssim": 0.96231313872905
+}

@@ -11,7 +11,7 @@ from torch.utils.data import Dataset
 from ..types import Batch
 
 # mvbrdf_shr/mvbrdf_shr/data/ → repo root
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _DEFAULT_SHIQ = _REPO_ROOT / "data" / "raw" / "SHIQ_extracted"
 _DEFAULT_SSHR = _REPO_ROOT / "data" / "raw" / "SSHR_extracted"
 _DEFAULT_NSH = _REPO_ROOT / "data" / "raw" / "NSH_extracted"
@@ -247,10 +247,21 @@ class SSHRAdapter(Dataset):
                     if len(parts) < 3:
                         continue
                     prefix = base.parent if parts[0].startswith("SSHR/") else base
-                    image = prefix / parts[0]
-                    specular = prefix / parts[1]
-                    target_index = 3 if tone_corrected and len(parts) > 3 else 2
-                    diffuse = prefix / parts[target_index]
+                    # Column order differs between the list files (4-tuple:
+                    # i r d d_tc; 7-tuple: i a s r d d_tc m), so select by suffix.
+                    by_suffix = {}
+                    for part in parts:
+                        stem = part.rsplit(".", 1)[0]
+                        for suffix in ("_d_tc", "_i", "_a", "_s", "_r", "_d", "_m"):
+                            if stem.endswith(suffix):
+                                by_suffix.setdefault(suffix, part)
+                                break
+                    target = by_suffix.get("_d_tc" if tone_corrected else "_d") or by_suffix.get("_d")
+                    if "_i" not in by_suffix or "_r" not in by_suffix or target is None:
+                        continue
+                    image = prefix / by_suffix["_i"]
+                    specular = prefix / by_suffix["_r"]
+                    diffuse = prefix / target
                     # trust_list skips per-file exists() checks (117k x 2 stat
                     # calls on mounted Windows drives take ~4 min). The official
                     # list files reference only valid files, so this is safe and

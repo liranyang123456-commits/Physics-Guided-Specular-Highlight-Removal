@@ -1,0 +1,479 @@
+{
+  "method": "per-Gaussian smallest ratio of observation to shading over the training views; given geometry and lighting",
+  "per_scene": {
+    "scene_0070": {
+      "share_gaussians_seen": 0.8645833730697632,
+      "mean_views_per_gaussian": 1.9765625,
+      "share_saturated_input_obs": 0.6205533742904663,
+      "share_saturated_diffuse_obs": 0.6166008114814758,
+      "min_ratio": {
+        "psnr": 19.21978187561035,
+        "ssim": 0.8067419727643331
+      },
+      "median": {
+        "psnr": 19.37681516011556,
+        "ssim": 0.802899956703186
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 19.170455932617188,
+        "ssim": 0.8102134664853414
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.791696548461914,
+        "ssim": 0.8478678266207377
+      }
+    },
+    "scene_0071": {
+      "share_gaussians_seen": 0.828125,
+      "mean_views_per_gaussian": 2.0833334922790527,
+      "share_saturated_input_obs": 0.6575000286102295,
+      "share_saturated_diffuse_obs": 0.6524999737739563,
+      "min_ratio": {
+        "psnr": 19.693151473999023,
+        "ssim": 0.8306087454160055
+      },
+      "median": {
+        "psnr": 20.203081766764324,
+        "ssim": 0.8298678795496622
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 19.639307022094727,
+        "ssim": 0.8344326615333557
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.4828364054362,
+        "ssim": 0.8514710664749146
+      }
+    },
+    "scene_0072": {
+      "share_gaussians_seen": 0.6875,
+      "mean_views_per_gaussian": 1.2161458730697632,
+      "share_saturated_input_obs": 0.6723768711090088,
+      "share_saturated_diffuse_obs": 0.6638115644454956,
+      "min_ratio": {
+        "psnr": 16.69780921936035,
+        "ssim": 0.744668702284495
+      },
+      "median": {
+        "psnr": 16.701316197713215,
+        "ssim": 0.7447348237037659
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 16.6825745900472,
+        "ssim": 0.7491823037465414
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.69307518005371,
+        "ssim": 0.863657017548879
+      }
+    },
+    "scene_0073": {
+      "share_gaussians_seen": 0.5208333730697632,
+      "mean_views_per_gaussian": 1.1536458730697632,
+      "share_saturated_input_obs": 0.4943566620349884,
+      "share_saturated_diffuse_obs": 0.4898419976234436,
+      "min_ratio": {
+        "psnr": 19.805225372314453,
+        "ssim": 0.8804384271303812
+      },
+      "median": {
+        "psnr": 20.35870933532715,
+        "ssim": 0.882482647895813
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 19.81871223449707,
+        "ssim": 0.8822746674219767
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.855035146077473,
+        "ssim": 0.9035471479098002
+      }
+    },
+    "scene_0074": {
+      "share_gaussians_seen": 0.8125,
+      "mean_views_per_gaussian": 1.8541667461395264,
+      "share_saturated_input_obs": 0.6797752976417542,
+      "share_saturated_diffuse_obs": 0.6741573214530945,
+      "min_ratio": {
+        "psnr": 18.519733428955078,
+        "ssim": 0.7830005089441935
+      },
+      "median": {
+        "psnr": 18.644049326578777,
+        "ssim": 0.7738123734792074
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 18.427762985229492,
+        "ssim": 0.7891032298405966
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.483348846435547,
+        "ssim": 0.832436720530192
+      }
+    },
+    "scene_0075": {
+      "share_gaussians_seen": 0.796875,
+      "mean_views_per_gaussian": 1.6015625,
+      "share_saturated_input_obs": 0.6487804651260376,
+      "share_saturated_diffuse_obs": 0.642276406288147,
+      "min_ratio": {
+        "psnr": 19.803341547648113,
+        "ssim": 0.8034489750862122
+      },
+      "median": {
+        "psnr": 19.932580312093098,
+        "ssim": 0.8067588210105896
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 19.793734868367512,
+        "ssim": 0.8097014625867208
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 23.087291717529297,
+        "ssim": 0.854732354482015
+      }
+    },
+    "scene_0076": {
+      "share_gaussians_seen": 0.75,
+      "mean_views_per_gaussian": 1.3958333730697632,
+      "share_saturated_input_obs": 0.5951492786407471,
+      "share_saturated_diffuse_obs": 0.5876865386962891,
+      "min_ratio": {
+        "psnr": 18.478770573933918,
+        "ssim": 0.8289481004079183
+      },
+      "median": {
+        "psnr": 18.636873881022137,
+        "ssim": 0.8313491344451904
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 18.429888407389324,
+        "ssim": 0.8311466375986735
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.207882563273113,
+        "ssim": 0.851267675558726
+      }
+    },
+    "scene_0077": {
+      "share_gaussians_seen": 0.4635416865348816,
+      "mean_views_per_gaussian": 0.9765625,
+      "share_saturated_input_obs": 0.5493333339691162,
+      "share_saturated_diffuse_obs": 0.5226666927337646,
+      "min_ratio": {
+        "psnr": 21.059369405110676,
+        "ssim": 0.8751548528671265
+      },
+      "median": {
+        "psnr": 21.25463612874349,
+        "ssim": 0.8727628389994303
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 20.93602180480957,
+        "ssim": 0.8751574357350668
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.925289154052734,
+        "ssim": 0.8913310170173645
+      }
+    },
+    "scene_0078": {
+      "share_gaussians_seen": 0.8541666865348816,
+      "mean_views_per_gaussian": 1.9765625,
+      "share_saturated_input_obs": 0.5968379378318787,
+      "share_saturated_diffuse_obs": 0.5862977504730225,
+      "min_ratio": {
+        "psnr": 18.914700826009113,
+        "ssim": 0.7918954888979594
+      },
+      "median": {
+        "psnr": 19.01781463623047,
+        "ssim": 0.7836031715075175
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 18.838626225789387,
+        "ssim": 0.7937159339586893
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.72150484720866,
+        "ssim": 0.8396761814753214
+      }
+    },
+    "scene_0079": {
+      "share_gaussians_seen": 0.7786458730697632,
+      "mean_views_per_gaussian": 2.0494792461395264,
+      "share_saturated_input_obs": 0.5514612197875977,
+      "share_saturated_diffuse_obs": 0.5438373684883118,
+      "min_ratio": {
+        "psnr": 20.478665669759113,
+        "ssim": 0.8378597100575765
+      },
+      "median": {
+        "psnr": 21.120690027872723,
+        "ssim": 0.8447617689768473
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 20.40808359781901,
+        "ssim": 0.8425074021021525
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.705232620239258,
+        "ssim": 0.8648818532625834
+      }
+    },
+    "scene_0080": {
+      "share_gaussians_seen": 0.7630208730697632,
+      "mean_views_per_gaussian": 1.5130208730697632,
+      "share_saturated_input_obs": 0.6488812565803528,
+      "share_saturated_diffuse_obs": 0.6471600532531738,
+      "min_ratio": {
+        "psnr": 18.858383178710938,
+        "ssim": 0.8040069142977396
+      },
+      "median": {
+        "psnr": 18.924758275349934,
+        "ssim": 0.8060694932937622
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 18.83421230316162,
+        "ssim": 0.8069278200467428
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.955658594767254,
+        "ssim": 0.8539973100026449
+      }
+    },
+    "scene_0081": {
+      "share_gaussians_seen": 0.5390625,
+      "mean_views_per_gaussian": 1.0234375,
+      "share_saturated_input_obs": 0.6081424951553345,
+      "share_saturated_diffuse_obs": 0.5954198241233826,
+      "min_ratio": {
+        "psnr": 21.055156707763672,
+        "ssim": 0.8830148975054423
+      },
+      "median": {
+        "psnr": 21.06099001566569,
+        "ssim": 0.8818746010462443
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 20.92329279581706,
+        "ssim": 0.8831475377082825
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 22.583742141723633,
+        "ssim": 0.9021504124005636
+      }
+    },
+    "scene_0082": {
+      "share_gaussians_seen": 0.8463541865348816,
+      "mean_views_per_gaussian": 1.9010417461395264,
+      "share_saturated_input_obs": 0.6301369667053223,
+      "share_saturated_diffuse_obs": 0.6219177842140198,
+      "min_ratio": {
+        "psnr": 17.95971934000651,
+        "ssim": 0.7935720086097717
+      },
+      "median": {
+        "psnr": 18.072642644246418,
+        "ssim": 0.7892762819925944
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 17.853670756022137,
+        "ssim": 0.8050809701283773
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 19.98810386657715,
+        "ssim": 0.8397930860519409
+      }
+    },
+    "scene_0083": {
+      "share_gaussians_seen": 0.7734375,
+      "mean_views_per_gaussian": 1.4244792461395264,
+      "share_saturated_input_obs": 0.5082266926765442,
+      "share_saturated_diffuse_obs": 0.4972577691078186,
+      "min_ratio": {
+        "psnr": 17.660288492838543,
+        "ssim": 0.7959250211715698
+      },
+      "median": {
+        "psnr": 17.668277740478516,
+        "ssim": 0.7964200576146444
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 17.639333089192707,
+        "ssim": 0.7975093324979147
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.024798075358074,
+        "ssim": 0.8529794613520304
+      }
+    },
+    "scene_0084": {
+      "share_gaussians_seen": 0.8125,
+      "mean_views_per_gaussian": 1.75,
+      "share_saturated_input_obs": 0.3452380895614624,
+      "share_saturated_diffuse_obs": 0.3333333432674408,
+      "min_ratio": {
+        "psnr": 22.763870239257812,
+        "ssim": 0.8662724693616232
+      },
+      "median": {
+        "psnr": 23.086751302083332,
+        "ssim": 0.873726487159729
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 22.73419761657715,
+        "ssim": 0.8694192171096802
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 23.79094123840332,
+        "ssim": 0.888855775197347
+      }
+    },
+    "scene_0085": {
+      "share_gaussians_seen": 0.5052083730697632,
+      "mean_views_per_gaussian": 1.0677083730697632,
+      "share_saturated_input_obs": 0.5195121765136719,
+      "share_saturated_diffuse_obs": 0.504878044128418,
+      "min_ratio": {
+        "psnr": 20.377684275309246,
+        "ssim": 0.8747729261716207
+      },
+      "median": {
+        "psnr": 20.616820017496746,
+        "ssim": 0.8798404733339945
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 20.327847162882488,
+        "ssim": 0.8731085658073425
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 21.926525751749676,
+        "ssim": 0.8880920807520548
+      }
+    },
+    "scene_0086": {
+      "share_gaussians_seen": 0.7916666865348816,
+      "mean_views_per_gaussian": 1.7421875,
+      "share_saturated_input_obs": 0.6472346782684326,
+      "share_saturated_diffuse_obs": 0.6397608518600464,
+      "min_ratio": {
+        "psnr": 16.897422154744465,
+        "ssim": 0.7581434845924377
+      },
+      "median": {
+        "psnr": 17.003716786702473,
+        "ssim": 0.7560463746388754
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 16.867950121561687,
+        "ssim": 0.7598982453346252
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 19.71847152709961,
+        "ssim": 0.8328273892402649
+      }
+    },
+    "scene_0087": {
+      "share_gaussians_seen": 0.8177083730697632,
+      "mean_views_per_gaussian": 1.8932292461395264,
+      "share_saturated_input_obs": 0.5777166485786438,
+      "share_saturated_diffuse_obs": 0.5708390474319458,
+      "min_ratio": {
+        "psnr": 18.14662806193034,
+        "ssim": 0.7572981913884481
+      },
+      "median": {
+        "psnr": 18.273749033610027,
+        "ssim": 0.7541139721870422
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 18.0784912109375,
+        "ssim": 0.763521134853363
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 19.3468500773112,
+        "ssim": 0.8037453095118204
+      }
+    },
+    "scene_0088": {
+      "share_gaussians_seen": 0.7421875,
+      "mean_views_per_gaussian": 1.5598958730697632,
+      "share_saturated_input_obs": 0.6878130435943604,
+      "share_saturated_diffuse_obs": 0.6744574308395386,
+      "min_ratio": {
+        "psnr": 17.196617762247723,
+        "ssim": 0.7965384324391683
+      },
+      "median": {
+        "psnr": 17.256685574849445,
+        "ssim": 0.7901419401168823
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 17.176353454589844,
+        "ssim": 0.8022587696711222
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 20.60516357421875,
+        "ssim": 0.8676641782124838
+      }
+    },
+    "scene_0089": {
+      "share_gaussians_seen": 0.4947916865348816,
+      "mean_views_per_gaussian": 0.9010416865348816,
+      "share_saturated_input_obs": 0.5231214165687561,
+      "share_saturated_diffuse_obs": 0.5173410177230835,
+      "min_ratio": {
+        "psnr": 21.083380381266277,
+        "ssim": 0.8954517245292664
+      },
+      "median": {
+        "psnr": 21.089110056559246,
+        "ssim": 0.8944245179494222
+      },
+      "ceiling_from_diffuse_gt": {
+        "psnr": 21.039113998413086,
+        "ssim": 0.8979191184043884
+      },
+      "min_ratio_with_heldout": {
+        "psnr": 23.828189849853516,
+        "ssim": 0.9185465574264526
+      }
+    }
+  },
+  "summary": {
+    "ten_min_ratio": 19.26705493927002,
+    "ten_min_ratio_ssim": 0.8182765483856201,
+    "ten_min_ratio_min": 16.69780921936035,
+    "ten_min_ratio_max": 21.059369405110676,
+    "ten_median": 19.524656677246092,
+    "ten_median_ssim": 0.8173033416271209,
+    "ten_median_min": 16.701316197713215,
+    "ten_median_max": 21.25463612874349,
+    "ten_min_ratio_with_heldout": 21.29531930287679,
+    "ten_min_ratio_with_heldout_ssim": 0.8600868860880533,
+    "ten_min_ratio_with_heldout_min": 20.4828364054362,
+    "ten_min_ratio_with_heldout_max": 23.087291717529297,
+    "ten_ceiling_from_diffuse_gt": 19.214516766866048,
+    "ten_ceiling_from_diffuse_gt_ssim": 0.8217435201009116,
+    "ten_ceiling_from_diffuse_gt_min": 16.6825745900472,
+    "ten_ceiling_from_diffuse_gt_max": 20.93602180480957,
+    "unused_min_ratio": 19.19991505940755,
+    "unused_min_ratio_ssim": 0.8224996070067088,
+    "unused_min_ratio_min": 16.897422154744465,
+    "unused_min_ratio_max": 22.763870239257812,
+    "unused_median": 19.30535014470418,
+    "unused_median_ssim": 0.8221934199333191,
+    "unused_median_min": 17.003716786702473,
+    "unused_median_max": 23.086751302083332,
+    "unused_min_ratio_with_heldout": 21.37684446970622,
+    "unused_min_ratio_with_heldout_ssim": 0.8648651560147602,
+    "unused_min_ratio_with_heldout_min": 19.3468500773112,
+    "unused_min_ratio_with_heldout_max": 23.828189849853516,
+    "unused_ceiling_from_diffuse_gt": 19.14744625091553,
+    "unused_ceiling_from_diffuse_gt_ssim": 0.825879071156184,
+    "unused_ceiling_from_diffuse_gt_min": 16.867950121561687,
+    "unused_ceiling_from_diffuse_gt_max": 22.73419761657715
+  }
+}
