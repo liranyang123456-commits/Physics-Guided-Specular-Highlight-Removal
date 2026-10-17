@@ -1,0 +1,93 @@
+{
+ "name": "ms_ssim_0071",
+ "args": {
+  "name": "ms_ssim_0071",
+  "config": "configs/world/v2/benchmark_scene_0071_v2.yaml",
+  "set": [
+   "steps=600"
+  ],
+  "loss": [
+   "photo_ssim=0.2"
+  ],
+  "seed": 0,
+  "perturb": "",
+  "eval_every": 600
+ },
+ "config": {
+  "data_type": "blender",
+  "data_root": "data/world_benchmark_v2/scenes/test/scene_0071",
+  "transforms": "transforms.json",
+  "image_scale": 1.0,
+  "n_gaussians": 384,
+  "gaussian_init": "geometry",
+  "gaussian_prior": "gaussian_brdf_gt.npz",
+  "freeze_geometry": true,
+  "point_color_weight": 0.0,
+  "initial_albedo": 0.25,
+  "lighting_mode": "sh",
+  "freeze_lighting": true,
+  "use_refiner": false,
+  "chunk_size": 32,
+  "raster_backend": "gsplat",
+  "holdout_stride": 4,
+  "holdout_offset": 0,
+  "steps": 600,
+  "views_per_step": 3,
+  "refine_start": 1500,
+  "scene_lr": 0.03,
+  "light_lr": 0.0,
+  "log_every": 100,
+  "output_dir": "outputs/v2/world_scene_0071",
+  "loss": {
+   "photo_l1": 1.0,
+   "photo_ssim": 0.0,
+   "diffuse_gt": 0.0,
+   "refine_gt": 0.0,
+   "specular_gt": 0.0,
+   "energy": 0.1,
+   "material_smooth": 0.01,
+   "normal_axis": 0.0,
+   "scale": 0.0,
+   "opacity_sparse": 0.0,
+   "texture_consistency": 0.01
+  }
+ },
+ "loss": {
+  "photo_l1": 1.0,
+  "photo_ssim": 0.2,
+  "diffuse_gt": 0.0,
+  "refine_gt": 0.0,
+  "specular_gt": 0.0,
+  "energy": 0.1,
+  "material_smooth": 0.01,
+  "normal_axis": 0.0,
+  "scale": 0.0,
+  "opacity_sparse": 0.0,
+  "texture_consistency": 0.01
+ },
+ "minutes": 1.3744511564572652,
+ "curve": [
+  {
+   "step": 0,
+   "train": {
+    "diffuse_psnr": 10.406256034582743,
+    "full_psnr": 10.563616590469328
+   },
+   "holdout": {
+    "diffuse_psnr": 10.780134098016925,
+    "full_psnr": 10.938673916724454
+   }
+  },
+  {
+   "step": 600,
+   "train": {
+    "diffuse_psnr": 10.445845498709746,
+    "full_psnr": 10.471659471274881
+   },
+   "holdout": {
+    "diffuse_psnr": 9.993734334698933,
+    "full_psnr": 10.010846977290084
+   }
+  }
+ ]
+}

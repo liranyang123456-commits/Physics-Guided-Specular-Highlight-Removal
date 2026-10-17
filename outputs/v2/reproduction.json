@@ -1,0 +1,118 @@
+{
+ "procedure": "git clone of the public repository (commit f2058a6); python scripts/generate_world_benchmark.py --out data/world_benchmark_v2; python scripts/make_v2_configs.py --steps 1500; python scripts/run_v2_world.py --scenes 70; python scripts/eval_world_split_v2.py",
+ "regenerated_scenes": {
+  "scene_0070": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0071": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0072": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0073": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0074": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0075": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0076": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0077": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0078": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  },
+  "scene_0079": {
+   "images_compared": 36,
+   "max_abs_pixel_difference": 0,
+   "transforms_identical": true,
+   "gaussian_prior_max_difference": 0.0
+  }
+ },
+ "scene_0070_shipped": {
+  "train": {
+   "diffuse_psnr": 57.034932454427086,
+   "full_psnr": 58.23919253879123,
+   "per_view_diffuse_psnr": [
+    55.745689392089844,
+    57.005767822265625,
+    56.93084716796875,
+    57.85821533203125,
+    57.824039459228516,
+    57.88904571533203,
+    55.93812942504883,
+    57.050933837890625,
+    57.07172393798828
+   ]
+  },
+  "holdout": {
+   "diffuse_psnr": 56.51271438598633,
+   "full_psnr": 27.14803187052409,
+   "per_view_diffuse_psnr": [
+    56.05422592163086,
+    56.886138916015625,
+    56.5977783203125
+   ]
+  }
+ },
+ "scene_0070_regenerated": {
+  "train": {
+   "diffuse_psnr": 57.126305474175346,
+   "full_psnr": 58.25907304551866,
+   "per_view_diffuse_psnr": [
+    56.02314758300781,
+    57.03108215332031,
+    56.99121856689453,
+    57.99686813354492,
+    58.01252365112305,
+    57.98202896118164,
+    55.872379302978516,
+    57.04887390136719,
+    57.178627014160156
+   ]
+  },
+  "holdout": {
+   "diffuse_psnr": 56.53673553466797,
+   "full_psnr": 27.3242982228597,
+   "per_view_diffuse_psnr": [
+    56.07769775390625,
+    56.943016052246094,
+    56.58949279785156
+   ]
+  }
+ },
+ "holdout_diffuse_psnr_difference": 0.024021148681640625
+}

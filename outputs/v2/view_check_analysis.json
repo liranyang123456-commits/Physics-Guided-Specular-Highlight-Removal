@@ -1,0 +1,97 @@
+{
+ "theta": 0.03374,
+ "tau_db": 40.0,
+ "n": 119,
+ "groups": {
+  "all fields": {
+   "n": 119,
+   "mean_output_psnr": {
+    "always": 44.553856414239284,
+    "train": 46.20706153249874,
+    "view": 46.20988636390836,
+    "both": 46.20706153249874,
+    "oracle": 46.37491836868414
+   },
+   "false_accepts": {
+    "always": 40,
+    "train": 6,
+    "view": 7,
+    "both": 6
+   },
+   "false_rejects": {
+    "train": 2,
+    "view": 0,
+    "both": 2
+   }
+  },
+  "scene_0070 (calibration)": {
+   "n": 57,
+   "mean_output_psnr": {
+    "always": 41.864336995353476,
+    "train": 43.87869977672198,
+    "view": 43.884597231770115,
+    "both": 43.87869977672198,
+    "oracle": 43.92149937501427
+   },
+   "false_accepts": {
+    "always": 23,
+    "train": 1,
+    "view": 2,
+    "both": 1
+   },
+   "false_rejects": {
+    "train": 2,
+    "view": 0,
+    "both": 2
+   }
+  },
+  "other scenes (not calibrated)": {
+   "n": 62,
+   "mean_output_psnr": {
+    "always": 47.02647910579558,
+    "train": 48.34765217893867,
+    "view": 48.34765217893867,
+    "both": 48.34765217893867,
+    "oracle": 48.63048099189676
+   },
+   "false_accepts": {
+    "always": 17,
+    "train": 5,
+    "view": 5,
+    "both": 5
+   },
+   "false_rejects": {
+    "train": 0,
+    "view": 0,
+    "both": 0
+   }
+  },
+  "fields with fusion < single": {
+   "n": 40,
+   "mean_output_psnr": {
+    "always": 32.10695722897848,
+    "train": 37.08200457890828,
+    "view": 37.03364632924398,
+    "both": 37.08200457890828,
+    "oracle": 37.52461654345194
+   },
+   "false_accepts": {
+    "always": 40,
+    "train": 6,
+    "view": 7,
+    "both": 6
+   },
+   "false_rejects": {
+    "train": 0,
+    "view": 0,
+    "both": 0
+   }
+  }
+ },
+ "fusion_gate": "fuse_xc0",
+ "spearman_med_phys": 0.9777666999002992,
+ "spearman_trainfit_phys": 0.8467241133741633,
+ "auc_med": 0.984493670886076,
+ "auc_fit": 0.9658227848101266,
+ "n_fusion_worse": 40
+}
