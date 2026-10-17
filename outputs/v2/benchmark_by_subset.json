@@ -1,0 +1,134 @@
+{
+  "input": {
+    "method": "input (no removal)",
+    "test": {
+      "n": 240,
+      "psnr": 35.73124392763073,
+      "ssim": 0.9770715383191904
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 25.985641460766292,
+      "ssim": 0.9569562335316473
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 45.64063803259371,
+      "ssim": 0.997524915456104
+    }
+  },
+  "ours_ft": {
+    "test": {
+      "n": 240,
+      "psnr": 36.411166289616496,
+      "ssim": 0.9827606486777465
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 30.463247403388774,
+      "ssim": 0.9702224990881507
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 42.45905019914216,
+      "ssim": 0.9955095234705285
+    },
+    "non_hard_frames_below_input": 75,
+    "hard_frames_below_input": 3
+  },
+  "dhan_ft": {
+    "test": {
+      "n": 240,
+      "psnr": 36.542401302889175,
+      "ssim": 0.9846771195530891
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 31.12903558562692,
+      "ssim": 0.97353024423615
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 42.046747956576006,
+      "ssim": 0.9960113373123297
+    },
+    "non_hard_frames_below_input": 73,
+    "hard_frames_below_input": 2
+  },
+  "tshr_ft": {
+    "test": {
+      "n": 240,
+      "psnr": 35.539378017261136,
+      "ssim": 0.9793319881790213
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 30.44508199520366,
+      "ssim": 0.967212719365585
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 40.71929245985737,
+      "ssim": 0.9916549421825998
+    },
+    "non_hard_frames_below_input": 85,
+    "hard_frames_below_input": 1
+  },
+  "ours_zs": {
+    "test": {
+      "n": 240,
+      "psnr": 15.971206054820476,
+      "ssim": 0.77918885147406
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 15.28251525242735,
+      "ssim": 0.7517029269503497
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 16.67147149254794,
+      "ssim": 0.8071367243090932
+    },
+    "non_hard_frames_below_input": 119,
+    "hard_frames_below_input": 119
+  },
+  "dhan_zs": {
+    "test": {
+      "n": 240,
+      "psnr": 25.171380639453044,
+      "ssim": 0.9282036900520325
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 22.658751976071393,
+      "ssim": 0.9099145981562696
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 27.726238356000774,
+      "ssim": 0.9468001616435225
+    },
+    "non_hard_frames_below_input": 118,
+    "hard_frames_below_input": 81
+  },
+  "tshr_zs": {
+    "test": {
+      "n": 240,
+      "psnr": 19.005591982342203,
+      "ssim": 0.8283119917743735
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 18.379173864037078,
+      "ssim": 0.8051634407897297
+    },
+    "non_hard": {
+      "n": 119,
+      "psnr": 19.642538136249097,
+      "ssim": 0.8518495940360702
+    },
+    "non_hard_frames_below_input": 119,
+    "hard_frames_below_input": 112
+  }
+}

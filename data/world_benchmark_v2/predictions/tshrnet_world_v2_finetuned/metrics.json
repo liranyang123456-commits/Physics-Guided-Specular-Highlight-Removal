@@ -2,13 +2,26 @@
   "method": "tshrnet_world_v2_finetuned",
   "test": {
     "n": 240,
-    "psnr": 35.784406602221985,
-    "ssim": 0.9799665552046565
+    "psnr": 35.539378017261136,
+    "ssim": 0.9793319881790213
   },
   "hard_test": {
     "n": 121,
-    "psnr": 30.444498252081743,
-    "ssim": 0.9677329377037763
+    "psnr": 30.44508199520366,
+    "ssim": 0.967212719365585
   },
-  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\tshrnet_world_v2_finetuned"
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\tshrnet_world_v2_finetuned",
+  "float_outputs": {
+    "test": {
+      "n": 240,
+      "psnr": 35.784406602221985,
+      "ssim": 0.9799665552046565
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 30.444498252081743,
+      "ssim": 0.9677329377037763
+    }
+  },
+  "scoring": "saved 8-bit predictions (scripts/rescore_saved_predictions.py), as every other row of Table 3"
 }

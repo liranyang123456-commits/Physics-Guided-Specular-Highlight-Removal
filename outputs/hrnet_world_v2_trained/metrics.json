@@ -14,13 +14,13 @@
   },
   "test": {
     "n": 240,
-    "psnr": 9.714110513800401,
-    "ssim": 0.6118078112543621
+    "psnr": 9.705306591132933,
+    "ssim": 0.612672849298906
   },
   "hard_test": {
     "n": 121,
-    "psnr": 8.901487118772783,
-    "ssim": 0.5895850803904632
+    "psnr": 8.89332993891726,
+    "ssim": 0.5846263419586772
   },
   "history": [
     {
@@ -101,5 +101,18 @@
       "ssim": 0.6135765708660983
     }
   ],
-  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\hrnet_world_v2_trained"
+  "prediction_dir": "F:\\SpecularReflectionRemoving\\mvbrdf_shr\\data\\world_benchmark_v2\\predictions\\hrnet_world_v2_trained",
+  "float_outputs": {
+    "test": {
+      "n": 240,
+      "psnr": 9.714110513800401,
+      "ssim": 0.6118078112543621
+    },
+    "hard_test": {
+      "n": 121,
+      "psnr": 8.901487118772783,
+      "ssim": 0.5895850803904632
+    }
+  },
+  "scoring": "saved 8-bit predictions (scripts/rescore_saved_predictions.py), as every other row of Table 3"
 }
