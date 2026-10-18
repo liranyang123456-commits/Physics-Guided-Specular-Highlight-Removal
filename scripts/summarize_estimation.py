@@ -76,6 +76,38 @@ def scene70_rows() -> list[dict]:
     return rows
 
 
+SEED_SPEC = {
+    # key: (given folder, given stem, {variant of Table estimate: stem}); "{s}" is the seed
+    "lighting": ((FROZEN, "light_seed{s}"), {"lighting": "light_lighting_seed{s}"}),
+    "positions": ((UNF, "geo_pos_none_seed{s}"), {"positions": "geo_pos_geometry_seed{s}_means", "all geometry": "geo_pos_geometry_seed{s}_all"}),
+    "normals": ((UNF, "geo_nrm_none_seed{s}"), {"normals": "geo_nrm_geometry_seed{s}_normal", "all geometry": "geo_nrm_geometry_seed{s}_all"}),
+    "geo_mild": ((FROZEN, "geo_mild_seed{s}"), {"positions+normals": "geo_mild_geometry_seed{s}_means_normal",
+                                               "all geometry": "geo_mild_geometry_seed{s}"}),
+    "geo_severe": ((FROZEN, "geo_severe_seed{s}"), {"positions+normals": "geo_severe_geometry_seed{s}_means_normal",
+                                                   "all geometry": "geo_severe_geometry_seed{s}"}),
+    "drop25": ((FROZEN, "drop25_seed{s}"), {"opacity": "drop25_geometry_seed{s}_opacity", "all geometry": "drop25_geometry_seed{s}"}),
+    "drop50": ((FROZEN, "drop50_seed{s}"), {"opacity": "drop50_geometry_seed{s}_opacity", "all geometry": "drop50_geometry_seed{s}"}),
+    "geolight": ((UNF, "geolight_none_seed{s}"), {"lighting+positions+normals": "geolight_both_seed{s}_means_normal",
+                                                 "lighting+all geometry": "geolight_both_seed{s}"}),
+    "exact": ((FROZEN, "clean_seed{s}"), {"lighting": "clean_lighting_seed{s}", "positions+normals": "clean_geometry_seed{s}_means_normal",
+                                          "all geometry": "clean_geometry_seed{s}"}),
+}
+
+
+def scene70_seeds(seeds=(0, 1, 2)) -> dict:
+    """Seeds 0-2 of every entry of Table estimate (they differ in perturbation noise and view order), with the min-max range."""
+    out = {}
+    for key, ((folder, given), est) in SEED_SPEC.items():
+        runs = {"given": [load(folder, given.format(s=s)) for s in seeds]}
+        runs.update({name: [load(UNF, stem.format(s=s)) for s in seeds] for name, stem in est.items()})
+        out[key] = {name: {"runs": r, "complete": all(x is not None for x in r),
+                           **({"phys_min": min(x["phys"] for x in r), "phys_max": max(x["phys"] for x in r),
+                               "fuse_min": min(x["fuse"] for x in r), "fuse_max": max(x["fuse"] for x in r)}
+                              if all(x is not None for x in r) else {})}
+                    for name, r in runs.items()}
+    return out
+
+
 def lighting_ten(suffix: str = "_af") -> dict:
     """suffix "_af": albedo initialized to 0.25 as in the main results (--init geometry); "": exact albedo at initialization."""
     per = []
@@ -137,11 +169,8 @@ def held_out() -> list[dict]:
 
 
 def main() -> None:
-    summary = {"scene_0070": scene70_rows(), "lighting_ten": lighting_ten("_af"), "lighting_ten_exact_albedo": lighting_ten(""),
-               "geometry": geometry_scenes(), "held_out": held_out(),
-               "seed1": {"light_given": load(UNF, "light_none_seed1"), "light_estimated": load(UNF, "light_lighting_seed1"),
-                         "geo_mild_given": load(UNF, "geo_mild_none_seed1"),
-                         "geo_mild_estimated": load(UNF, "geo_mild_geometry_seed1_means_normal")}}
+    summary = {"scene_0070": scene70_rows(), "scene_0070_seeds": scene70_seeds(), "lighting_ten": lighting_ten("_af"),
+               "lighting_ten_exact_albedo": lighting_ten(""), "geometry": geometry_scenes(), "held_out": held_out()}
     vc = V2 / "view_check_analysis.json"
     if vc.exists():
         summary["view_check"] = json.loads(vc.read_text(encoding="utf-8"))
@@ -154,6 +183,10 @@ def main() -> None:
     for row in summary["scene_0070"]:
         est = "  ".join(f"{k}: {fmt(v)}" for k, v in row["estimated"].items())
         print(f"  {row['key']:11s} {fmt(row['given'])} | {est}")
+    print("\nscene_0070, physical branch over seeds 0-2 (min-max)")
+    for key, entry in summary["scene_0070_seeds"].items():
+        print(f"  {key:11s} " + "  ".join(f"{name}: " + (f"{v['phys_min']:5.2f}-{v['phys_max']:5.2f}" if v["complete"] else "incomplete")
+                                          for name, v in entry.items()))
     li = summary["lighting_ten"]
     print(f"\nlighting, {li['n_complete']} complete scenes: frozen phys {li.get('frozen_phys_mean', float('nan')):.2f}, "
           f"estimated phys {li.get('estimated_phys_mean', float('nan')):.2f} (fuse {li.get('estimated_fuse_mean', float('nan')):.2f}, "
