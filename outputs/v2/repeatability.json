@@ -1,0 +1,99 @@
+{
+ "groups": {
+  "fixed": {
+   "settings": [
+    {
+     "label": "clean, exact priors, seed 0",
+     "values": [
+      56.81759516398112,
+      56.826619466145836,
+      56.82102584838867
+     ],
+     "spread": 0.009024302164718279
+    },
+    {
+     "label": "reflectance control, scene_0070",
+     "values": [
+      56.510626475016274,
+      56.46905008951823
+     ],
+     "spread": 0.041576385498046875
+    },
+    {
+     "label": "sheen, scene_0070",
+     "values": [
+      25.156347274780273,
+      25.137360254923504
+     ],
+     "spread": 0.01898701985676965
+    },
+    {
+     "label": "wrapped diffuse, scene_0070",
+     "values": [
+      26.13626988728841,
+      26.128590901692707
+     ],
+     "spread": 0.007678985595703125
+    },
+    {
+     "label": "anisotropic, extended model, scene_0070",
+     "values": [
+      53.63955434163412,
+      53.590675354003906
+     ],
+     "spread": 0.0488789876302107
+    }
+   ],
+   "max_spread": 0.0488789876302107,
+   "n_settings": 5
+  },
+  "estimated": {
+   "settings": [
+    {
+     "label": "lighting estimated, seed 1",
+     "values": [
+      53.253662109375,
+      54.14781824747721,
+      54.47712707519531,
+      53.8919
+     ],
+     "spread": 1.2234649658203125
+    },
+    {
+     "label": "mild geometry, positions and normals free, seed 1",
+     "values": [
+      34.05352020263672,
+      33.37482515970866,
+      34.204355239868164,
+      34.3196
+     ],
+     "spread": 0.9447748402913447
+    },
+    {
+     "label": "mild geometry, all views and normal prior, seed 0",
+     "values": [
+      42.30976231892904,
+      42.74469121297201,
+      42.65679423014323
+     ],
+     "spread": 0.43492889404296875
+    }
+   ],
+   "max_spread": 1.2234649658203125,
+   "n_settings": 3
+  }
+ },
+ "reevaluation": {
+  "fields": {
+   "none_none_seed0_mat_control": 0.0,
+   "s0072_none_none_seed0_mat_oren": 0.0,
+   "none_none_seed0_mat_wrap_ext": 0.0,
+   "s0074_none_none_seed0_mat_sheen_ext": 0.0,
+   "geo_mild_geometry_seed0_imp": 0.0,
+   "s0073_clean_geometry_seed0_imp": 0.0,
+   "geo_nrm_geometry_seed2_imp": 0.0,
+   "light_lighting_seed2": 0.0
+  },
+  "max_difference": 0.0
+ }
+}

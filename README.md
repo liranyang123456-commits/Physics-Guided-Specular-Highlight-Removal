@@ -161,6 +161,11 @@ The training-view fit check (Section 3.7) is `mvbrdf_shr/world/fit_check.py`; un
   files, so the target was the specular residue.  The adapter now selects the columns by file suffix.  The SSHR numbers of the
   paper were computed before this regression and are reproduced by the fixed adapter (released DHAN-SHR 35.74 dB, TSHRNet
   34.10 dB on the first 2,000 test images; `outputs/v2/external_ft_summary.json`, `sshr_zero_shot_check`).
+- **Repeatability.** Repeated runs are not bit-identical, because the rasterizer accumulates gradients in parallel.  With the
+  geometry and lighting fixed, repeated runs differ by at most 0.05 dB; runs that estimate the geometry or the lighting differ
+  by up to 1.22 dB, about as much as runs with different seeds.  Re-evaluating saved fields reproduces their metric files
+  exactly.  `python scripts/check_repeatability.py --reevaluate` (repeated runs in `outputs/v2/repeat/`, written by the
+  original commands with `--out outputs/v2/repeat --tag rep<k>`).
 - **PSD test pairs.** The PSD archive contains 2,060 test pairs (206 groups of ten usable views).  The first submission
   evaluated 1,803 of them; the revision uses all 2,060, and our branch was fine-tuned again on the group split of all pairs
   (`outputs/psd_finetuned_current`; scores in `outputs/rescore_external/`).
