@@ -108,6 +108,61 @@ def scene70_seeds(seeds=(0, 1, 2)) -> dict:
     return out
 
 
+IMPROVED = {   # all nine views per step, positions and normals free, local-plane normal prior decayed to 0 at 60% (tag imp)
+    "positions": "geo_pos_geometry_seed{s}_imp", "normals": "geo_nrm_geometry_seed{s}_imp", "geo_mild": "geo_mild_geometry_seed{s}_imp",
+    "geo_severe": "geo_severe_geometry_seed{s}_imp", "geolight": "geolight_both_seed{s}_imp", "exact": "clean_geometry_seed{s}_imp",
+}
+
+
+def split_error(stem: str, scene: str = "0070") -> dict | None:
+    """Mean position error of a fitted field along the true normal and along the surface."""
+    import torch
+    p = UNF / f"{stem}.pt"
+    if not p.exists():
+        return None
+    clean = torch.load(ROOT / f"outputs/v2/world_scene_{scene}/last.pt", map_location="cpu", weights_only=False)["model"]
+    fitted = torch.load(p, map_location="cpu", weights_only=False)["model"]
+    d = fitted["scene.means"] - clean["scene.means"]
+    n0 = torch.nn.functional.normalize(clean["scene.normal_raw"], dim=-1)
+    radial = (d * n0).sum(-1)
+    return {"along_normal": float(radial.abs().mean()), "along_surface": float((d - radial[:, None] * n0).norm(dim=-1).mean())}
+
+
+def improved_geometry(seeds=(0, 1, 2)) -> dict:
+    out = {}
+    for key, stem in IMPROVED.items():
+        runs = []
+        for s in seeds:
+            r = load(UNF, stem.format(s=s))
+            if r is not None:
+                d = json.loads((UNF / f"{stem.format(s=s)}.json").read_text(encoding="utf-8"))
+                r.update(normal_error_deg=d.get("normal_error_deg"), position_error=d.get("position_error_mean"))
+            runs.append(r)
+        entry = {"runs": runs, "complete": all(r is not None for r in runs)}
+        if entry["complete"]:
+            entry.update(phys_min=min(r["phys"] for r in runs), phys_max=max(r["phys"] for r in runs),
+                         fuse_min=min(r["fuse"] for r in runs), fuse_max=max(r["fuse"] for r in runs),
+                         split_seed0=split_error(stem.format(s=0)))
+        out[key] = entry
+    scenes = {}
+    for n in (71, 72, 73):
+        scenes[str(n)] = {axis: {"improved": load(UNF, f"s00{n}_{axis}_geometry_seed0_imp"),
+                                 "targeted": load(UNF, f"s00{n}_{axis}_geometry_seed0_means_normal")} for axis in ("geo_mild", "clean")}
+        for axis in ("geo_mild", "clean"):
+            raw = json.loads((UNF / f"s00{n}_{axis}_geometry_seed0_imp.json").read_text(encoding="utf-8"))
+            scenes[str(n)][axis]["improved"]["normal_error_deg"] = raw.get("normal_error_deg")
+    out["scenes_0071_0073"] = scenes
+    all_views = {"0070_geo_mild": "geo_mild_geometry_seed0_v9", "0070_exact": "clean_geometry_seed0_v9"}   # all nine views per step, no prior
+    all_views.update({f"00{n}_{axis}": f"s00{n}_{axis}_geometry_seed0_v9" for n in (71, 72, 73) for axis in ("geo_mild", "clean")})
+    out["all_views"] = {k: r for k, s in all_views.items() if (r := load(UNF, s)) is not None}
+    diag = {"targeted": "geo_mild_geometry_seed0_means_normal", "all_views": "geo_mild_geometry_seed0_v9",
+            "all_views_prior": "geo_mild_geometry_seed0_v9_surfA", "materials_first": "geo_mild_geometry_seed0_v9_ms750",
+            "position_term": "geo_mild_geometry_seed0_surfB"}
+    out["diagnostics_mild"] = {k: {**(load(UNF, s) or {}), "position_error": json.loads((UNF / f"{s}.json").read_text(encoding="utf-8")).get("position_error_mean"),
+                                   "split": split_error(s)} for k, s in diag.items() if (UNF / f"{s}.json").exists()}
+    return out
+
+
 def lighting_ten(suffix: str = "_af") -> dict:
     """suffix "_af": albedo initialized to 0.25 as in the main results (--init geometry); "": exact albedo at initialization."""
     per = []
@@ -169,7 +224,7 @@ def held_out() -> list[dict]:
 
 
 def main() -> None:
-    summary = {"scene_0070": scene70_rows(), "scene_0070_seeds": scene70_seeds(), "lighting_ten": lighting_ten("_af"),
+    summary = {"scene_0070": scene70_rows(), "scene_0070_seeds": scene70_seeds(), "improved": improved_geometry(), "lighting_ten": lighting_ten("_af"),
                "lighting_ten_exact_albedo": lighting_ten(""), "geometry": geometry_scenes(), "held_out": held_out()}
     vc = V2 / "view_check_analysis.json"
     if vc.exists():

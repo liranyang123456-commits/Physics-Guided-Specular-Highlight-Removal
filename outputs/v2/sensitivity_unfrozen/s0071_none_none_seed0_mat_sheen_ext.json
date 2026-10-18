@@ -1,0 +1,123 @@
+{
+  "phys": {
+    "psnr": 33.282260258992515,
+    "ssim": 0.9901125828425089,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 31.02756690979004,
+        "ssim": 0.9856390953063965
+      },
+      {
+        "frame": 4,
+        "psnr": 35.478816986083984,
+        "ssim": 0.9934490919113159
+      },
+      {
+        "frame": 8,
+        "psnr": 33.340396881103516,
+        "ssim": 0.9912495613098145
+      }
+    ]
+  },
+  "fuse": {
+    "psnr": 30.172900517781574,
+    "ssim": 0.9794390002886454,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 29.367752075195312,
+        "ssim": 0.9768103361129761
+      },
+      {
+        "frame": 4,
+        "psnr": 31.24765396118164,
+        "ssim": 0.982373833656311
+      },
+      {
+        "frame": 8,
+        "psnr": 29.903295516967773,
+        "ssim": 0.9791328310966492
+      }
+    ]
+  },
+  "single": {
+    "psnr": 24.200724283854168,
+    "ssim": 0.9420750538508097,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 21.96776580810547,
+        "ssim": 0.9158188700675964
+      },
+      {
+        "frame": 4,
+        "psnr": 26.423534393310547,
+        "ssim": 0.9638137817382812
+      },
+      {
+        "frame": 8,
+        "psnr": 24.210872650146484,
+        "ssim": 0.9465925097465515
+      }
+    ]
+  },
+  "gate_mean": 0.46625181039174396,
+  "fit_train": {
+    "full_psnr": 54.82631598578559,
+    "med_err": 0.0009388457660356329,
+    "p90_err": 0.0022964421401007306,
+    "diffuse_psnr": 33.501338958740234,
+    "n_views": 9
+  },
+  "fit_holdout": {
+    "full_psnr": 32.21660804748535,
+    "med_err": 0.004540018116434415,
+    "p90_err": 0.029454744110504787,
+    "diffuse_psnr": 33.282260258992515,
+    "n_views": 3
+  },
+  "light_angle_error_deg": {
+    "train": 0.0,
+    "unseen": 0.0
+  },
+  "light_log_intensity_error": {
+    "train": 0.0,
+    "unseen": 0.0
+  },
+  "position_error_mean": 0.0,
+  "normal_error_deg": 0.0,
+  "axis": "none",
+  "unfreeze": "none",
+  "seed": 0,
+  "train_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "val_ids": [],
+  "holdout_ids": [
+    0,
+    4,
+    8
+  ],
+  "steps": 1500,
+  "geo_scale": 1.0,
+  "light_lr": 0.01,
+  "geo_start": 0,
+  "blur": 0.0,
+  "geo_params": "means,log_scales,quaternions,normal_raw,opacity_logits",
+  "surf": null,
+  "views_per_step": 3,
+  "geo_eps": 1e-08,
+  "brdf_ext": "both",
+  "mat_start": 0,
+  "final_loss": 0.001188092011337479,
+  "minutes": 3.286738121509552
+}

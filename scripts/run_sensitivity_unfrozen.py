@@ -91,17 +91,123 @@ def object_mask(image: torch.Tensor, erode: int) -> torch.Tensor:
     return m
 
 
+def surface_regularizer(scene, k: int, spacing: float) -> tuple[torch.Tensor, torch.Tensor]:
+    """Local-plane prior of a surface: each normal agrees with the plane fitted to the k nearest centres (sign-free), and each
+    centre lies near that plane.  The plane is fitted without the Gaussian itself and is not differentiated."""
+    mu = scene.means
+    with torch.no_grad():
+        idx = torch.cdist(mu, mu).topk(k + 1, largest=False).indices[:, 1:]
+        nb = mu[idx]
+        c = nb.mean(dim=1)
+        centred = nb - c[:, None]
+        plane_normal = torch.linalg.eigh(centred.transpose(1, 2) @ centred / k).eigenvectors[:, :, 0]
+    l_normal = (1 - (scene.normals * plane_normal).sum(-1).abs()).mean()
+    l_plane = ((mu - c) * plane_normal).sum(-1).square().mean() / spacing ** 2
+    return l_normal, l_plane
+
+
+def install_brdf_extension(pipeline, kind: str) -> list[torch.nn.Parameter]:
+    """Extra reflectance terms, learned per Gaussian and initialized at the model of the method.
+
+    ``diffuse``  wrapped lighting max(0, (n.l + w) / (1 + w)) and an Oren-Nayar roughness sigma, both starting at 0 (Lambert)
+    ``specular`` an anisotropic base lobe (aspect exp(+-a) and tangent angle, starting isotropic; the tangent reference is the
+                 projected z axis), a second GGX lobe (F0 0.04, own weight and roughness), and a Charlie sheen lobe, the last two
+                 starting at weight 0
+    ``both``     both of the above
+    The diffuse render of the field is the generalized diffuse lobe."""
+    import types
+
+    import torch.nn.functional as Fn
+    from mvbrdf_shr.models.envlight import sh_to_irradiance
+    from mvbrdf_shr.world import renderer as wr
+
+    scene = pipeline.scene
+    n, dev = scene.n_gaussians, scene.means.device
+    init = {}
+    if kind in ("diffuse", "both"):
+        init.update(ext_wrap=-6.0, ext_oren=-6.0)
+    if kind in ("specular", "both"):
+        init.update(ext_aniso=0.0, ext_tangent=0.0, ext_lobe2_weight=-6.0, ext_lobe2_rough=-1.4, ext_sheen=-6.0)
+    for name, value in init.items():
+        scene.register_parameter(name, torch.nn.Parameter(torch.full((n, 1), value, device=dev)))
+
+    def shade(self, scene, materials, camera, light):
+        nrm = scene.normals
+        view = Fn.normalize(camera.center.view(1, 3) - scene.means, dim=-1)
+        directional = Fn.normalize(light.direction, dim=-1).view(1, 3).expand_as(nrm)
+        point_vector = light.position.view(1, 3) - scene.means
+        point_distance = point_vector.norm(dim=-1, keepdim=True).clamp(min=0.1)
+        pw = light.point_weight.view(1, 1)
+        direction = Fn.normalize(directional * (1 - pw) + (point_vector / point_distance) * pw, dim=-1)
+        cos_l = (nrm * direction).sum(-1, keepdim=True)
+        n_dot_l = cos_l.clamp(min=0)
+        n_dot_v = (nrm * view).sum(-1, keepdim=True).clamp(min=1e-4)
+        irradiance = sh_to_irradiance(nrm.T.unsqueeze(0).unsqueeze(-1), light.env_sh.unsqueeze(0))[0, :, :, 0].T
+        radiance = light.color.view(1, 3) * light.intensity.view(1, 1) * ((1 - pw) + pw / point_distance.square())
+        direct = radiance * n_dot_l
+        if hasattr(scene, "ext_wrap"):
+            w = torch.sigmoid(scene.ext_wrap)
+            s2 = torch.sigmoid(scene.ext_oren).square()
+            a, b = 1 - 0.5 * s2 / (s2 + 0.33), 0.45 * s2 / (s2 + 0.09)
+            theta_i, theta_o = torch.acos(n_dot_l.clamp(0, 1 - 1e-6)), torch.acos(n_dot_v.clamp(0, 1 - 1e-6))
+            lt, vt = direction - cos_l * nrm, view - (nrm * view).sum(-1, keepdim=True) * nrm
+            cos_phi = ((lt * vt).sum(-1, keepdim=True) / (lt.norm(dim=-1, keepdim=True) * vt.norm(dim=-1, keepdim=True) + 1e-6)).clamp(min=0)
+            oren = a + b * cos_phi * torch.sin(torch.maximum(theta_i, theta_o)) * torch.tan(torch.minimum(theta_i, theta_o)).clamp(max=10.0)
+            diffuse = materials.albedo / wr._PI * (irradiance + radiance * oren * ((cos_l + w) / (1 + w)).clamp(min=0))
+        else:
+            diffuse = materials.albedo / wr._PI * (irradiance + direct)
+        half = Fn.normalize(direction + view, dim=-1)
+        n_dot_h = (nrm * half).sum(-1, keepdim=True).clamp(min=0)
+        h_dot_v = (half * view).sum(-1, keepdim=True).clamp(min=0)
+        alpha = materials.roughness.square()
+        g_term = wr._smith_g1(n_dot_l, alpha) * wr._smith_g1(n_dot_v, alpha)
+        f0 = 0.04 * (1 - materials.metalness) + materials.albedo * materials.metalness
+        if hasattr(scene, "ext_aniso"):
+            ref = torch.zeros_like(nrm)
+            ref[:, 2] = 1
+            alt = torch.zeros_like(nrm)
+            alt[:, 0] = 1
+            ref = torch.where((nrm * ref).sum(-1, keepdim=True).abs() > 0.95, alt, ref)
+            t0 = Fn.normalize(ref - (nrm * ref).sum(-1, keepdim=True) * nrm, dim=-1)
+            b0 = torch.cross(nrm, t0, dim=-1)
+            t = torch.cos(scene.ext_tangent) * t0 + torch.sin(scene.ext_tangent) * b0
+            bt = torch.cross(nrm, t, dim=-1)
+            ax, ay = alpha * torch.exp(scene.ext_aniso), alpha * torch.exp(-scene.ext_aniso)
+            d_term = 1.0 / (wr._PI * ax * ay * (((half * t).sum(-1, keepdim=True) / ax).square()
+                                                  + ((half * bt).sum(-1, keepdim=True) / ay).square() + n_dot_h.square()).square() + wr._EPS)
+        else:
+            d_term = wr._ggx_d(n_dot_h, alpha)
+        specular = (materials.specular * d_term * g_term * wr._schlick_fresnel(h_dot_v, f0)
+                    / (4 * n_dot_l * n_dot_v + wr._EPS) * direct)
+        if hasattr(scene, "ext_lobe2_weight"):
+            a2 = (0.04 + 0.96 * torch.sigmoid(scene.ext_lobe2_rough)).square()
+            g2 = wr._smith_g1(n_dot_l, a2) * wr._smith_g1(n_dot_v, a2)
+            f2 = wr._schlick_fresnel(h_dot_v, torch.full_like(a2, 0.04))
+            specular = specular + torch.sigmoid(scene.ext_lobe2_weight) * wr._ggx_d(n_dot_h, a2) * g2 * f2 / (4 * n_dot_l * n_dot_v + wr._EPS) * direct
+            sin2 = (1 - n_dot_h.square()).clamp(min=0)
+            d_sheen = (2 + 1 / 0.5) * sin2.pow(1.0) / (2 * wr._PI)
+            v_sheen = 1.0 / (4 * (n_dot_l + n_dot_v - n_dot_l * n_dot_v) + wr._EPS)
+            specular = specular + 0.2 * torch.sigmoid(scene.ext_sheen) * d_sheen * v_sheen * direct
+        return diffuse, specular
+
+    pipeline.renderer._shade_sh = types.MethodType(shade, pipeline.renderer)
+    return [getattr(scene, name) for name in init]
+
+
 def train_world(pipeline, dataset, cfg, train_ids, device, unfreeze: str, geo_scale: float = 1.0,
                 light_lr: float = LIGHT_LR, geo_start: int = 0, blur0: float = 0.0,
-                geo_params: tuple[str, ...] = tuple(GEOMETRY_LR), mask_erode: int = -1) -> list[float]:
+                geo_params: tuple[str, ...] = tuple(GEOMETRY_LR), mask_erode: int = -1,
+                surf: dict | None = None, geo_eps: float = 1e-8, extra_material: list | None = None,
+                mat_start: int = 0) -> list[float]:
     steps = int(cfg["steps"])
     scene = pipeline.scene
-    groups = [{"params": scene.material_parameters(), "lr": float(cfg.get("scene_lr", 2e-3))}]
+    groups = [{"params": scene.material_parameters() + list(extra_material or []), "lr": float(cfg.get("scene_lr", 2e-3))}]
+    material_group = 0                   # the materials stay frozen for ``mat_start`` initial steps
     delayed = [False]                    # whether the group is a geometry group that starts after ``geo_start`` steps
     if unfreeze in ("geometry", "both"):
         for name, lr in GEOMETRY_LR.items():
             if name in geo_params:
-                groups.append({"params": [getattr(scene, name)], "lr": lr * geo_scale})
+                groups.append({"params": [getattr(scene, name)], "lr": lr * geo_scale, "eps": geo_eps})
                 delayed.append(True)
     if unfreeze in ("lighting", "both"):
         fl = pipeline.frame_lighting
@@ -113,7 +219,8 @@ def train_world(pipeline, dataset, cfg, train_ids, device, unfreeze: str, geo_sc
         return 0.5 * (1 + math.cos(math.pi * step / steps))
 
     scheduler = torch.optim.lr_scheduler.LambdaLR(
-        optimizer, [(lambda step, d=d: cosine(step) * (0.0 if (d and step < geo_start) else 1.0)) for d in delayed])
+        optimizer, [(lambda step, d=d, i=i: cosine(step) * (0.0 if (d and step < geo_start) or (i == material_group and step < mat_start) else 1.0))
+                    for i, d in enumerate(delayed)])
     weights = WorldLossWeights(**cfg.get("loss", {}))
     views_per_step = min(int(cfg.get("views_per_step", 1)), len(train_ids))
     pipeline.train()
@@ -140,6 +247,10 @@ def train_world(pipeline, dataset, cfg, train_ids, device, unfreeze: str, geo_sc
                 loss, _ = world_total_loss(output, image, scene, weights=weights)
             (loss / views_per_step).backward()
             total += float(loss) / views_per_step
+        decay = max(0.0, 1.0 - step / (surf["decay"] * steps)) if surf and surf.get("decay") else 1.0
+        if surf and unfreeze in ("geometry", "both") and decay > 0:
+            l_normal, l_plane = surface_regularizer(scene, surf["k"], surf["spacing"])
+            (decay * (surf["normal"] * l_normal + surf["plane"] * l_plane)).backward()
         torch.nn.utils.clip_grad_norm_(pipeline.parameters(), 5.0)
         optimizer.step()
         scheduler.step()
@@ -208,6 +319,7 @@ def main() -> None:
     parser.add_argument("--geo-scale", type=float, default=1.0, help="multiplier of the geometry learning rates")
     parser.add_argument("--light-lr", type=float, default=LIGHT_LR)
     parser.add_argument("--geo-start", type=int, default=0, help="geometry stays frozen for this many initial steps")
+    parser.add_argument("--mat-start", type=int, default=0, help="materials stay frozen for this many initial steps (geometry first)")
     parser.add_argument("--geo-params", default=",".join(GEOMETRY_LR), help="comma list of the geometry parameters that are optimized")
     parser.add_argument("--blur", type=float, default=0.0, help="initial sigma (px) of a blur on render and target, annealed to 0 at 70%% of the steps")
     parser.add_argument("--init", choices=("geometry_albedo", "geometry", "point_cloud"), default="geometry_albedo",
@@ -221,6 +333,17 @@ def main() -> None:
     parser.add_argument("--mask-erode", type=int, default=-1,
                         help="photometric loss only on the object pixels of each input image (value above 0.01), shrunk by this many "
                              "pixels; -1 (default) uses the whole image")
+    parser.add_argument("--surf-normal", type=float, default=0.0,
+                        help="weight of the local-plane normal term (normals agree with the plane of the k nearest centres)")
+    parser.add_argument("--surf-plane", type=float, default=0.0, help="weight of the local-plane position term (centres near that plane)")
+    parser.add_argument("--surf-k", type=int, default=8, help="neighbours of the local-plane prior")
+    parser.add_argument("--surf-decay", type=float, default=0.0,
+                        help="if > 0, the weight of the local-plane prior falls linearly to 0 at this fraction of the steps")
+    parser.add_argument("--views-per-step", type=int, default=0, help="training views per step (0 = recipe, 3)")
+    parser.add_argument("--brdf-ext", choices=("none", "diffuse", "specular", "both"), default="none",
+                        help="learned extra reflectance terms that start at the model of the method (see install_brdf_extension)")
+    parser.add_argument("--geo-eps", type=float, default=1e-8,
+                        help="Adam epsilon of the geometry parameters; a larger value makes the step proportional to small gradients")
     parser.add_argument("--tag", default="")
     parser.add_argument("--out", default="outputs/v2/sensitivity_unfrozen")
     args = parser.parse_args()
@@ -239,6 +362,8 @@ def main() -> None:
         cfg.pop("gaussian_prior", None)
     if args.steps:
         cfg["steps"] = args.steps
+    if args.views_per_step:
+        cfg["views_per_step"] = args.views_per_step
     if args.data_root:
         cfg["data_root"] = args.data_root
         cfg["n_gaussians"] = int(len(np.load(ROOT / args.data_root / cfg.get("gaussian_prior", "gaussian_brdf_gt.npz"))["position"]))
@@ -252,6 +377,7 @@ def main() -> None:
         val_ids, train_ids = [], list(all_train)
 
     pipeline = build_pipeline(dataset, cfg, device, train_ids)
+    extra_material = install_brdf_extension(pipeline, args.brdf_ext) if args.brdf_ext != "none" else []
     if args.no_specular:
         with torch.no_grad():
             pipeline.scene.material_budget_logits[:, 0] = 12.0
@@ -261,9 +387,16 @@ def main() -> None:
     apply_perturbation(pipeline, args.axis, generator)
     perturbed_light = (pipeline.frame_lighting.direction_raw.detach().clone(), pipeline.frame_lighting.log_intensity.detach().clone())
 
+    surf = None
+    if args.surf_normal > 0 or args.surf_plane > 0:
+        with torch.no_grad():
+            mu = pipeline.scene.means
+            spacing = float(torch.cdist(mu, mu).topk(2, largest=False).values[:, 1].median())
+        surf = {"normal": args.surf_normal, "plane": args.surf_plane, "k": args.surf_k, "spacing": spacing, "decay": args.surf_decay}
     start = time.time()
     history = train_world(pipeline, dataset, cfg, train_ids, device, args.unfreeze, args.geo_scale, args.light_lr,
-                          args.geo_start, args.blur, tuple(args.geo_params.split(",")), args.mask_erode)
+                          args.geo_start, args.blur, tuple(args.geo_params.split(",")), args.mask_erode, surf, args.geo_eps,
+                          extra_material, args.mat_start)
     unseen = val_ids + holdout           # views whose lighting is not part of the optimization
     if args.unfreeze in ("lighting", "both"):
         fit_lighting_of_views(pipeline, dataset, unseen, device)
@@ -288,10 +421,15 @@ def main() -> None:
         clean_means = clean["scene.means"].to(device)
         summary["position_error_mean"] = (float((ref.means - clean_means).norm(dim=-1).mean())
                                           if clean_means.shape == ref.means.shape else None)
+        clean_normals = torch.nn.functional.normalize(clean["scene.normal_raw"].to(device), dim=-1)
+        summary["normal_error_deg"] = (float(torch.rad2deg(torch.acos((ref.normals * clean_normals).sum(-1).clamp(-1, 1))).mean())
+                                       if clean_normals.shape == ref.normals.shape else None)
     summary.update({
         "axis": args.axis, "unfreeze": args.unfreeze, "seed": args.seed, "train_ids": train_ids, "val_ids": val_ids,
         "holdout_ids": holdout, "steps": int(cfg["steps"]), "geo_scale": args.geo_scale, "light_lr": args.light_lr,
-        "geo_start": args.geo_start, "blur": args.blur, "geo_params": args.geo_params,
+        "geo_start": args.geo_start, "blur": args.blur, "geo_params": args.geo_params, "surf": surf,
+        "views_per_step": int(cfg.get("views_per_step", 1)), "geo_eps": args.geo_eps, "brdf_ext": args.brdf_ext,
+        "mat_start": args.mat_start,
         "final_loss": history[-1], "minutes": (time.time() - start) / 60,
     })
     out_dir = ROOT / args.out
