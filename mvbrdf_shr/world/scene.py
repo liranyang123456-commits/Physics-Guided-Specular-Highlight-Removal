@@ -69,6 +69,7 @@ class GaussianBRDFField(nn.Module):
         colors = colors.to(device=device, dtype=dtype).clamp(1e-4, 1 - 1e-4)
 
         self.means = nn.Parameter(means.clone())
+        self._max_scale = max(1.0, float(initial_scale) * 15.0)
         self.log_scales = nn.Parameter(
             torch.full((n, 3), float(initial_scale), device=device, dtype=dtype).log()
         )
@@ -107,7 +108,7 @@ class GaussianBRDFField(nn.Module):
 
     @property
     def scales(self) -> torch.Tensor:
-        return self.log_scales.exp().clamp(1e-4, 1.0)
+        return self.log_scales.exp().clamp(1e-4, getattr(self, "_max_scale", 1.0))
 
     @property
     def rotations(self) -> torch.Tensor:

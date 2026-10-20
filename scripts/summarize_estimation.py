@@ -112,6 +112,12 @@ IMPROVED = {   # all nine views per step, positions and normals free, local-plan
     "positions": "geo_pos_geometry_seed{s}_imp", "normals": "geo_nrm_geometry_seed{s}_imp", "geo_mild": "geo_mild_geometry_seed{s}_imp",
     "geo_severe": "geo_severe_geometry_seed{s}_imp", "geolight": "geolight_both_seed{s}_imp", "exact": "clean_geometry_seed{s}_imp",
 }
+ADAPTIVE = {   # curvature-corrected neighbor-normal regression + planarity-gated plane prior (tag imp_ad), plus densification on drop25/50
+    "positions": "geo_pos_geometry_seed{s}_imp", "normals": "geo_nrm_geometry_seed{s}_imp_ad", "geo_mild": "geo_mild_geometry_seed{s}_imp_ad",
+    "geo_severe": "geo_severe_geometry_seed{s}_imp_ad", "geolight": "geolight_both_seed{s}_imp_ad", "exact": "clean_geometry_seed{s}_imp_ad",
+    "drop25": "drop25_geometry_seed{s}_dens_sp", "drop50": "drop50_geometry_seed{s}_dens_sp",
+    "drop25_all": "drop25_geometry_seed{s}_dens_all", "drop50_all": "drop50_geometry_seed{s}_dens_all",
+}
 
 
 def split_error(stem: str, scene: str = "0070") -> dict | None:
@@ -147,11 +153,30 @@ def improved_geometry(seeds=(0, 1, 2)) -> dict:
     scenes = {}
     for n in (71, 72, 73):
         scenes[str(n)] = {axis: {"improved": load(UNF, f"s00{n}_{axis}_geometry_seed0_imp"),
+                                 "adaptive": load(UNF, f"s00{n}_{axis}_geometry_seed0_imp_ad"),
                                  "targeted": load(UNF, f"s00{n}_{axis}_geometry_seed0_means_normal")} for axis in ("geo_mild", "clean")}
         for axis in ("geo_mild", "clean"):
-            raw = json.loads((UNF / f"s00{n}_{axis}_geometry_seed0_imp.json").read_text(encoding="utf-8"))
-            scenes[str(n)][axis]["improved"]["normal_error_deg"] = raw.get("normal_error_deg")
+            for k_name, tag in (("improved", "imp"), ("adaptive", "imp_ad")):
+                p_f = UNF / f"s00{n}_{axis}_geometry_seed0_{tag}.json"
+                if p_f.exists() and scenes[str(n)][axis][k_name] is not None:
+                    raw = json.loads(p_f.read_text(encoding="utf-8"))
+                    scenes[str(n)][axis][k_name]["normal_error_deg"] = raw.get("normal_error_deg")
     out["scenes_0071_0073"] = scenes
+    adaptive = {}
+    for key, stem in ADAPTIVE.items():
+        runs = []
+        for s in seeds:
+            r = load(UNF, stem.format(s=s))
+            if r is not None:
+                d = json.loads((UNF / f"{stem.format(s=s)}.json").read_text(encoding="utf-8"))
+                r.update(normal_error_deg=d.get("normal_error_deg"), position_error=d.get("position_error_mean"))
+            runs.append(r)
+        entry = {"runs": runs, "complete": all(r is not None for r in runs)}
+        if entry["complete"]:
+            entry.update(phys_min=min(r["phys"] for r in runs), phys_max=max(r["phys"] for r in runs),
+                         fuse_min=min(r["fuse"] for r in runs), fuse_max=max(r["fuse"] for r in runs))
+        adaptive[key] = entry
+    out["adaptive"] = adaptive
     all_views = {"0070_geo_mild": "geo_mild_geometry_seed0_v9", "0070_exact": "clean_geometry_seed0_v9"}   # all nine views per step, no prior
     all_views.update({f"00{n}_{axis}": f"s00{n}_{axis}_geometry_seed0_v9" for n in (71, 72, 73) for axis in ("geo_mild", "clean")})
     out["all_views"] = {k: r for k, s in all_views.items() if (r := load(UNF, s)) is not None}

@@ -1,0 +1,131 @@
+{
+  "phys": {
+    "psnr": 22.997412363688152,
+    "ssim": 0.9060078461964926,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 22.966754913330078,
+        "ssim": 0.9453228712081909
+      },
+      {
+        "frame": 4,
+        "psnr": 26.997997283935547,
+        "ssim": 0.9427250623703003
+      },
+      {
+        "frame": 8,
+        "psnr": 19.027484893798828,
+        "ssim": 0.8299756050109863
+      }
+    ]
+  },
+  "fuse": {
+    "psnr": 36.409205754597984,
+    "ssim": 0.985209067662557,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 43.56017303466797,
+        "ssim": 0.99799644947052
+      },
+      {
+        "frame": 4,
+        "psnr": 36.62733459472656,
+        "ssim": 0.9866570234298706
+      },
+      {
+        "frame": 8,
+        "psnr": 29.040109634399414,
+        "ssim": 0.9709737300872803
+      }
+    ]
+  },
+  "single": {
+    "psnr": 30.75458017985026,
+    "ssim": 0.9792872468630472,
+    "per_view": [
+      {
+        "frame": 0,
+        "psnr": 34.9327507019043,
+        "ssim": 0.987795352935791
+      },
+      {
+        "frame": 4,
+        "psnr": 29.3424015045166,
+        "ssim": 0.9790357351303101
+      },
+      {
+        "frame": 8,
+        "psnr": 27.988588333129883,
+        "ssim": 0.9710306525230408
+      }
+    ]
+  },
+  "gate_mean": 0.21923554688692093,
+  "fit_train": {
+    "full_psnr": 46.4252798292372,
+    "med_err": 0.0010241416554587583,
+    "p90_err": 0.0037899287805582085,
+    "diffuse_psnr": 41.229810078938804,
+    "n_views": 9
+  },
+  "fit_holdout": {
+    "full_psnr": 21.928759892781574,
+    "med_err": 0.020733141340315342,
+    "p90_err": 0.14844445139169693,
+    "diffuse_psnr": 22.997412363688152,
+    "n_views": 3
+  },
+  "light_angle_error_deg": {
+    "train": 0.0,
+    "unseen": 0.0
+  },
+  "light_log_intensity_error": {
+    "train": 0.0,
+    "unseen": 0.0
+  },
+  "position_error_mean": 0.021433433517813683,
+  "normal_error_deg": 9.993082046508789,
+  "axis": "geo_mild",
+  "unfreeze": "geometry",
+  "seed": 0,
+  "train_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "val_ids": [],
+  "holdout_ids": [
+    0,
+    4,
+    8
+  ],
+  "steps": 1500,
+  "geo_scale": 1.0,
+  "light_lr": 0.01,
+  "geo_start": 0,
+  "blur": 0.0,
+  "geo_params": "means,normal_raw",
+  "surf": {
+    "normal": 1.0,
+    "plane": 0.0,
+    "k": 8,
+    "spacing": 0.11675768345594406,
+    "decay": 0.6,
+    "mode": "adaptive"
+  },
+  "views_per_step": 9,
+  "geo_eps": 1e-08,
+  "brdf_ext": "none",
+  "mat_start": 0,
+  "densify": "none",
+  "final_loss": 0.001942172737067772,
+  "minutes": 7.552766486008962
+}

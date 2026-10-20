@@ -40,7 +40,7 @@ def main() -> None:
     for key, res in scenes.items():
         group, name = key.split("/")
         out[group][name] = entry(res, fit[key]["full_psnr"])
-    for name, folder in (("dtu", "dtu_scan1_nossim"), ("blended", "blendedmvs_57f8d9bb_nossim")):
+    for name, folder in (("dtu", "dtu_scan1_corrected_s3000"), ("blended", "blendedmvs_57f8d9bb_corrected_s3000")):
         f = json.loads((ROOT / "outputs" / folder / "world_metrics_train.json").read_text(encoding="utf-8"))["summary"]["full_psnr"]
         out["mvs"][name] = {"fit": f, "accepted": bool(f >= TAU)}
     fits = {**{f"sens/{k}": v["fit"] for k, v in out["sensitivity"].items()},

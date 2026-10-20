@@ -318,9 +318,8 @@ class MultiViewScene:
             pixel_x = selected % width_d
             z = depth.flatten()[selected]
             K = frame.camera.K.clone()
-            original_width, original_height = original_sizes[frame_id]
-            K[0] *= width_d / original_width
-            K[1] *= height_d / original_height
+            K[0] *= width_d / frame.camera.width
+            K[1] *= height_d / frame.camera.height
             x = (pixel_x.float() - K[0, 2]) * z / K[0, 0]
             y = (pixel_y.float() - K[1, 2]) * z / K[1, 1]
             camera_points = torch.stack([x, y, z], dim=-1)
