@@ -1,28 +1,14 @@
-"""Aggregate per-view world holdout metrics across MANY scenes.
+"""Aggregate per-view world holdout metrics across scenes.
 
-Why this exists
----------------
-``eval_world_ablation.py`` evaluates a single scene (scene_0070, 3 holdout
-views) and reports the *mean* PSNR/SSIM. On scene_0070 one of the three views
-reaches 57.24 dB (because that view is nearly diffuse-free), which inflates the
-3-view mean to 36.82 dB. Reporting that single mean as a headline number is
-misleading.
-
-This script collects per-view numbers from *all* available scene ablation
-directories (e.g. ``outputs/world_ablation_scene_00NN/``) and reports robust
-statistics — median, IQR, min, max, and the full per-view distribution — so the
-reported number is no longer dominated by a single easy view.
+This script collects per-view numbers from all available scene ablation
+directories (e.g. ``outputs/world_ablation_scene_00NN/``) and reports
+mean, s.d., median, IQR, min, max, and the full per-view distribution.
 
 Usage
 -----
     python scripts/aggregate_world_holdout.py \
         --glob "outputs/world_ablation_scene_*" \
         --output outputs/world_holdout_aggregate.json
-
-After each scene has been trained (stage 2.3) and evaluated with
-``eval_world_ablation.py --world-checkpoint .../scene_00NN_strict/last.pt
---output outputs/world_ablation_scene_00NN``, this script turns those per-scene
-results into a single cross-scene summary with honest statistics.
 """
 from __future__ import annotations
 

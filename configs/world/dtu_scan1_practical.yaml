@@ -1,23 +1,8 @@
-# DTU scan 1 — PRACTICAL pipeline (MVS geometry + single-image albedo prior).
+# DTU scan 1 — practical pipeline (MVS geometry + single-image albedo prior).
 #
-# Stage 2.4. The previous dtu_scan1.yaml failed (full PSNR 7.04/7.43 dB on
-# train/holdout) because of three compounding issues:
-#   1. Capacity too small (10k Gaussians; standard 3DGS uses 100k-1M).
-#   2. Steps too few (1500) for from-scratch geometry + material fitting.
-#   3. No albedo/material prior — blind inverse rendering is ill-posed on real
-#      captures (no diffuse GT), and shared_lighting forced one light to fit 49
-#      differently-lit views.
-#
-# This config fixes all three WITHOUT adding any GT supervision (it stays a
-# "practical" / no-GT pipeline, between oracle and fully-blind):
-#   - pseudo_diffuse_checkpoint: the SHIQ-trained single-image restorer predicts
-#     a per-view diffuse prior, fused into per-Gaussian albedo (code already
-#     exists: train.predict_pseudo_diffuse + dataset.fuse_projected_texture).
-#   - max_init_points / n_gaussians raised to 50000.
-#   - steps raised to 5000; refine_start to 4000.
-#   - shared_lighting OFF — each frame gets its own light (real captures vary).
-#
-# This is the "practical pipeline" the paper's rebuttal (Concern 2) promised.
+# The baseline dtu_scan1.yaml uses 10k Gaussians, 1500 steps, and shared
+# lighting without an albedo prior. This variant enables a pseudo-diffuse prior
+# from the SHIQ-trained single-image restorer and per-frame lighting.
 data_type: dtu
 data_root: ../data/raw/DTU_extracted/SampleSet/MVS Data
 scan: 1

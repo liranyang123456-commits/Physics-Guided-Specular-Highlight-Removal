@@ -144,7 +144,7 @@ class SDTurboRefiner(nn.Module):
 
 
 class GenerativeRefiner(nn.Module):
-    """Stage 5: generative fusion on top of physics diffuse prior."""
+    """Generative fusion on top of the physics diffuse prior."""
 
     def __init__(self, backend: str | None = None):
         super().__init__()

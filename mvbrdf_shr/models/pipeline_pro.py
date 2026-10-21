@@ -1,4 +1,4 @@
-"""Upgraded end-to-end pipeline targeting SOTA numbers."""
+"""End-to-end single-image physics-guided specular highlight removal pipeline."""
 from __future__ import annotations
 
 import torch
@@ -14,11 +14,11 @@ from .restorer import DHANRestorer, HighlightRestorer, SpecularDecomposer
 
 
 class MVBRDFSHRPro(nn.Module):
-    """Physics BRDF fields + strong HighlightRestorer (SOTA push).
+    """Physics BRDF fields + single-image highlight restorer.
 
-    restorer_kind selects the refinement backbone (path A):
-    - "unet"  : the original multi-scale residual UNet with SE attention.
-    - "dhan"  : physics-conditioned DHAN Processor (SOTA dual-domain Transformer
+    restorer_kind selects the refinement backbone:
+    - "unet"  : multi-scale residual UNet with SE attention.
+    - "dhan"  : physics-conditioned DHAN Processor (dual-domain Transformer
                + FFT frequency + dual attention), with the physics prior
                (albedo/normal/mask) injected via a zero-init side branch.
     """

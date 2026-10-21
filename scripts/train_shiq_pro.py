@@ -24,7 +24,7 @@ from mvbrdf_shr.viz import save_pipeline_viz
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SHIQ = ROOT.parent / "data" / "raw" / "SHIQ_extracted"
-# Default roots for the auxiliary public datasets (path C: joint training).
+# Default roots for the auxiliary public datasets (joint training).
 _DEFAULT_SSHR = ROOT.parent / "data" / "raw" / "SSHR_extracted"
 _DEFAULT_NSH = ROOT.parent / "data" / "raw" / "NSH_extracted"
 _DEFAULT_PSD = ROOT.parent / "data" / "raw" / "PSD_extracted"
@@ -67,18 +67,18 @@ def main():
         default=0,
         help="Random seed for reproducibility (run 3 seeds to report median+IQR).",
     )
-    # --- SOTA push: loss + data (paths B / C) ----------------------------------
+    # --- Loss + auxiliary data options -----------------------------------------
     ap.add_argument(
         "--refine-lpips", type=float, default=0.0,
-        help="Weight of the LPIPS perceptual loss (path B). 0=off, ~0.3 typical.",
+        help="Weight of the LPIPS perceptual loss. 0=off, ~0.3 typical.",
     )
     ap.add_argument(
         "--refine-fft", type=float, default=0.0,
-        help="Weight of the FFT frequency-domain loss (path B). 0=off, ~0.1 typical.",
+        help="Weight of the FFT frequency-domain loss. 0=off, ~0.1 typical.",
     )
     ap.add_argument(
         "--aux-datasets", default="",
-        help="Comma-separated aux datasets for joint training (path C): "
+        help="Comma-separated aux datasets for joint training: "
              "sshr,psd,nsh. Empty = SHIQ-only (backward compatible).",
     )
     ap.add_argument(
@@ -88,12 +88,12 @@ def main():
     )
     ap.add_argument(
         "--restorer-kind", choices=["unet", "dhan"], default="unet",
-        help="Restorer backbone (path A): 'unet' = current HighlightRestorer, "
+        help="Restorer backbone: 'unet' = HighlightRestorer, "
              "'dhan' = physics-conditioned DHAN Processor.",
     )
     ap.add_argument(
         "--dhan-weights", default="baselines_ext/DHAN-SHR/weights/model.pth",
-        help="Pretrained DHAN weights to initialize the dhan restorer (path A).",
+        help="Pretrained DHAN weights to initialize the dhan restorer.",
     )
     args = ap.parse_args()
 
@@ -107,7 +107,7 @@ def main():
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_ds = SHIQAdapter(args.shiq_root, args.resolution, "train")
-    # --- Joint training (path C): mix SHIQ with auxiliary public datasets -----
+    # --- Joint training: mix SHIQ with auxiliary public datasets ---------------
     # SSHR (synthetic physics GT, large) is the biggest gain source — it is what
     # TSHRNet/DHAN train on. PSD/NSH add real-data diversity. val/test stay
     # SHIQ-only so reported numbers stay comparable to literature.
@@ -174,8 +174,8 @@ def main():
         resolution=args.resolution, base_ch=48, restorer_base=96,
         restorer_kind=args.restorer_kind,
     ).to(device)
-    # Path A: initialize the DHAN restorer backbone from pretrained weights.
-    # Load order matters for the distilled-physics path (stage E):
+    # Initialize the DHAN restorer backbone from pretrained weights.
+    # Load order matters for the distilled-physics path:
     # 1) resume the (possibly distilled) full-pipeline checkpoint — this loads the
     #    pre-trained physics heads (geometry/material) from world-GT distillation.
     # 2) THEN overwrite ONLY the restorer with pretrained DHAN weights, so the

@@ -1,4 +1,4 @@
-"""SOTA-oriented highlight restorer: multi-scale residual UNet with SE attention."""
+"""Highlight restorer: multi-scale residual UNet with SE attention."""
 from __future__ import annotations
 
 import torch
@@ -186,12 +186,11 @@ class PureUNetBaseline(nn.Module):
 
 
 class DHANRestorer(nn.Module):
-    """Physics-conditioned DHAN restorer (path A: SOTA architecture + physics prior).
+    """Physics-conditioned DHAN restorer.
 
     Wraps the DHAN-SHR ``Processor`` (dual-domain Transformer + FFT
-    FrequencyProcessor + pixel/channel dual attention — the SHIQ 33.81 SOTA
-    backbone, source already vendored in baselines_ext/DHAN-SHR) and injects the
-    physics-decomposition prior (albedo/normal/mask) as a ZERO-INITIALIZED side
+    FrequencyProcessor + pixel/channel dual attention) and injects the
+    physics-decomposition prior (albedo/normal/mask) as a zero-initialized side
     branch added to the patch-embed feature.
 
     Why zero-init side injection (not channel concat): Processor's forward ends

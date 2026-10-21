@@ -1,13 +1,7 @@
 """Generate per-scene world benchmark configs for the multi-scene holdout study.
 
-Stage 1.3 / 2.3: scene_0070 alone has only 3 holdout views, and one of them
-(57.24 dB) inflates the mean to 36.82 dB. To report honest statistics we train
-and evaluate the same strict-holdout protocol on multiple test scenes
-(scene_0070..scene_0079, 10 scenes x 3 holdout views = 30 views) and aggregate
-with median+IQR via aggregate_world_holdout.py.
-
-This script stamps out one yaml per scene from the scene_0070 template, changing
-only data_root and output_dir. It does NOT run training.
+Stamps out one YAML per scene from the scene_0070 template, changing only
+data_root and output_dir.
 """
 from __future__ import annotations
 
